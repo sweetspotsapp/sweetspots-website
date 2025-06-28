@@ -1,0 +1,117 @@
+{
+  "navigation": {
+    "why": "Why SweetSpots?",
+    "pricing": "Pricing",
+    "contact": "Contact",
+    "about": "About Us"
+  },
+  "hero": {
+    "title": "SweetSpots",
+    "subtitle": "From inspo to itinerary — discover and plan in one place.",
+    "description": "Sweetspot helps you discover hidden gems, read real reviews, and plan your trip—all in one app.",
+    "signUp": "Sign Up"
+  },
+  "problem": {
+    "title": "Does this sound familiar?",
+    "tabs": {
+      "title": "Too many tabs,\nToo much stress",
+      "stat": "8 out of 10 travellers",
+      "description": "used 3 or more platforms — like TikTok, Google Maps, and spreadsheets — just to plan a single trip."
+    },
+    "group": {
+      "title": "Group Travel ≠\nGroup Harmony",
+      "stat": "60% of group travellers",
+      "description": "said the trip felt less fun than it could've been due to mismatched budgets, energy levels, or interests."
+    },
+    "mismatch": {
+      "title": "What you see ≠ What\nyou get",
+      "stat": "2 in 3 travellers",
+      "description": "said the real place didn't match the curated photos — they felt misled by influencer edits or polished booking images."
+    }
+  },
+  "solution": {
+    "title": "With Sweetspot,\nyou can :",
+    "features": {
+      "discover": {
+        "title": "Discover",
+        "description": "spots that match your vibe — just swipe."
+      },
+      "trust": {
+        "title": "Trust what you see",
+        "description": "— real photos and reviews from real people."
+      },
+      "build": {
+        "title": "Build and share",
+        "description": "an auto-itinerary with your group."
+      },
+      "vote": {
+        "title": "Vote, align, and go",
+        "description": "— friends can upvote or skip spots together."
+      },
+      "extras": {
+        "title": "Get extras",
+        "description": "— surprise recs and exclusive travel agency perks."
+      }
+    },
+    "description": "One platform. No switching apps. No overplanning.\nJust better trips.",
+    "signUp": "Sign Up"
+  },
+  "howItWorks": {
+    "title": "How SweetSpots Works",
+    "subtitle": "Planning your trip should feel fun!",
+    "steps": {
+      "swipe": {
+        "title": "Swipe Your Vibe",
+        "description": "We'll show you curated spots that match your mood, budget, and distance — no endless tabs, just swipe right on what you like."
+      },
+      "build": {
+        "title": "Build Your Dream Itinerary",
+        "description": "Every swipe you love goes into your Saved Spots. When you're ready, pick your top choices and we'll auto-generate an itinerary that makes sense (no zigzag routes or 2-hour gaps)."
+      },
+      "share": {
+        "title": "Share With The Crew",
+        "description": "Send your itinerary to friends — they can vote yes/no on activities, so everyone's on the same page. No more \"I thought we weren't doing that?\" energy."
+      }
+    }
+  },
+  "cta": {
+    "title": "Be the first to try SweetSpots",
+    "description": "We're cooking up something made for travelers like you. Drop your email and we'll let you know when we launch.\nNo spam, no pressure — just better trips.",
+    "signUp": "Sign Up"
+  },
+  "footer": {
+    "description": "From inspo to itinerary — discover and plan your perfect trip in one place. Made for travelers who want better trips, not more stress.",
+    "product": "Product",
+    "features": "Features",
+    "howItWorks": "How it Works",
+    "pricing": "Pricing",
+    "company": "Company",
+    "about": "About",
+    "contact": "Contact",
+    "privacy": "Privacy",
+    "terms": "Terms",
+    "copyright": "© 2025 SweetSpots. All rights reserved.",
+    "madeWith": "Made with ❤️ for travelers everywhere"
+  },
+  "about": {
+    "title": "Meet Our Founders",
+    "subtitle": "The passionate team behind SweetSpots",
+    "founders": {
+      "razak": {
+        "name": "Muhammad Ilham Razak",
+        "role": "Co-founder & CEO",
+        "bio": "Razak is a business development executive currently studying for a Master of Business at Monash University. Razak has over 5 years of experience in business development, sales, and marketing. Razak is an LPDP scholarship recipient for 2024-2026."
+      },
+      "farizio": {
+        "name": "Farizio Kautsar Heruzy",
+        "role": "Co-Founder & CTO",
+        "bio": "Farizio is a Master of Information Technology student at Monash University with over 3 years of experience in technology startups, including serving as a full stack developer in various positions."
+      },
+      "kasipang": {
+        "name": "Kasipang Phantajak",
+        "role": "Co-founder & CCO",
+        "bio": "Kao is a UI/UX designer with over 3 years of experience in startups in Thailand. Kao is currently pursuing a Master of Business at Monash University."
+      }
+    }
+  }
+}

@@ -1,0 +1,117 @@
+{
+  "navigation": {
+    "why": "Mengapa SweetSpots?",
+    "pricing": "Harga",
+    "contact": "Kontak",
+    "about": "Tentang Kami"
+  },
+  "hero": {
+    "title": "SweetSpots",
+    "subtitle": "Dari inspirasi ke itinerary — temukan dan rencanakan dalam satu tempat.",
+    "description": "Sweetspot membantu kamu menemukan hidden gem, baca review yang autentik, dan merencanakan perjalanan—semua dalam satu aplikasi.",
+    "signUp": "Daftar"
+  },
+  "problem": {
+    "title": "Bisa relate ga?",
+    "tabs": {
+      "title": "Kebanyakan tab,\nKebanyakan stres",
+      "stat": "8 dari 10 traveler",
+      "description": "menggunakan 3 atau lebih platform — seperti TikTok, Google Maps, dan spreadsheet — hanya untuk merencanakan satu perjalanan."
+    },
+    "group": {
+      "title": "Perjalanan Grup ≠\nKeharmonisan Grup",
+      "stat": "60% grup traveler",
+      "description": "mengatakan perjalanan terasa kurang menyenangkan dari yang seharusnya karena anggaran, tingkat energi, atau minat yang tidak cocok."
+    },
+    "mismatch": {
+      "title": "Yang kamu lihat ≠ Yang\nkamu dapatkan",
+      "stat": "2 dari 3 traveler",
+      "description": "mengatakan tempat aslinya tidak sesuai dengan foto yang dikurasi — mereka merasa tertipu oleh edit influencer atau gambar booking yang dipoles."
+    }
+  },
+  "solution": {
+    "title": "Dengan Sweetspot,\nkamu dapat :",
+    "features": {
+      "discover": {
+        "title": "Temukan",
+        "description": "tempat yang sesuai dengan vibe kamu — cukup dengan swiping."
+      },
+      "trust": {
+        "title": "Percayai apa yang kamu lihat",
+        "description": "— foto dan ulasan asli dari orang sungguhan."
+      },
+      "build": {
+        "title": "Buat dan bagikan",
+        "description": "itinerary otomatis dengan grup kamu."
+      },
+      "vote": {
+        "title": "Vote, selaraskan, dan pergi",
+        "description": "— teman dapat upvote atau skip tempat bersama-sama."
+      },
+      "extras": {
+        "title": "Dapatkan ekstra",
+        "description": "— rekomendasi kejutan dan keuntungan eksklusif agen perjalanan."
+      }
+    },
+    "description": "Satu platform. Tidak perlu ganti aplikasi. Tidak perlu overplanning.\nHanya trip yang lebih baik.",
+    "signUp": "Daftar"
+  },
+  "howItWorks": {
+    "title": "Cara Kerja SweetSpots",
+    "subtitle": "Rencanain jalan-jalan harus seru dong!",
+    "steps": {
+      "swipe": {
+        "title": "Geser Sesuai Vibe kamu",
+        "description": "Kami akan menunjukkan tempat-tempat terpilih yang sesuai dengan mood, anggaran, dan jarak kamu — tidak ada tab tak berujung, cukup geser kanan pada yang kamu suka."
+      },
+      "build": {
+        "title": "Bangun Itinerary Impian kamu",
+        "description": "Setiap geseran yang kamu sukai masuk ke Tempat Tersimpan. Ketika siap, pilih pilihan teratas dan kami akan otomatis membuat itinerary yang masuk akal (tanpa rute zigzag atau jeda 2 jam)."
+      },
+      "share": {
+        "title": "Bagikan Dengan Tim",
+        "description": "Kirim itinerary kamu ke teman — mereka dapat vote ya/tidak pada aktivitas, jadi semua orang satu halaman. Tidak ada lagi energi \"Saya pikir kita tidak melakukan itu?\"."
+      }
+    }
+  },
+  "cta": {
+    "title": "Penasaran nyobain SweetSpots?",
+    "description": "Kami lagi bikin sesuatu untuk travelers kayak kamu. Berikan email kamu dan kami akan memberi tahu ketika kami release.\nTanpa spam, tanpa tekanan — hanya perjalanan yang lebih baik.",
+    "signUp": "Daftar"
+  },
+  "footer": {
+    "description": "Dari inspirasi ke itinerary — temukan dan rencanakan perjalanan sempurna kamu dalam satu tempat. Dibuat untuk travelers yang ingin perjalanan lebih baik, bukan lebih stres.",
+    "product": "Produk",
+    "features": "Fitur",
+    "howItWorks": "Cara Kerja",
+    "pricing": "Harga",
+    "company": "Perusahaan",
+    "about": "Tentang",
+    "contact": "Kontak",
+    "privacy": "Privasi",
+    "terms": "Syarat",
+    "copyright": "© 2025 SweetSpots. Semua hak dilindungi.",
+    "madeWith": "Dibuat dengan ❤️ untuk travelers di mana pun"
+  },
+  "about": {
+    "title": "Kenali Para Pendiri Kami",
+    "subtitle": "Tim yang bersemangat di balik SweetSpots",
+    "founders": {
+      "razak": {
+        "name": "Muhammad Ilham Razak",
+        "role": "Co-founder & CEO",
+        "bio": "Razak adalah eksekutif pengembangan bisnis yang sedang belajar di Monash University sebagai master of business. Razak memiliki pengalaman lebih dari 5 tahun di bidang pengembangan bisnis, penjualan, dan pemasaran. Razak adalah penerima beasiswa LPDP tahun 2024-2026."
+      },
+      "farizio": {
+        "name": "Farizio Kautsar Heruzy",
+        "role": "Co-Founder & CTO",
+        "bio": "Farizio adalah mahasiswa master of Information Technology yang berkuliah di Monash University yang memiliki pengalaman lebih dari 3 tahun di bidang startup teknologi, termasuk menjadi full stack developer di berbagai posisi."
+      },
+      "kasipang": {
+        "name": "Kasipang Phantajak",
+        "role": "Co-founder & CCO",
+        "bio": "Kao adalah UI/UX designer yang memiliki pengalaman lebih dari 3 tahun di startup di Thailand. Kao sekarang sedang menjadi mahasiswa master of Business di Monash University."
+      }
+    }
+  }
+}

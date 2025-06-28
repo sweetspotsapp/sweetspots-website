@@ -26,8 +26,8 @@ export function IPhoneFrame({
 }: IPhoneFrameProps) {
   const sizeClasses = {
     sm: 'w-[200px] h-[400px]',
-    md: 'w-[280px] h-[560px]',
-    lg: 'w-[320px] h-[640px]'
+    md: 'w-[280px] h-[600px]',
+    lg: 'w-[320px] h-[1000px]'
   };
 
   const screenSizeClasses = {
@@ -50,7 +50,7 @@ export function IPhoneFrame({
         screenSizeClasses[size]
       )}>
         {/* Dynamic Island */}
-        <div className="absolute top-4 left-1/2 transform -translate-x-1/2 w-24 h-6 bg-black rounded-full z-20"></div>
+        {/* <div className="absolute top-4 left-1/2 transform -translate-x-1/2 w-24 h-6 bg-black rounded-full z-20"></div> */}
         
         {/* Screen */}
         <div className={cn(

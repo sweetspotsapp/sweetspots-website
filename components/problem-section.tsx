@@ -2,6 +2,7 @@
 
 import { Users, Smartphone, Eye } from 'lucide-react';
 import { useTranslations } from 'next-intl';
+import Image from 'next/image';
 
 export function ProblemSection() {
   const t = useTranslations('problem');
@@ -9,18 +10,21 @@ export function ProblemSection() {
   const problems = [
     {
       icon: <Smartphone className="h-12 w-12 text-emerald-500" />,
+      imageUrl: '/images/problem1.png',
       titleKey: 'tabs.title',
       statKey: 'tabs.stat',
       descriptionKey: 'tabs.description'
     },
     {
       icon: <Users className="h-12 w-12 text-rose-500" />,
+      imageUrl: '/images/problem2.png',
       titleKey: 'group.title',
       statKey: 'group.stat',
       descriptionKey: 'group.description'
     },
     {
       icon: <Eye className="h-12 w-12 text-emerald-500" />,
+      imageUrl: '/images/problem3.avif',
       titleKey: 'mismatch.title',
       statKey: 'mismatch.stat',
       descriptionKey: 'mismatch.description'
@@ -44,11 +48,23 @@ export function ProblemSection() {
               style={{ animationDelay: `${index * 0.2}s` }}
             >
               {/* Illustration placeholder */}
-              <div className="relative mx-auto w-48 h-48 bg-gradient-to-br from-gray-50 to-gray-100 rounded-2xl flex items-center justify-center mb-8 transition-all duration-300 hover:shadow-lg">
-                {problem.icon}
-                <div className="absolute inset-0 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center">
+              <div className="relative mx-auto w-48 h-48 bg-gradient-to-br rounded-2xl flex items-center justify-center mb-8 transition-all duration-300 hover:shadow-lg">
+                {problem.imageUrl ? (
+                  <Image
+                    src={problem.imageUrl}
+                    alt={t(problem.titleKey)}
+                    // className="w-full h-full object-cover rounded-2xl"
+                    fill
+                    objectFit='contain'
+                    style={{ borderRadius: '1rem' }}
+                    priority={index === 0}
+                  />
+                ) : (
+                  problem.icon
+                )}
+                {/* <div className="absolute inset-0 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center">
                   <span className="text-gray-400 text-sm">Illustration Placeholder</span>
-                </div>
+                </div> */}
               </div>
 
               <div className="space-y-4">

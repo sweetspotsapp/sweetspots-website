@@ -97,7 +97,7 @@ export function Navigation() {
         {isMenuOpen && (
           <div className="md:hidden bg-white border-t border-gray-100 py-4">
             <div className="flex flex-col space-y-4">
-              <a 
+              {/* <a 
                 href="#why" 
                 className="text-gray-600 hover:text-gray-900 transition-colors font-medium px-4"
                 onClick={() => setIsMenuOpen(false)}
@@ -117,7 +117,7 @@ export function Navigation() {
                 onClick={() => setIsMenuOpen(false)}
               >
                 {t('contact')}
-              </a>
+              </a> */}
               <Link 
                 href={`/${locale}/about`}
                 className="text-gray-600 hover:text-gray-900 transition-colors font-medium px-4"

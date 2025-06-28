@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
+import { Check } from "lucide-react";
 
 const mockPlaces = [
   {
@@ -151,7 +152,7 @@ export default function SwipeMock() {
                 onClick={() => swipe("right")}
                 className="w-14 h-14 bg-emerald-500 rounded-full flex items-center justify-center shadow-lg transition-all hover:scale-110"
               >
-                <span className="text-white text-2xl font-bold">✓</span>
+                <span className="text-white text-2xl font-bold"><Check size={28}/></span>
               </button>
             </div>
 

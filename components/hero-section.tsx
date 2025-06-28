@@ -11,36 +11,10 @@ export function HeroSection() {
   const t = useTranslations("hero");
 
   return (
-    <section className="pt-24 pb-12 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-rose-100 via-rose-50 to-rose-50 min-h-screen flex items-center">
+    <section className="pt-24 pb-12 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-rose-100 via-rose-50 to-rose-50 min-h-[60dvh] flex items-center">
       <div className="max-w-7xl mx-auto">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* Left Content */}
-          <div className="space-y-8 animate-slide-in-left">
-            <div className="space-y-6">
-              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-serif text-gray-900 leading-tight">
-                {t("title")}
-              </h1>
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-serif text-gray-800 leading-relaxed">
-                {t("subtitle")}
-              </h2>
-              <p className="text-lg sm:text-xl text-gray-600 leading-relaxed max-w-xl">
-                {t("description")}
-              </p>
-            </div>
-
-            <div className="pt-4">
-              <Button
-                size="lg"
-                variant="emerald"
-                className="text-lg px-8 py-4 rounded-full hover:scale-105 transition-transform duration-200"
-                onClick={() => window.open(SIGNUP_URL, "_blank")}
-              >
-                {t("signUp")}
-              </Button>
-            </div>
-          </div>
-
-          {/* Right Illustration */}
+          {/* Illustration */}
           <div className="relative animate-slide-in-right">
             <div className="relative mx-auto max-w-sm lg:max-w-md">
               {/* Phone Mockup */}
@@ -71,6 +45,31 @@ export function HeroSection() {
               {/* Decorative elements */}
               <div className="absolute -top-6 -right-6 w-12 h-12 bg-rose-100 rounded-full opacity-60"></div>
               <div className="absolute -bottom-8 -left-8 w-16 h-16 bg-emerald-100 rounded-full opacity-40"></div>
+            </div>
+          </div>
+          {/* Content */}
+          <div className="space-y-8 animate-slide-in-left">
+            <div className="space-y-6">
+              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-serif text-gray-900 leading-tight">
+                {t("title")}
+              </h1>
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-serif text-gray-800 leading-relaxed">
+                {t("subtitle")}
+              </h2>
+              <p className="text-lg sm:text-xl text-gray-600 leading-relaxed max-w-xl">
+                {t("description")}
+              </p>
+            </div>
+
+            <div className="pt-4">
+              <Button
+                size="lg"
+                variant="emerald"
+                className="text-lg px-8 py-4 rounded-full hover:scale-105 transition-transform duration-200"
+                onClick={() => window.open(SIGNUP_URL, "_blank")}
+              >
+                {t("signUp")}
+              </Button>
             </div>
           </div>
         </div>

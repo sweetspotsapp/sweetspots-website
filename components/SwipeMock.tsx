@@ -4,6 +4,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { Check } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 const mockPlaces = [
   {
@@ -39,6 +40,7 @@ const mockPlaces = [
 ];
 
 export default function SwipeMock() {
+  const t = useTranslations("solution");
   const [index, setIndex] = useState(0);
   const [direction, setDirection] = useState<"left" | "right" | null>(null);
   const [cardVisible, setCardVisible] = useState(true);
@@ -65,7 +67,7 @@ export default function SwipeMock() {
   return (
     <div className="relative">
       <div className="absolute -top-2 -left-4 px-4 py-2 rounded-full text-center text-white font-semibold text-lg mb-4 bg-emerald-400 z-10 -rotate-12">
-        Try it!
+        {t('tryIt')}
       </div>
       <div className="relative bg-gray-900 rounded-[2.5rem] p-4 shadow-2xl w-full">
         <div className="bg-white rounded-[2rem] overflow-hidden">

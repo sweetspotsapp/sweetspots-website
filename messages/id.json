@@ -7,77 +7,78 @@
   },
   "hero": {
     "title": "SweetSpots",
-    "subtitle": "Dari inspirasi ke itinerary — temukan dan rencanakan dalam satu tempat.",
+    "subtitle": "Cari dan rencanain semuanya dalam satu tempat",
     "description": "Sweetspot membantu kamu menemukan hidden gem, baca review yang autentik, dan merencanakan perjalanan—semua dalam satu aplikasi.",
-    "signUp": "Daftar"
+    "signUp": "Daftar Sekarang!"
   },
   "problem": {
     "title": "Bisa relate ga?",
     "tabs": {
-      "title": "Kebanyakan tab,\nKebanyakan stres",
+      "title": "Kebanyakan stres",
       "stat": "8 dari 10 traveler",
-      "description": "menggunakan 3 atau lebih platform — seperti TikTok, Google Maps, dan spreadsheet — hanya untuk merencanakan satu perjalanan."
+      "description": "Pake lebih dari 3 platform - kayak TikTok, Google Maps, sampe spreadsheet - cuman buat ngerencanain satu perjalanan."
     },
     "group": {
       "title": "Perjalanan Grup ≠\nKeharmonisan Grup",
       "stat": "60% grup traveler",
-      "description": "mengatakan perjalanan terasa kurang menyenangkan dari yang seharusnya karena anggaran, tingkat energi, atau minat yang tidak cocok."
+      "description": "Bilang travelling ga asik karena beda budget, preferensi, dan energi."
     },
     "mismatch": {
-      "title": "Yang kamu lihat ≠ Yang\nkamu dapatkan",
+      "title": "Yang kamu cek ga sesuai sama yang kamu kunjungi",
       "stat": "2 dari 3 traveler",
-      "description": "mengatakan tempat aslinya tidak sesuai dengan foto yang dikurasi — mereka merasa tertipu oleh edit influencer atau gambar booking yang dipoles."
+      "description": "Bilang tempat yang dicari ga sesuai sama foto yang ada di internet - mereka ngerasa ketipu sama konten influenser atau gambar yang kebanyakan diedit"
     }
   },
   "solution": {
-    "title": "Dengan Sweetspot,\nkamu dapat :",
+    "tryIt": "Cobain deh!",
+    "title": "Dengan Sweetspot,\nkamu bisa:",
     "features": {
       "discover": {
-        "title": "Temukan",
-        "description": "tempat yang sesuai dengan vibe kamu — cukup dengan swiping."
+        "title": "Cari tempat yang sesuai vibe kamu ",
+        "description": "— cuman dengan swipe"
       },
       "trust": {
-        "title": "Percayai apa yang kamu lihat",
-        "description": "— foto dan ulasan asli dari orang sungguhan."
+        "title": "Kunjungi tempat otentik sesuai yang kamu cari",
+        "description": "— dari foto dan review asli dari mereka yang kesana."
       },
       "build": {
         "title": "Buat dan bagikan",
-        "description": "itinerary otomatis dengan grup kamu."
+        "description": "itinerary otomatis dengan grup travel kamu."
       },
       "vote": {
-        "title": "Vote, selaraskan, dan pergi",
-        "description": "— teman dapat upvote atau skip tempat bersama-sama."
+        "title": "Pilih, sesuaikan, dan pergi bareng",
+        "description": "— kamu bisa upvote bareng temen kamu dan bisa skip klo pada ga setuju"
       },
       "extras": {
-        "title": "Dapatkan ekstra",
-        "description": "— rekomendasi kejutan dan keuntungan eksklusif agen perjalanan."
+        "title": "Cari hidden gem",
+        "description": "— dapatin rekomendasi dan kejutan dan semua benefit ekslusif dari agen travel terpercaya kami."
       }
     },
-    "description": "Satu platform. Tidak perlu ganti aplikasi. Tidak perlu overplanning.\nHanya trip yang lebih baik.",
-    "signUp": "Daftar"
+    "description": "Satu platform. Ga perlu ganti aplikasi. Ga perlu overplanning. Dapetin trip yang lebih seru!",
+    "signUp": "Daftar Sekarang!"
   },
   "howItWorks": {
     "title": "Cara Kerja SweetSpots",
     "subtitle": "Rencanain jalan-jalan harus seru dong!",
     "steps": {
       "swipe": {
-        "title": "Geser Sesuai Vibe kamu",
-        "description": "Kami akan menunjukkan tempat-tempat terpilih yang sesuai dengan mood, anggaran, dan jarak kamu — tidak ada tab tak berujung, cukup geser kanan pada yang kamu suka."
+        "title": "Swipe Sesuai Vibe kamu",
+        "description": "Kami bakal nunjukkin tempat tempat terpilih yang sesuai sama mood, budget, dan jarak kamu - ga perlu kebanyakan tab, cukup swipe kanan kalo kamu suka."
       },
       "build": {
         "title": "Bangun Itinerary Impian kamu",
-        "description": "Setiap geseran yang kamu sukai masuk ke Tempat Tersimpan. Ketika siap, pilih pilihan teratas dan kami akan otomatis membuat itinerary yang masuk akal (tanpa rute zigzag atau jeda 2 jam)."
+        "description": "Setiap swipe yang kamu suka bakal masuk ke page khusus. Kalau kamu udah siap dengan pilihan kamu, tinggal pilih pilihan paling atas dan kami bakal buat itinerary otomatis yang paling sesuai sama kebutuhan kamu (gak perlu rute zigzag atau jeda sampai 2 jam)"
       },
       "share": {
-        "title": "Bagikan Dengan Tim",
-        "description": "Kirim itinerary kamu ke teman — mereka dapat vote ya/tidak pada aktivitas, jadi semua orang satu halaman. Tidak ada lagi energi \"Saya pikir kita tidak melakukan itu?\"."
+        "title": "Bagikan dengan grup travel kamu",
+        "description": "Kirim itinerary kamu ketemen kamu, mereka bakal dapat pilihan vote ya/tidak buat aktivitas di itinirerary tersebut, jadi semuanya bisa enjoy travel bareng, gak perlu lagi berantem pas ditengah jalan."
       }
     }
   },
   "cta": {
-    "title": "Penasaran nyobain SweetSpots?",
-    "description": "Kami lagi bikin sesuatu untuk travelers kayak kamu. Berikan email kamu dan kami akan memberi tahu ketika kami release.\nTanpa spam, tanpa tekanan — hanya perjalanan yang lebih baik.",
-    "signUp": "Daftar"
+    "title": "Kamu penasaran sama SweetSpots?",
+    "description": "Kami lagi proses bangun platform ini khusus buat traveler kayak kamu. Kirim email kamu dan kamu bakal dapat akses pertama pas udah rilis.\nTenang, kita gabakal spam, kita bakal bantu kamu bikin perjalanan travel yang lebih baik.",
+    "signUp": "Daftar Sekarang!"
   },
   "footer": {
     "description": "Dari inspirasi ke itinerary — temukan dan rencanakan perjalanan sempurna kamu dalam satu tempat. Dibuat untuk travelers yang ingin perjalanan lebih baik, bukan lebih stres.",

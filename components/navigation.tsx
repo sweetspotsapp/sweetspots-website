@@ -32,7 +32,7 @@ export function Navigation() {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link href={`/${locale}`} className="flex items-center space-x-2">
-            <img src="/SweetSpots.svg" alt="SweetSpots Logo" className="h-8 w-auto" />
+            <img src="/SweetSpots.svg" alt="SweetSpots Logo" className="h-8 w-8 w-auto" />
             <span className="text-xl font-serif font-semibold text-gray-900">SweetSpots</span>
           </Link>
 

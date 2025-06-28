@@ -16,7 +16,7 @@ export function Footer() {
               <img
                 src="/SweetSpots.svg"
                 alt="SweetSpots Logo"
-                className="h-8 w-auto"
+                className="h-8 w-8 w-auto"
               />
 
               <span className="text-xl font-serif font-semibold text-gray-900">

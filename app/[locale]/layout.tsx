@@ -19,28 +19,37 @@ const plusJakarta = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "SweetSpots - From Inspo to Itinerary | Travel Planning Made Simple",
+  title: "SweetSpots - Travel Planning Made Simple",
   description:
-    "Discover hidden gems, read real reviews, and plan your perfect trip with SweetSpots. The all-in-one travel planning app that helps you discover and plan in one place.",
+    "Discover hidden gems and plan your perfect trip with SweetSpots.",
   keywords:
-    "travel planning, itinerary planner, travel app, hidden gems, travel reviews, group travel, trip planning",
+    "travel planning, itinerary planner, travel app, hidden gems, trip planning",
   openGraph: {
-    title: "SweetSpots - From Inspo to Itinerary",
+    title: "SweetSpots - Travel Planning Made Simple",
     description:
-      "Discover hidden gems, read real reviews, and plan your perfect trip with SweetSpots.",
+      "Discover hidden gems and plan your perfect trip with SweetSpots.",
     type: "website",
     locale: "en_US",
   },
   twitter: {
     card: "summary_large_image",
-    title: "SweetSpots - From Inspo to Itinerary",
+    title: "SweetSpots - Travel Planning Made Simple",
     description:
-      "Discover hidden gems, read real reviews, and plan your perfect trip with SweetSpots.",
+      "Discover hidden gems and plan your perfect trip with SweetSpots.",
   },
   robots: {
     index: true,
     follow: true,
   },
+    icons: {
+    icon: [
+      { url: '/favicon.ico' },
+      { url: '/favicon-32x32.png', sizes: '32x32' },
+      { url: '/favicon-16x16.png', sizes: '16x16' },
+    ],
+    apple: '/apple-touch-icon.png',
+  },
+  manifest: '/site.webmanifest',
 };
 
 export default async function RootLayout({

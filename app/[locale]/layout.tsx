@@ -1,6 +1,6 @@
 import '../globals.css';
 import type { Metadata } from "next";
-import { Source_Serif_4, Plus_Jakarta_Sans } from "next/font/google";
+import { Source_Serif_4, Plus_Jakarta_Sans, IBM_Plex_Sans_Thai } from "next/font/google";
 import { getMessages } from "next-intl/server";
 import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { notFound } from "next/navigation";
@@ -15,6 +15,13 @@ const sourceSerif = Source_Serif_4({
 const plusJakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
   variable: "--font-plus-jakarta",
+  display: "swap",
+});
+
+const ibmThai = IBM_Plex_Sans_Thai({
+  subsets: ["thai"],
+  variable: "--font-ibm-thai",
+  weight: ["300", "400", "500", "600", "700"],
   display: "swap",
 });
 
@@ -41,7 +48,7 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
-    icons: {
+  icons: {
     icon: [
       { url: '/favicon.ico' },
       { url: '/favicon-32x32.png', sizes: '32x32' },
@@ -59,7 +66,6 @@ export default async function RootLayout({
   children: React.ReactNode;
   params: Promise<{ locale: string }>;
 }) {
-  // Set the locale explicitly to avoid requestAsyncStorage issues
   const { locale } = await params;
   if (!hasLocale(routing.locales, locale)) {
     notFound();
@@ -67,12 +73,16 @@ export default async function RootLayout({
 
   const messages = await getMessages();
 
+  const fontClass =
+    locale === "th"
+      ? ibmThai.variable
+      : `${sourceSerif.variable} ${plusJakarta.variable}`;
+
+  const bodyFontClass = locale === "th" ? "font-ibm-thai" : "font-jakarta";
+
   return (
-    <html
-      lang={locale}
-      className={`${sourceSerif.variable} ${plusJakarta.variable}`}
-    >
-      <body className="font-jakarta bg-white text-gray-900 antialiased">
+    <html lang={locale} className={fontClass}>
+      <body className={`${bodyFontClass} bg-white text-gray-900 antialiased`}>
         <NextIntlClientProvider messages={messages}>
           {children}
         </NextIntlClientProvider>

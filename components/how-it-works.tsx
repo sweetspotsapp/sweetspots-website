@@ -28,7 +28,7 @@ export function HowItWorks() {
     <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-rose-100 to-rose-50">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-4xl sm:text-5xl font-serif font-bold text-gray-900 mb-4">
+          <h2 className="text-4xl sm:text-5xl font-serif text-gray-900 mb-4">
             {t("title")}
           </h2>
           <p className="text-xl text-gray-600 italic">{t("subtitle")}</p>
@@ -50,7 +50,7 @@ export function HowItWorks() {
                 style={{ animationDelay: `${index * 0.2}s` }}
               >
                 <div className="space-y-4">
-                  <h3 className="text-3xl font-serif font-bold text-gray-900">
+                  <h3 className="text-3xl font-serif text-gray-900">
                     Step {step.number}: {t(step.titleKey)}
                   </h3>
                   <p className="text-lg text-gray-600 leading-relaxed">

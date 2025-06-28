@@ -17,7 +17,7 @@ export function HeroSection() {
           {/* Left Content */}
           <div className="space-y-8 animate-slide-in-left">
             <div className="space-y-6">
-              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-serif font-bold text-gray-900 leading-tight">
+              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-serif text-gray-900 leading-tight">
                 {t("title")}
               </h1>
               <h2 className="text-2xl sm:text-3xl lg:text-4xl font-serif text-gray-800 leading-relaxed">

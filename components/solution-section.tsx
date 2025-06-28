@@ -23,7 +23,7 @@ export function SolutionSection() {
           {/* Left Content */}
           <div className="space-y-8 animate-slide-in-left">
             <div className="space-y-8">
-              <h2 className="text-4xl sm:text-5xl font-serif font-bold text-gray-900">
+              <h2 className="text-4xl sm:text-5xl font-serif text-gray-900">
                 {t('title')}
               </h2>
               

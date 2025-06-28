@@ -35,7 +35,7 @@ export function ProblemSection() {
     <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-4xl sm:text-5xl font-serif font-bold text-gray-900 mb-8">
+          <h2 className="text-4xl sm:text-5xl font-serif text-gray-900 mb-8">
             {t('title')}
           </h2>
         </div>

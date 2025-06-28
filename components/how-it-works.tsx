@@ -28,7 +28,7 @@ export function HowItWorks() {
     <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-rose-100 to-rose-50">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-4xl sm:text-5xl font-serif text-gray-900 mb-4">
+          <h2 className="text-4xl sm:text-5xl font-semibold text-gray-900 mb-4">
             {t("title")}
           </h2>
           <p className="text-xl text-gray-600 italic">{t("subtitle")}</p>
@@ -50,7 +50,7 @@ export function HowItWorks() {
                 style={{ animationDelay: `${index * 0.2}s` }}
               >
                 <div className="space-y-4">
-                  <h3 className="text-3xl font-serif text-gray-900">
+                  <h3 className="text-3xl font-semibold text-gray-900">
                     Step {step.number}: {t(step.titleKey)}
                   </h3>
                   <p className="text-lg text-gray-600 leading-relaxed">
@@ -91,7 +91,7 @@ export function HowItWorks() {
                               <span className="text-gray-500 text-xs">Itinerary Builder</span>
                             </div>
                             <div className="space-y-2">
-                              <h4 className="font-serif text-base font-semibold">Your Saved Spots</h4>
+                              <h4 className="font-semibold text-base font-semibold">Your Saved Spots</h4>
                               <div className="space-y-2">
                                 <div className="bg-emerald-50 p-2 rounded-lg hover-lift">
                                   <p className="text-xs font-medium">Brunetti Oro</p>
@@ -110,7 +110,7 @@ export function HowItWorks() {
                               <span className="text-gray-500 text-xs">Shared Itinerary</span>
                             </div>
                             <div className="space-y-2">
-                              <h4 className="font-serif text-sm font-semibold">Saved Places</h4>
+                              <h4 className="font-semibold text-sm font-semibold">Saved Places</h4>
                               <div className="space-y-2">
                                 <div className="flex items-center justify-between bg-green-50 p-2 rounded-lg hover-lift">
                                   <span className="text-xs">Sunday Park Storehouse</span>

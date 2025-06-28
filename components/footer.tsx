@@ -19,7 +19,7 @@ export function Footer() {
                 className="h-8 w-8 w-auto"
               />
 
-              <span className="text-xl font-serif font-semibold text-gray-900">
+              <span className="text-xl font-semibold font-semibold text-gray-900">
                 SweetSpots
               </span>
             </Link>

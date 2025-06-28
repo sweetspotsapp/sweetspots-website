@@ -40,7 +40,7 @@ export default function AboutPage() {
       <section className="pt-24 pb-12 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-rose-100 via-rose-50 to-rose-50">
         <div className="max-w-7xl mx-auto text-center">
           <div className="space-y-6 animate-fade-in">
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-serif text-gray-900 leading-tight">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-semibold text-gray-900 leading-tight">
               {t("title")}
             </h1>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
@@ -80,7 +80,7 @@ export default function AboutPage() {
                 {/* Founder Info */}
                 <div className="space-y-4">
                   <div className="space-y-2">
-                    <h3 className="text-2xl font-serif text-gray-900">
+                    <h3 className="text-2xl font-semibold text-gray-900">
                       {t(`founders.${founder.key}.name`)}
                     </h3>
                     <div className="flex items-center justify-center space-x-2 text-emerald-600">
@@ -136,7 +136,7 @@ export default function AboutPage() {
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-emerald-100 to-emerald-50">
         <div className="max-w-4xl mx-auto text-center space-y-8">
           <div className="space-y-6 animate-fade-in">
-            <h2 className="text-4xl sm:text-5xl font-serif text-gray-900">
+            <h2 className="text-4xl sm:text-5xl font-semibold text-gray-900">
               Our Mission
             </h2>
             <p className="text-xl text-gray-600 leading-relaxed">

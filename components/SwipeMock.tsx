@@ -120,7 +120,7 @@ export default function SwipeMock() {
                       </div>
                     </div>
                     <div className="p-4 space-y-3">
-                      <h3 className="font-serif text-xl font-semibold">
+                      <h3 className="font-semibold text-xl font-semibold">
                         {current.name}
                       </h3>
                       <p className="text-sm text-gray-600 leading-relaxed">

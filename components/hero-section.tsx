@@ -60,17 +60,20 @@ export function HeroSection() {
                 {t("description")}
               </p>
             </div>
-
-            <div className="pt-4">
+            <div className="pt-4 flex-col flex items-center">
+                <small className="text-sm font-semibold mb-3">
+                  {t("earlyAccess")}
+                </small>
               <Button
                 size="lg"
                 variant="emerald"
-                className="text-lg px-8 py-4 rounded-full hover:scale-105 transition-transform duration-200"
+                className="text-lg w-full flex-col px-8 py-4 rounded-full hover:scale-105 transition-transform duration-200"
                 onClick={() => window.open(SIGNUP_URL, "_blank")}
               >
                 {t("signUp")}
               </Button>
             </div>
+
           </div>
         </div>
       </div>

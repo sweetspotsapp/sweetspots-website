@@ -1,11 +1,19 @@
-import '../globals.css';
+import "../globals.css";
 import type { Metadata } from "next";
-import { Source_Serif_4, Plus_Jakarta_Sans, IBM_Plex_Sans_Thai } from "next/font/google";
+import {
+  Source_Serif_4,
+  Plus_Jakarta_Sans,
+  IBM_Plex_Sans_Thai,
+  Poppins,
+} from "next/font/google";
 import { getMessages } from "next-intl/server";
 import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
-import { Analytics } from "@vercel/analytics/next"
+import { Analytics } from "@vercel/analytics/next";
+
+import { GA_ID } from "../gtag";
+import Script from "next/script";
 
 const sourceSerif = Source_Serif_4({
   subsets: ["latin"],
@@ -17,6 +25,13 @@ const plusJakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
   variable: "--font-plus-jakarta",
   display: "swap",
+});
+
+const poppins = Poppins({
+  subsets: ["latin"],
+  variable: "--font-poppins",
+  display: "swap",
+  weight: ["300", "400", "500", "600", "700"],
 });
 
 const ibmThai = IBM_Plex_Sans_Thai({
@@ -51,13 +66,13 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: '/favicon.ico' },
-      { url: '/favicon-32x32.png', sizes: '32x32' },
-      { url: '/favicon-16x16.png', sizes: '16x16' },
+      { url: "/favicon.ico" },
+      { url: "/favicon-32x32.png", sizes: "32x32" },
+      { url: "/favicon-16x16.png", sizes: "16x16" },
     ],
-    apple: '/apple-touch-icon.png',
+    apple: "/apple-touch-icon.png",
   },
-  manifest: '/site.webmanifest',
+  manifest: "/site.webmanifest",
 };
 
 export default async function RootLayout({
@@ -77,13 +92,27 @@ export default async function RootLayout({
   const fontClass =
     locale === "th"
       ? ibmThai.variable
-      : `${sourceSerif.variable} ${plusJakarta.variable}`;
+      : `${sourceSerif.variable} ${poppins.variable}`;
 
-  const bodyFontClass = locale === "th" ? "font-ibm-thai" : "font-jakarta";
+  const bodyFontClass = locale === "th" ? "font-ibm-thai" : "font-poppins";
 
   return (
     <html lang={locale} className={fontClass}>
-      <Analytics/>
+      <Script
+        src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
+        strategy="afterInteractive"
+      />
+      <Script id="gtag-init" strategy="afterInteractive">
+        {`
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', '${GA_ID}', {
+                  anonymize_ip: true
+                });
+              `}
+      </Script>
+      <Analytics />
       <body className={`${bodyFontClass} bg-white text-gray-900 antialiased`}>
         <NextIntlClientProvider messages={messages}>
           {children}

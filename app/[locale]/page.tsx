@@ -20,7 +20,7 @@ export default function Home() {
       <CollaborationSection />
       {/* <HowItWorks /> */}
       <CTASection />
-      <Inquiry  />
+      {/* <Inquiry  /> */}
       <Footer />
     </main>
   );

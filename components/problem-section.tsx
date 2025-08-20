@@ -9,21 +9,21 @@ export function ProblemSection() {
 
   const problems = [
     {
-      icon: <Smartphone className="h-12 w-12 text-emerald-500" />,
+      icon: <Smartphone className="h-12 w-12 text-orange-500" />,
       imageUrl: '/images/problem1.png',
       titleKey: 'tabs.title',
       statKey: 'tabs.stat',
       descriptionKey: 'tabs.description'
     },
     {
-      icon: <Users className="h-12 w-12 text-rose-500" />,
+      icon: <Users className="h-12 w-12 text-purple-500" />,
       imageUrl: '/images/problem2.png',
       titleKey: 'group.title',
       statKey: 'group.stat',
       descriptionKey: 'group.description'
     },
     {
-      icon: <Eye className="h-12 w-12 text-emerald-500" />,
+      icon: <Eye className="h-12 w-12 text-orange-500" />,
       imageUrl: '/images/problem3.avif',
       titleKey: 'mismatch.title',
       statKey: 'mismatch.stat',

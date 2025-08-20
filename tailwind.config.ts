@@ -12,6 +12,7 @@ const config: Config = {
       fontFamily: {
         serif: ["var(--font-source-serif)", "serif"],
         jakarta: ["var(--font-plus-jakarta)", "sans-serif"],
+        poppins: ["var(--font-poppins)", "sans-serif"],
         'ibm-thai': ['var(--font-ibm-thai)', 'sans-serif'],
       },
       colors: {

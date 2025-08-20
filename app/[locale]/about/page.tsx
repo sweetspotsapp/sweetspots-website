@@ -37,7 +37,7 @@ export default function AboutPage() {
       <Navigation />
 
       {/* Hero Section */}
-      <section className="pt-24 pb-12 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-rose-100 via-rose-50 to-rose-50">
+      <section className="pt-24 pb-12 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-purple-100 via-purple-50 to-purple-50">
         <div className="max-w-7xl mx-auto text-center">
           <div className="space-y-6 animate-fade-in">
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-semibold text-gray-900 leading-tight">
@@ -70,7 +70,7 @@ export default function AboutPage() {
                   className="w-full object-contain h-96 rounded-2xl"
                   priority={index === 0}
                 />
-                {/* <div className="relative mx-auto w-64 h-64 bg-gradient-to-br from-emerald-50 to-rose-50 rounded-2xl flex items-center justify-center mb-8 transition-all duration-300 hover:shadow-lg">
+                {/* <div className="relative mx-auto w-64 h-64 bg-gradient-to-br from-orange-50 to-purple-50 rounded-2xl flex items-center justify-center mb-8 transition-all duration-300 hover:shadow-lg">
                   <User className="h-24 w-24 text-gray-400" />
                   <div className="absolute inset-0 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center">
                     <span className="text-gray-500 text-sm">Profile Photo</span>
@@ -83,7 +83,7 @@ export default function AboutPage() {
                     <h3 className="text-2xl font-semibold text-gray-900">
                       {t(`founders.${founder.key}.name`)}
                     </h3>
-                    <div className="flex items-center justify-center space-x-2 text-emerald-600">
+                    <div className="flex items-center justify-center space-x-2 text-orange-600">
                       <Briefcase className="h-4 w-4" />
                       <p className="font-semibold">
                         {t(`founders.${founder.key}.role`)}
@@ -97,7 +97,7 @@ export default function AboutPage() {
                         href={founder.linkedin}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-emerald-600 hover:text-emerald-800 transition-colors"
+                        className="text-orange-600 hover:text-orange-800 transition-colors"
                       >
                         <Linkedin className="h-6 w-6" />
                       </a>
@@ -107,7 +107,7 @@ export default function AboutPage() {
                         href={founder.website}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-emerald-600 hover:text-emerald-800 transition-colors"
+                        className="text-orange-600 hover:text-orange-800 transition-colors"
                       >
                         <Globe className="h-6 w-6" />
                       </a>
@@ -133,7 +133,7 @@ export default function AboutPage() {
       </section>
 
       {/* Mission Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-emerald-100 to-emerald-50">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-orange-100 to-orange-50">
         <div className="max-w-4xl mx-auto text-center space-y-8">
           <div className="space-y-6 animate-fade-in">
             <h2 className="text-4xl sm:text-5xl font-semibold text-gray-900">

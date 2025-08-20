@@ -32,6 +32,7 @@
   },
   "solution": {
     "tryIt": "Try it!",
+    "currentMonth": "How are you feeling this {month}?",
     "title": "With Sweetspot,\nyou can :",
     "features": {
       "discover": {

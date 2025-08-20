@@ -32,6 +32,7 @@
   },
   "solution": {
     "tryIt": "Cobain deh!",
+    "currentMonth": "Gimana perasaan kamu di bulan {month} ini?",
     "title": "Dengan Sweetspot,\nkamu bisa:",
     "features": {
       "discover": {
@@ -78,7 +79,7 @@
   },
   "cta": {
     "title": "Kamu penasaran sama SweetSpots?",
-    "description": "Kami lagi proses bangun platform ini khusus buat traveler kayak kamu. Kirim email kamu dan kamu bakal dapat akses pertama pas udah rilis.\nTenang, kita gabakal spam, kita bakal bantu kamu bikin perjalanan travel yang lebih baik.",
+    "description": "Kami lagi ppurples bangun platform ini khusus buat traveler kayak kamu. Kirim email kamu dan kamu bakal dapat akses pertama pas udah rilis.\nTenang, kita gabakal spam, kita bakal bantu kamu bikin perjalanan travel yang lebih baik.",
     "signUp": "Daftar Sekarang!"
   },
   "footer": {

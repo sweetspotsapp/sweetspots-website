@@ -36,22 +36,11 @@ export function Navigation() {
             <span className="text-xl font-semibold font-semibold text-gray-900">SweetSpots</span>
           </Link>
 
-          {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
-            {/* <a href="#why" className="text-gray-600 hover:text-gray-900 transition-colors font-medium">
-              {t('why')}
-            </a>
-            <a href="#pricing" className="text-gray-600 hover:text-gray-900 transition-colors font-medium">
-              {t('pricing')}
-            </a>
-            <a href="#contact" className="text-gray-600 hover:text-gray-900 transition-colors font-medium">
-              {t('contact')}
-            </a> */}
             <Link href={`/${locale}/about`} className="text-gray-600 hover:text-gray-900 transition-colors font-medium">
               {t('about')}
             </Link>
             
-            {/* Language Selector */}
             <div className="relative">
               <Button
                 variant="ghost"
@@ -81,7 +70,6 @@ export function Navigation() {
             </div>
           </div>
 
-          {/* Mobile menu button */}
           <div className="md:hidden">
             <Button
               variant="ghost"
@@ -93,31 +81,9 @@ export function Navigation() {
           </div>
         </div>
 
-        {/* Mobile Navigation */}
         {isMenuOpen && (
           <div className="md:hidden bg-white border-t border-gray-100 py-4">
             <div className="flex flex-col space-y-4">
-              {/* <a 
-                href="#why" 
-                className="text-gray-600 hover:text-gray-900 transition-colors font-medium px-4"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                {t('why')}
-              </a>
-              <a 
-                href="#pricing" 
-                className="text-gray-600 hover:text-gray-900 transition-colors font-medium px-4"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                {t('pricing')}
-              </a>
-              <a 
-                href="#contact" 
-                className="text-gray-600 hover:text-gray-900 transition-colors font-medium px-4"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                {t('contact')}
-              </a> */}
               <Link 
                 href={`/${locale}/about`}
                 className="text-gray-600 hover:text-gray-900 transition-colors font-medium px-4"
@@ -126,7 +92,6 @@ export function Navigation() {
                 {t('about')}
               </Link>
               
-              {/* Mobile Language Selector */}
               <div className="px-4 pt-2 border-t border-gray-100">
                 <p className="text-sm text-gray-500 mb-2">Language / ภาษา / Bahasa</p>
                 <div className="space-y-2">

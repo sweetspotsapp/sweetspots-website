@@ -21,7 +21,7 @@ export function CTASection() {
         <div className="pt-8">
           <Button 
             size="lg" 
-            variant="emerald"
+            variant="orange"
             className="text-lg px-12 py-4 rounded-full hover:scale-105 transition-all duration-200 shadow-lg"
             onClick={() => window.open(SIGNUP_URL, '_blank')}
           >

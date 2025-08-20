@@ -25,7 +25,7 @@ export function HowItWorks() {
   ];
 
   return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-rose-100 to-rose-50">
+    <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-purple-100 to-purple-50">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-4xl sm:text-5xl font-semibold text-gray-900 mb-4">
@@ -74,8 +74,8 @@ export function HowItWorks() {
                         <div className="flex justify-between items-center px-4 py-2 text-sm text-gray-900">
                           <span className="font-semibold">SweetSpots</span>
                           <div className="flex space-x-1">
-                            <div className="w-3 h-3 bg-emerald-500 rounded-full animate-pulse-soft"></div>
-                            <div className="w-3 h-3 bg-rose-500 rounded-full animate-pulse-soft stagger-1"></div>
+                            <div className="w-3 h-3 bg-orange-500 rounded-full animate-pulse-soft"></div>
+                            <div className="w-3 h-3 bg-purple-500 rounded-full animate-pulse-soft stagger-1"></div>
                           </div>
                         </div>
                         
@@ -93,10 +93,10 @@ export function HowItWorks() {
                             <div className="space-y-2">
                               <h4 className="font-semibold text-base font-semibold">Your Saved Spots</h4>
                               <div className="space-y-2">
-                                <div className="bg-emerald-50 p-2 rounded-lg hover-lift">
+                                <div className="bg-orange-50 p-2 rounded-lg hover-lift">
                                   <p className="text-xs font-medium">Brunetti Oro</p>
                                 </div>
-                                <div className="bg-emerald-50 p-2 rounded-lg hover-lift">
+                                <div className="bg-orange-50 p-2 rounded-lg hover-lift">
                                   <p className="text-xs font-medium">Central Park</p>
                                 </div>
                               </div>
@@ -114,15 +114,15 @@ export function HowItWorks() {
                               <div className="space-y-2">
                                 <div className="flex items-center justify-between bg-green-50 p-2 rounded-lg hover-lift">
                                   <span className="text-xs">Sunday Park Storehouse</span>
-                                  <div className="w-4 h-4 bg-emerald-500 rounded-full"></div>
+                                  <div className="w-4 h-4 bg-orange-500 rounded-full"></div>
                                 </div>
                                 <div className="flex items-center justify-between bg-green-50 p-2 rounded-lg hover-lift">
                                   <span className="text-xs">Brunetti's Pizza</span>
-                                  <div className="w-4 h-4 bg-emerald-500 rounded-full"></div>
+                                  <div className="w-4 h-4 bg-orange-500 rounded-full"></div>
                                 </div>
                               </div>
                               <div className="pt-2">
-                                <button className="w-full bg-emerald-500 text-white text-xs py-2 rounded-lg hover-lift">
+                                <button className="w-full bg-orange-500 text-white text-xs py-2 rounded-lg hover-lift">
                                   Build Itinerary
                                 </button>
                               </div>
@@ -133,7 +133,7 @@ export function HowItWorks() {
                         <div className="absolute bottom-0 left-0 right-0 bg-white border-t border-gray-100">
                           <div className="flex justify-around py-2">
                             <div className="text-center">
-                              <div className="w-4 h-4 mx-auto mb-1 bg-emerald-100 rounded"></div>
+                              <div className="w-4 h-4 mx-auto mb-1 bg-orange-100 rounded"></div>
                               <span className="text-xs text-gray-600">Discover</span>
                             </div>
                             <div className="text-center">

@@ -44,6 +44,8 @@
     "@types/react-dom": "18.2.7",
     "@vercel/analytics": "^1.5.0",
     "autoprefixer": "10.4.15",
+    "axios": "^1.11.0",
+    "change-case": "^5.4.4",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "cmdk": "^1.0.0",
@@ -51,9 +53,10 @@
     "embla-carousel-react": "^8.3.0",
     "eslint": "8.49.0",
     "eslint-config-next": "13.5.1",
-    "framer-motion": "^12.19.2",
+    "framer-motion": "^12.23.12",
     "input-otp": "^1.2.4",
     "lucide-react": "^0.446.0",
+    "moment": "^2.30.1",
     "next": "^14.2.0",
     "next-intl": "^4.3.1",
     "next-themes": "^0.3.0",
@@ -70,7 +73,8 @@
     "tailwindcss-animate": "^1.0.7",
     "typescript": "5.2.2",
     "vaul": "^0.9.9",
-    "zod": "^3.23.8"
+    "zod": "^3.23.8",
+    "zustand": "^5.0.7"
   },
   "packageManager": "yarn@4.9.2+sha512.1fc009bc09d13cfd0e19efa44cbfc2b9cf6ca61482725eb35bbc5e257e093ebf4130db6dfe15d604ff4b79efd8e1e8e99b25fa7d0a6197c9f9826358d4d65c3c"
 }

@@ -1,23 +1,38 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
-import { Heart, Plane, Smartphone, User } from "lucide-react";
+// import { Button } from "@/components/ui/button";
+// import { Heart, Plane, Smartphone, User } from "lucide-react";
 import { useTranslations } from "next-intl";
-import { IPhoneFrame } from "./ui/iphone-frame";
-import { SIGNUP_URL } from "@/lib/constants";
+// import { IPhoneFrame } from "./ui/iphone-frame";
+// import { SIGNUP_URL } from "@/lib/constants";
 import Image from "next/image";
 
 export function HeroSection() {
   const t = useTranslations("hero");
 
   return (
-    <section className="pt-24 pb-12 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-rose-100 via-rose-50 to-rose-50 min-h-[60dvh] flex items-center">
-      <div className="max-w-7xl mx-auto">
+    <section className="pt-24 pb-32 px-4 sm:px-6 lg:px-8 bg-gradient-to-br h-screen flex items-end">
+      <div className="container mx-auto text-white flex justify-between items-end">
+        <div className="text-6xl font-bold">
+          Oh to roadtrip
+          <br />
+          in the Alpines
+        </div>
+        <div>
+          Tired of cumbersome trip planning? We can relate. So we made it simpler.
+        </div>
+      </div>
+      <Image
+        src="https://images.unsplash.com/photo-1670279079691-3fb4ed1e6e43?q=80&w=3270&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        alt="Background"
+        fill
+        className="absolute inset-0 w-full h-full object-cover -z-10"
+        priority
+      />
+      {/* <div className="max-w-7xl mx-auto">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* Illustration */}
           <div className="relative animate-slide-in-right">
             <div className="relative mx-auto max-w-sm lg:max-w-md">
-              {/* Phone Mockup */}
               <Image
                 src="/images/hero.png"
                 alt="Sweetspots app on iPhone"
@@ -26,28 +41,19 @@ export function HeroSection() {
                 className="w-full h-auto"
                 priority
               />
-              {/* <IPhoneFrame/> */}
-
-              {/* Floating illustration of person with luggage */}
               <div className="absolute -left-12 top-12 bg-white rounded-full p-6 shadow-lg animate-float">
-                <User className="h-8 w-8 text-emerald-500" />
+                <User className="h-8 w-8 text-orange-500" />
               </div>
               <div className="absolute left-12 top-24 bg-white rounded-full p-6 shadow-lg animate-float">
-                <Heart className="h-8 w-8 text-emerald-500" />
+                <Heart className="h-8 w-8 text-orange-500" />
               </div>
               <div className="absolute -left-6 top-48 bg-white rounded-full p-6 shadow-lg animate-float">
-                <Plane className="h-8 w-8 text-emerald-500" />
+                <Plane className="h-8 w-8 text-orange-500" />
               </div>
-              {/* <div className="absolute -left-12 top-12 bg-white rounded-full p-6 shadow-lg animate-float">
-                <User className="h-8 w-8 text-emerald-500" />
-              </div> */}
-
-              {/* Decorative elements */}
-              <div className="absolute -top-6 -right-6 w-12 h-12 bg-rose-100 rounded-full opacity-60"></div>
-              <div className="absolute -bottom-8 -left-8 w-16 h-16 bg-emerald-100 rounded-full opacity-40"></div>
+              <div className="absolute -top-6 -right-6 w-12 h-12 bg-purple-100 rounded-full opacity-60"></div>
+              <div className="absolute -bottom-8 -left-8 w-16 h-16 bg-orange-100 rounded-full opacity-40"></div>
             </div>
           </div>
-          {/* Content */}
           <div className="space-y-8 animate-slide-in-left">
             <div className="space-y-6">
               <h1 className="text-5xl sm:text-6xl lg:text-7xl font-semibold text-gray-900 leading-tight">
@@ -66,7 +72,7 @@ export function HeroSection() {
                 </small>
               <Button
                 size="lg"
-                variant="emerald"
+                variant="orange"
                 className="text-lg w-full flex-col px-8 py-4 rounded-full hover:scale-105 transition-transform duration-200"
                 onClick={() => window.open(SIGNUP_URL, "_blank")}
               >
@@ -76,7 +82,7 @@ export function HeroSection() {
 
           </div>
         </div>
-      </div>
+      </div> */}
     </section>
   );
 }

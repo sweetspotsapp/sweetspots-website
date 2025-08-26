@@ -3,13 +3,11 @@ import axios from 'axios';
 
 const isDev = process.env.NODE_ENV === 'development';
 
-let baseURL = 'https://sweetspots-nest.onrender.com/api/v1';
-// let baseURL = 'http://localhost:8080/api/v1';
-// export const API_URL = 'http://10.130.32.10:8080';
-export const API_URL = 'http://localhost:8080';
+export const API_URL =
+  process.env.NEXT_PUBLIC_API_URL || process.env.VITE_API_URL || 'http://localhost:3000/api/v1';
 
 export const api = axios.create({
-  baseURL,
+  baseURL: API_URL,
   timeout: 10000,
   headers: {
     'Content-Type': 'application/json',
@@ -38,7 +36,7 @@ api.interceptors.response.use(
         type: 'RESPONSE',
         status,
         message,
-        baseURL,
+        baseURL: API_URL,
         url: error.config?.url,
       });
 
@@ -59,7 +57,7 @@ api.interceptors.response.use(
         type: 'REQUEST',
         url: error.config?.url,
         method: error.config?.method,
-        baseURL: baseURL,
+        baseURL: API_URL,
         timeout: error.config?.timeout,
         headers: error.config?.headers,
         data: error.config?.data,

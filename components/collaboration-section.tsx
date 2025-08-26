@@ -22,7 +22,7 @@ export default function CollaborationSection() {
   const [plan1, setPlan1] = useState<PlanCardProps | null>({
     place: placesMock[0],
     placeId: placesMock[0].id,
-    budget: 4,
+    costRange: [15, 40],
     closingTime: new Date("2025-08-27T18:00:00.000Z"),
     collaborators: [{ name: "Zio" }, { name: "Dennis" }],
     dateText: "27 August 2025",
@@ -31,7 +31,7 @@ export default function CollaborationSection() {
   const [plan2, setPlan2] = useState<PlanCardProps | null>({
     place: placesMock[1],
     placeId: placesMock[1].id,
-    budget: 4,
+    costRange: [10, 30],
     closingTime: new Date("2025-08-27T18:00:00.000Z"),
     collaborators: [{ name: "Zio" }, { name: "Dennis" }],
     dateText: "28 August 2025",
@@ -127,7 +127,7 @@ export default function CollaborationSection() {
       await sleep(200);
       setPlan1((prev) => (prev ? { ...prev, selectedField: "budget" } : prev));
       await sleep(400);
-      setPlan1((prev) => (prev ? { ...prev, budget: 5 } : prev));
+      setPlan1((prev) => (prev ? { ...prev, costRange: [40, 60] } : prev));
       await cursor1Controls.start({
         x: budgetX1 + 120,
         y: budgetY1 + 30,
@@ -276,7 +276,7 @@ export default function CollaborationSection() {
               {plan1 && (
                 <PlanCard
                   place={plan1?.place}
-                  budget={plan1?.budget}
+                  costRange={plan1?.costRange}
                   closingTime={plan1?.closingTime}
                   collaborators={plan1?.collaborators}
                   placeId={plan1?.placeId}
@@ -289,7 +289,7 @@ export default function CollaborationSection() {
               {plan2 && (
                 <PlanCard
                   place={plan2?.place}
-                  budget={plan2?.budget}
+                  costRange={plan2?.costRange}
                   closingTime={plan2?.closingTime}
                   collaborators={plan2?.collaborators}
                   placeId={plan2?.placeId}

@@ -10,7 +10,6 @@ import React, {
 import { Button } from "./ui/button";
 import { cn } from "@/lib/utils";
 import { Cloud, CloudFog, CloudRain, CloudRainWind, Snowflake, Sun, Tag } from "lucide-react";
-import { capitalCase } from "change-case";
 
 export interface Weather {
   temperature: number;
@@ -21,7 +20,8 @@ export interface Weather {
 export interface PlanCardProps {
   place: IPlace;
   placeId: string;
-  budget: number;
+  // budget: number;
+  costRange: number[];
   timeText: string;
   dateText: string;
   closingTime: Date;
@@ -46,8 +46,8 @@ const PlanCard = forwardRef<PlanCardRefs, PlanCardProps>(function PlanCard(
 ) {
   const {
     place,
-    placeId,
-    budget,
+    // budget,
+    costRange,
     closingTime,
     collaborators,
     timeText,
@@ -60,7 +60,7 @@ const PlanCard = forwardRef<PlanCardRefs, PlanCardProps>(function PlanCard(
     },
   } = props;
 
-  const weatherDescription = weather?.description || capitalCase(weather?.weather || "Sunny");
+  // const weatherDescription = weather?.description || capitalCase(weather?.weather || "Sunny");
 
   function renderWeatherIcon(weather: Weather) {
     switch (weather.weather) {
@@ -138,14 +138,14 @@ const PlanCard = forwardRef<PlanCardRefs, PlanCardProps>(function PlanCard(
             {/* BUDGET */}
             <div
               className={cn(
-                "flex gap-2 items-center w-36",
+                "flex gap-2 items-center w-48",
                 selectedField === "budget" &&
                   "bg-orange-300/20 rounded border border-orange-300"
               )}
             >
               <Tag size={12} />
               <p ref={budgetRef} className="text-sm">
-                ${budget}/per person
+                ${costRange.join('-')}/per person
               </p>
             </div>
             <p className="text-sm">

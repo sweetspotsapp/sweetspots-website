@@ -40,6 +40,18 @@ const config: Config = {
           800: "#7D1F6A",
           900: "#511244",
         },
+        orange: {
+          50: "#FFF5ED",
+          100: "#FFE6D5",
+          200: "#FFD0B0",
+          300: "#FFB07A",
+          400: "#FF8A3C",
+          500: "#DE5C2A",
+          600: "#C24E22",
+          700: "#A03F1B",
+          800: "#7D3114",
+          900: "#511D09",
+        },
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         card: {

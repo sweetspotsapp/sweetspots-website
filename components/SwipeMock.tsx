@@ -10,6 +10,8 @@ import { useSwipedPlaces } from "@/store/useSwipedPlaces";
 import { IPlace } from "@/dto/places/place.dto";
 import { getRecommendations } from "@/api/recommendations/endpoints";
 import { IRecommendedPlace } from "@/dto/recommendations/recommendation.dto";
+import SwipeCard from "./SwipePlaceCard";
+import SwipeCardSkeleton from "./skeletons/SwipeCardSkeleton";
 
 // const mockPlaces = placesMock;
 
@@ -20,6 +22,7 @@ export default function SwipeMock() {
   const [location, setLocation] = useState<
     { lat: number; lng: number } | undefined
   >(undefined);
+  const [isLoading, setIsLoading] = useState(true);
   const [cardVisible, setCardVisible] = useState(true);
   const [places, setPlaces] = useState<IRecommendedPlace[]>([]);
   const [error, setError] = useState<string | null>(null);
@@ -46,26 +49,28 @@ export default function SwipeMock() {
   useEffect(() => {
     async function fetchData(
       loc: { lat: number; lng: number } = {
-        lat: 37.7749,
-        lng: -122.4194,
+        lat: -37.8174877,
+        lng: 144.9582011,
       }
     ) {
-      // console.log('TEAHCH')
-      const res = await getRecommendations({
-        distance: 0.5,
-        // latitude: loc.lat,
-        // longitude: loc.lng,
-        latitude: -37.8174877,
-        longitude: 144.9582011,
-        withReviews: false,
-      });
-      if (res.data) {
-        console.log('FKONOTNIN')
-        setPlaces(res.data);
+      setIsLoading(true)
+      try {
+        const res = await getRecommendations({
+          distance: 0.5,
+          latitude: loc.lat,
+          longitude: loc.lng,
+          withReviews: false,
+        });
+        if (res.data) {
+          console.log('FKONOTNIN')
+          setPlaces(res.data);
+        }
+      } finally {
+        setIsLoading(false);
       }
     }
     if (location) {
-      fetchData(location);
+      fetchData();
     }
   }, [location]);
 
@@ -118,7 +123,7 @@ export default function SwipeMock() {
 
             {/* Card */}
             <div className="px-4 py-4 h-3/4 relative">
-              {current && (
+              {current ? (
                 <AnimatePresence
                   custom={direction}
                   onExitComplete={handleExitComplete}
@@ -126,8 +131,8 @@ export default function SwipeMock() {
                   {cardVisible && (
                     <motion.div
                       key={current.id + index}
-                      className="absolute inset-0 bg-white rounded-2xl shadow-lg overflow-hidden m-4"
                       drag="x"
+                      className="absolute inset-0 m-4"
                       dragConstraints={{ left: 0, right: 0 }}
                       dragElastic={0.5}
                       onDragEnd={handleDragEnd}
@@ -144,42 +149,19 @@ export default function SwipeMock() {
                         }),
                       }}
                     >
-                      <div className="relative h-48">
-                        {current?.images?.[0] && (
-                          <Image
-                            src={current.images?.[0]}
-                            alt={current.name}
-                            fill
-                            className="object-cover"
-                          />
-                        )}
-                        <div className="absolute top-3 right-3 bg-white/90 px-2 py-1 rounded-full text-xs font-semibold">
-                          {current.rating} ★
-                        </div>
-                      </div>
-                      <div className="p-4 space-y-3">
-                        <h3 className="font-semibold text-xl">
-                          {current.name}
-                        </h3>
-                        <p className="text-sm text-gray-600 leading-relaxed">
-                          {current.name} is located at {current.address} with an
-                          impressive rating of {current.rating} based on{" "}
-                          {current.reviews?.length} reviews.
-                          {/* {current.googleWebsite && (
-                            <a
-                              href={current.googleWebsite}
-                              className="underline text-blue-600"
-                              target="_blank"
-                              rel="noreferrer"
-                            >
-                              {new URL(current.googleWebsite).hostname}
-                            </a>
-                          )} */}
-                        </p>
-                      </div>
+                      <SwipeCard
+                        name={current.name}
+                        images={current.images}
+                        rating={current.rating}
+                        address={current.address}
+                        reviews={current.reviews}
+                        description={current.description}
+                      />
                     </motion.div>
                   )}
                 </AnimatePresence>
+              ) : (
+                <SwipeCardSkeleton/>
               )}
             </div>
 

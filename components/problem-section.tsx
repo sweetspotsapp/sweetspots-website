@@ -52,7 +52,7 @@ export function ProblemSection() {
                 {problem.imageUrl ? (
                   <Image
                     src={problem.imageUrl}
-                    alt={t(problem.titleKey)}
+                    alt={t(problem.titleKey as any)}
                     // className="w-full h-full object-cover rounded-2xl"
                     fill
                     objectFit='contain'
@@ -68,16 +68,16 @@ export function ProblemSection() {
               </div>
 
               <div className="space-y-4">
-                <h3 className="text-xl font-semibold font-semibold text-gray-900 whitespace-pre-line leading-tight">
-                  {t(problem.titleKey)}
+                <h3 className="text-xl font-semibold text-gray-900 whitespace-pre-line leading-tight">
+                  {t(problem.titleKey as any)}
                 </h3>
                 
                 <div className="space-y-3">
                   <p className="text-lg font-semibold text-gray-900">
-                    {t(problem.statKey)}
+                    {t(problem.statKey as any)}
                   </p>
                   <p className="text-gray-600 leading-relaxed">
-                    {t(problem.descriptionKey)}
+                    {t(problem.descriptionKey as any)}
                   </p>
                 </div>
               </div>

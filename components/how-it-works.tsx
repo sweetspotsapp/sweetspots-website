@@ -51,10 +51,10 @@ export function HowItWorks() {
               >
                 <div className="space-y-4">
                   <h3 className="text-3xl font-semibold text-gray-900">
-                    Step {step.number}: {t(step.titleKey)}
+                    Step {step.number}: {t(step.titleKey as any)}
                   </h3>
                   <p className="text-lg text-gray-600 leading-relaxed">
-                    {t(step.descriptionKey)}
+                    {t(step.descriptionKey as any)}
                   </p>
                 </div>
               </div>

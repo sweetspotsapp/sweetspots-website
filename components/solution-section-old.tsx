@@ -32,8 +32,8 @@ export function SolutionSectionOld() {
                   <div key={index} className="flex items-start space-x-3">
                     <div className="flex-shrink-0 w-2 h-2 bg-orange-500 rounded-full mt-3"></div>
                     <p className="text-lg text-gray-700 leading-relaxed">
-                      <span className="font-semibold text-gray-900">{t(feature.titleKey)}</span>{" "}
-                      <span className="text-gray-600">{t(feature.descriptionKey)}</span>
+                      <span className="font-semibold text-gray-900">{t(feature.titleKey as any)}</span>{" "}
+                      <span className="text-gray-600">{t(feature.descriptionKey as any)}</span>
                     </p>
                   </div>
                 ))}

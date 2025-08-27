@@ -30,6 +30,12 @@ export default function AboutPage() {
       linkedin: "https://www.linkedin.com/in/kao-kasipang/",
       website: "https://kaokasi.github.io/",
     },
+        {
+      key: "dennis",
+      image: "/images/about-us/dennis.png",
+      linkedin: "https://www.linkedin.com/in/dennis-dafeng/",
+      website: "https://kaokasi.github.io/",
+    },
   ];
 
   return (
@@ -37,7 +43,7 @@ export default function AboutPage() {
       <Navigation />
 
       {/* Hero Section */}
-      <section className="pt-24 pb-12 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-purple-100 via-purple-50 to-purple-50">
+      <section className="pt-24 pb-12 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-orange-100 via-orange-50 to-orange-50">
         <div className="max-w-7xl mx-auto text-center">
           <div className="space-y-6 animate-fade-in">
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-semibold text-gray-900 leading-tight">
@@ -53,7 +59,7 @@ export default function AboutPage() {
       {/* Founders Section */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
         <div className="max-w-7xl mx-auto">
-          <div className="grid md:grid-cols-3 gap-12">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12">
             {founders.map((founder, index) => (
               <div
                 key={founder.key}

@@ -18,7 +18,8 @@ export function Navigation() {
   const languages = [
     { code: 'en', name: 'English', flag: '🇦🇺' },
     { code: 'id', name: 'Bahasa Indonesia', flag: '🇮🇩' },
-    { code: 'th', name: 'ไทย', flag: '🇹🇭' }
+    { code: 'th', name: 'ไทย', flag: '🇹🇭' },
+    { code: 'cn', name: '中文', flag: '🇨🇳' }
   ];
 
   const getLocalizedPath = (newLocale: string) => {

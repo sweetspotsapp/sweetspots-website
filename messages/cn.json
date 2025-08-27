@@ -1,0 +1,149 @@
+{
+  "navigation": {
+    "why": "为什么选 SweetSpots？",
+    "pricing": "价格",
+    "contact": "联系我们",
+    "about": "关于我们"
+  },
+  "hero": {
+    "title": "SweetSpots",
+    "tiredRelate": "计划旅行累了吗？我们懂！",
+    "simpler": "所以我们帮你更简单。",
+    "subtitle": "从灵感到行程规划，一站搞定。",
+    "description": "SweetSpots 帮你发现隐藏好去处、看真实评价、轻松规划行程——全都在一个 App 里。",
+    "signUp": "马上注册",
+    "earlyAccess": "抢先免费体验！"
+  },
+  "problem": {
+    "title": "是不是很熟悉？",
+    "tabs": {
+      "title": "开太多标签页，\n搞得心很累",
+      "stat": "10 个旅客里有 8 个",
+      "description": "为了计划一趟旅行，用了 3 个以上平台——像 TikTok、Google 地图、Excel 表格…"
+    },
+    "group": {
+      "title": "团体旅行 ≠\n团体和谐",
+      "stat": "60% 的团体旅客",
+      "description": "觉得旅行没那么好玩，因为预算、体力、兴趣都对不上。"
+    },
+    "mismatch": {
+      "title": "看到的不等于\n实际的",
+      "stat": "每 3 人就有 2 人",
+      "description": "说实际地点和网红图不一样——被滤镜和精修照骗过。"
+    }
+  },
+  "solution": {
+    "tryIt": "试试看！",
+    "currentMonth": "这个 {month} 你想怎么玩？",
+    "title": "用 SweetSpots，你可以：",
+    "tripStarts": "你的旅程从这里开始",
+    "swipeRight": "在你城市里，右滑至少 4 个梦想景点！",
+    "features": {
+      "discover": {
+        "title": "发现",
+        "description": "跟你 vibe 对上的地方——右滑就好。"
+      },
+      "trust": {
+        "title": "看见就信",
+        "description": "——真实照片 + 真实评价。"
+      },
+      "build": {
+        "title": "一起规划",
+        "description": "自动生成行程，还能跟伙伴分享。"
+      },
+      "vote": {
+        "title": "投票对齐就出发",
+        "description": "——朋友们一起投票决定去哪。"
+      },
+      "extras": {
+        "title": "额外惊喜",
+        "description": "——隐藏推荐 + 独家旅行社福利。"
+      }
+    },
+    "description": "一个平台，不用换 App，不用过度规划。\n旅行更轻松。",
+    "signUp": "注册"
+  },
+  "recommendedTrips": {
+    "loadingTitle": "正在为你准备超赞行程！",
+    "basedOnSpots": "好啦，基于你喜欢的景点...",
+    "recommendedTitle": "我们的推荐行程",
+    "cardDescription": "快去看看这些好地方！",
+    "noSpotsTitle": "你还没选景点呢！",
+    "noSpotsDescription": "右滑几个你喜欢的地方，我们就帮你生成行程！"
+  },
+  "collab": {
+    "title": "太美啦！",
+    "subtitle": "但美好回忆要有人分享才完整。",
+    "description": "把行程跟小伙伴一起规划吧！",
+    "share": "分享行程",
+    "buildTogether": "一起打造",
+    "forIllustration": "仅供示意"
+  },
+  "howItWorks": {
+    "title": "SweetSpots 怎么用",
+    "subtitle": "旅行规划应该是件好玩的事！",
+    "steps": {
+      "swipe": {
+        "title": "右滑你的 vibe",
+        "description": "我们会推荐符合你心情、预算、距离的地点——不用开一堆标签页，喜欢的右滑就好。"
+      },
+      "build": {
+        "title": "打造梦想行程",
+        "description": "每次右滑都会存进收藏夹。准备好时，挑选最爱，我们帮你生成合理行程（不绕路、不空档）。"
+      },
+      "share": {
+        "title": "分享给伙伴",
+        "description": "把行程发给朋友——他们可以投票赞成或跳过，这样大家意见一致。再也不会有人说：\"我以为我们不去这个？\""
+      }
+    }
+  },
+  "cta": {
+    "title": "第一个来试 SweetSpots！",
+    "description": "我们正在为像你这样的旅人准备神器。留下邮箱，我们上线就通知你。\n不打扰，不推销——只给你更好的旅行。",
+    "signUp": "注册"
+  },
+  "footer": {
+    "description": "从灵感到行程，一站搞定你的完美旅行。给想要轻松旅行的你。",
+    "product": "产品",
+    "features": "功能",
+    "howItWorks": "使用方法",
+    "pricing": "价格",
+    "company": "公司",
+    "about": "关于",
+    "contact": "联系",
+    "privacy": "隐私",
+    "terms": "条款",
+    "copyright": "© 2025 SweetSpots. 版权所有",
+    "madeWith": "用 ❤️ 为全世界旅人打造"
+  },
+  "about": {
+    "title": "认识我们的创始人",
+    "subtitle": "SweetSpots 背后的热血团队",
+    "founders": {
+      "razak": {
+        "name": "Muhammad Ilham Razak",
+        "role": "联合创始人 & CEO",
+        "bio": "Razak 是一名商务拓展经理，目前在蒙纳士大学攻读商业硕士。他有 5 年以上商务拓展、销售和市场经验。2024-2026 年 LPDP 奖学金获得者。"
+      },
+      "farizio": {
+        "name": "Farizio Kautsar Heruzy",
+        "role": "联合创始人 & CTO",
+        "bio": "Farizio 是蒙纳士大学信息技术硕士生，有 3 年以上科技创业经验，曾担任全栈开发。"
+      },
+      "kasipang": {
+        "name": "Kasipang Phantajak",
+        "role": "联合创始人 & CCO",
+        "bio": "Kao 是一名 UI/UX 设计师，在泰国初创公司有 3 年以上经验，目前在蒙纳士大学攻读商业硕士。"
+      },
+      "dennis": {
+        "name": "Dennis Dafeng",
+        "role": "联合创始人 & CMO",
+        "bio": "Dennis 是导演和内容制作人，有丰富的商业故事和品牌营销经验，曾在澳洲和美国工作。他创办了 Spotlight HD Media，目前在蒙纳士大学攻读创业方向商业硕士。"
+      }
+    }
+  },
+  "ctaToast": {
+    "title": "喜欢吗？",
+    "action": "抢先体验！"
+  }
+}

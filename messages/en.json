@@ -97,10 +97,17 @@
       }
     }
   },
+  "ctaButtons": {
+    "loveThis": "Love this one!",
+    "letsGo": "Let's go!",
+    "mySweetspots": "This is my sweet spots!",
+    "thisOne": "Yep! This one please!",
+    "takeMeThere": "Take me there!"
+  },
   "cta": {
-    "title": "Be the first to try SweetSpots",
-    "description": "We're cooking up something made for travelers like you. Drop your email and we'll let you know when we launch.\nNo spam, no pressure — just better trips.",
-    "signUp": "Sign Up"
+    "title": "Fell in love?",
+    "description": "Be part of the first 100 explorers — unlock all features early by joining the waitlist today",
+    "signUp": "Sign Me Up!"
   },
   "footer": {
     "description": "From inspo to itinerary — discover and plan your perfect trip in one place. Made for travelers who want better trips, not more stress.",

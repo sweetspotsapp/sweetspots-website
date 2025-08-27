@@ -15,17 +15,18 @@ export default function Home() {
     <main className="min-h-screen">
       <Navigation />
       <CTAToastOnScroll trigger={{
-        percent: 20,
+      percent: 20,
       }}/>
       <HeroSection />
-      {/* <ProblemSection /> */}
       <SolutionSection />
       <RecommendedTripsSection />
+
       <CollaborationSection />
-      {/* <HowItWorks /> */}
       <CTASection />
-      {/* <Inquiry  /> */}
       <Footer />
+      {/* <ProblemSection /> */}
+      {/* <HowItWorks /> */}
+      {/* <Inquiry  /> */}
     </main>
   );
 }

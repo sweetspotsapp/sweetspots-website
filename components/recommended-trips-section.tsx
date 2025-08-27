@@ -12,8 +12,12 @@ import { useTranslations } from "next-intl";
 
 const ITINERARY_COUNT = 3;
 
-export default function RecommendedTripsSection() {
-    const t = useTranslations("recommendedTrips");
+export default function RecommendedTripsSection({
+  onCtaClick = () => {},
+}: {
+  onCtaClick?: () => void;
+}) {
+  const t = useTranslations("recommendedTrips");
 
   const { swipedPlaceIds = [] } = useSwipedPlaces();
 
@@ -46,14 +50,16 @@ export default function RecommendedTripsSection() {
     fetchAutoItinerary();
   }, [swipedPlaceIds]);
 
+  const ctaLabelIdxs = Array.from({ length: 5 }, (_, i) => i).sort(
+    () => Math.random() - 0.5
+  );
+
   return (
-    <div className="w-full">
+    <div className="w-full bg-white">
       <div className="container mx-auto py-32">
         {isLoading ? (
           <>
-            <p className="text-3xl font-bold mb-4">
-              {t("loadingTitle")}
-            </p>
+            <p className="text-3xl font-bold mb-4">{t("loadingTitle")}</p>
             <div className="flex gap-4 w-full">
               <div className="flex-1">
                 <TripCardSkeleton />
@@ -69,9 +75,7 @@ export default function RecommendedTripsSection() {
         ) : swipedPlaceIds.length > 0 ? (
           <>
             <p className="text-lg">{t("basedOnSpots")}</p>
-            <p className="text-3xl font-bold mb-4">
-              {t("recommendedTitle")}
-            </p>
+            <p className="text-3xl font-bold mb-4">{t("recommendedTitle")}</p>
             <div className="grid grid-cols-3 gap-4 overflow-scroll w-full">
               {itineraries.map((itinerary, idx) => (
                 <div key={idx}>
@@ -81,10 +85,17 @@ export default function RecommendedTripsSection() {
                         (ip) => ip.place as IPlace
                       ) || []
                     }
+                    ctaLabelIdx={ctaLabelIdxs[idx]}
                     itinerary={itinerary}
                     description="Explore these amazing places!"
                     peopleCount={Math.floor(Math.random() * 4) + 2}
                     daysDuration={5}
+                    onCtaClick={() => {
+                      const ctaSection = document.getElementById("cta-section");
+                      if (ctaSection) {
+                        ctaSection.scrollIntoView({ behavior: "smooth" });
+                      }
+                    }}
                   />
                 </div>
               ))}
@@ -92,12 +103,8 @@ export default function RecommendedTripsSection() {
           </>
         ) : (
           <div className="flex flex-col items-center justify-center">
-            <p className="text-lg font-bold">
-              {t("noSpotsTitle")}
-            </p>
-            <p>
-              {t("noSpotsDescription")}
-            </p>
+            <p className="text-lg font-bold">{t("noSpotsTitle")}</p>
+            <p>{t("noSpotsDescription")}</p>
           </div>
         )}
       </div>

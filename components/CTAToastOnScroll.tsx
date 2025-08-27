@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import useScrollTrigger, { Trigger } from "@/hooks/useScrollTrigger";
 import { useState } from "react";
@@ -7,7 +7,7 @@ import CTAToast from "./CTAToast";
 export default function CTAToastOnScroll({
   trigger = { percent: 55 },
   stickyOnceClosed = true,
-  onClickAction = () => {},
+  onClickAction,
 }: {
   trigger?: Trigger;
   stickyOnceClosed?: boolean;
@@ -22,7 +22,16 @@ export default function CTAToastOnScroll({
     <CTAToast
       show={show}
       onClose={() => setDismissed(true)}
-      onClickAction={onClickAction}
+      onClickAction={
+        onClickAction
+          ? onClickAction
+          : () => {
+              const ctaSection = document.getElementById("cta-section");
+              if (ctaSection) {
+                ctaSection.scrollIntoView({ behavior: "smooth" });
+              }
+            }
+      }
     />
   );
 }

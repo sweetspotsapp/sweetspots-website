@@ -42,13 +42,13 @@ const ibmThai = IBM_Plex_Sans_Thai({
 });
 
 export const metadata: Metadata = {
-  title: "SweetSpots - Travel Planning Made Simple",
+  title: "SweetSpots - Find trips that match your vibe.",
   description:
     "Discover hidden gems and plan your perfect trip with SweetSpots.",
   keywords:
     "travel planning, itinerary planner, travel app, hidden gems, trip planning",
   openGraph: {
-    title: "SweetSpots - Travel Planning Made Simple",
+    title: "SweetSpots - Find trips that match your vibe.",
     description:
       "Discover hidden gems and plan your perfect trip with SweetSpots.",
     type: "website",
@@ -56,7 +56,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "SweetSpots - Travel Planning Made Simple",
+    title: "SweetSpots - Find trips that match your vibe.",
     description:
       "Discover hidden gems and plan your perfect trip with SweetSpots.",
   },

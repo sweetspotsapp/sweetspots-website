@@ -1,9 +1,13 @@
+'use client';
+
 import { IPlace } from "@/dto/places/place.dto";
 import React, { useState } from "react";
-import { Card, CardContent } from "./ui/card";
+import { Card, CardContent, CardFooter } from "./ui/card";
 import { Clock, Pin, Users } from "lucide-react";
 import ItineraryModal from "./ItineraryModal";
 import { IItinerary } from "@/dto/itineraries/itinerary.dto";
+import { useTranslations } from "next-intl";
+import { Button } from "./ui/button";
 
 interface TripCardProps {
   places: IPlace[];
@@ -11,6 +15,8 @@ interface TripCardProps {
   peopleCount: number;
   daysDuration: number;
   itinerary: IItinerary;
+  ctaLabelIdx: number;
+  onCtaClick?: () => void;
 }
 
 export default function TripCard({
@@ -19,6 +25,8 @@ export default function TripCard({
   peopleCount,
   daysDuration,
   itinerary,
+  ctaLabelIdx,
+  onCtaClick = () => {}
 }: TripCardProps) {
   const places = placesProp;
   const images = places
@@ -28,6 +36,18 @@ export default function TripCard({
 
   const [modalOpen, setModalOpen] = useState(false);
 
+  const t = useTranslations('ctaButtons')
+
+  const ctaLabels = [
+    t('loveThis'),
+    t('letsGo'),
+    t('mySweetspots'),
+    t('thisOne'),
+    t('takeMeThere'),
+  ]
+
+  const ctaLabel = ctaLabels[ctaLabelIdx];
+
   return (
     <>
       <ItineraryModal
@@ -35,8 +55,8 @@ export default function TripCard({
         onOpenChange={setModalOpen}
         itinerary={itinerary}
       />
-      <Card className="rounded-3xl cursor-pointer hover:shadow-md" onClick={() => setModalOpen(true)}>
-        <CardContent className="p-6">
+      <Card className="rounded-3xl hover:shadow-md" >
+        <CardContent className="p-6 cursor-pointer" onClick={() => setModalOpen(true)}>
           <div className="grid grid-cols-2 gap-3 [grid-auto-flow:dense]">
             {images.map((src, i) => {
               const isLast = i === n - 1;
@@ -84,6 +104,11 @@ export default function TripCard({
             <div className="text-sm">{places.length} spots</div>
           </div>
         </CardContent>
+        <CardFooter>
+          <Button className="w-full mt-4" onClick={onCtaClick}>
+            {ctaLabel}
+          </Button>
+        </CardFooter>
       </Card>
     </>
   );

@@ -8,7 +8,7 @@ export function CTASection() {
   const t = useTranslations('cta');
 
   return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
+    <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white" id='cta-section'>
       <div className="max-w-4xl mx-auto text-center space-y-8">
         <h2 className="text-4xl sm:text-5xl font-semibold text-gray-900">
           {t('title')}

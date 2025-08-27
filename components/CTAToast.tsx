@@ -3,6 +3,7 @@ import { motion } from 'framer-motion'
 import { Button } from './ui/button';
 import { useDrag } from '@use-gesture/react';
 import { XIcon } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 
 interface XButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {}
 
@@ -23,6 +24,7 @@ export default function CTAToast({
   onClose: () => void
   onClickAction: () => void
 }) {
+  const t = useTranslations('ctaToast');
   const bind = useDrag(
     ({ last, movement: [, my], cancel }) => {
       if (my > 100 && last) {
@@ -44,10 +46,10 @@ export default function CTAToast({
   >
     <div className="bg-white p-2 flex flex-col md:flex-row items-center gap-3 text-neutral-800 shadow-lg rounded-xl">
       <div className="flex items-center md:flex-row-reverse">
-      <p className="ml-3 md:ml-0 font-bold">Like what you see?</p>
+      <p className="ml-3 md:ml-0 font-bold">{t('title')}</p>
       <XButton onClick={onClose}/>
       </div>
-      <Button className="w-full md:w-fit" onClick={onClickAction}>Get Early Access!</Button>
+      <Button className="w-full md:w-fit" onClick={onClickAction}>{t('action')}</Button>
     </div>
   </motion.div>
   )

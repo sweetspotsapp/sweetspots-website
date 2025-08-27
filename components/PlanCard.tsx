@@ -148,9 +148,9 @@ const PlanCard = forwardRef<PlanCardRefs, PlanCardProps>(function PlanCard(
                 ${costRange.join('-')}/per person
               </p>
             </div>
-            <p className="text-sm">
+            {/* <p className="text-sm">
               Closing Time: {closingTime.toLocaleTimeString()}
-            </p>
+            </p> */}
             <div className="flex gap-2 mt-2">
               {collaborators.map((collab, idx) => (
                 <div key={idx} className="flex items-center gap-1">

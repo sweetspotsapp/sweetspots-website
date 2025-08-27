@@ -62,6 +62,22 @@
     "description": "Satu platform. Ga perlu ganti aplikasi. Ga perlu overplanning. Dapetin trip yang lebih seru!",
     "signUp": "Daftar Sekarang!"
   },
+  "recommendedTrips": {
+    "loadingTitle": "Lagi nyiapin ide trip seru buat kamu!",
+    "basedOnSpots": "Oke, dari tempat impian kamu...",
+    "recommendedTitle": "Ini rekomendasi trip dari kami",
+    "cardDescription": "Jelajahi tempat-tempat keren ini!",
+    "noSpotsTitle": "Kamu belum pilih tempat nih!",
+    "noSpotsDescription": "Swipe kanan di tempat yang kamu suka, nanti kami buatin ide trip buat kamu!"
+  },
+  "collab": {
+    "title": "Mantep!",
+    "subtitle": "Tapi apa serunya kalo ga ada yang diajak bareng?",
+    "description": "Bagikan dan bikin rencana trip bareng temen-temen kamu!",
+    "share": "Bagikan rencana",
+    "buildTogether": "Bikin bareng",
+    "forIllustration": "For illustration purposes only"
+  },
   "howItWorks": {
     "title": "Cara Kerja SweetSpots",
     "subtitle": "Rencanain jalan-jalan harus seru dong!",
@@ -117,7 +133,16 @@
         "name": "Kasipang Phantajak",
         "role": "Co-founder & CCO",
         "bio": "Kao adalah UI/UX designer yang memiliki pengalaman lebih dari 3 tahun di startup di Thailand. Kao sekarang sedang menjadi mahasiswa master of Business di Monash University."
+      },
+      "dennis": {
+        "name": "Dennis Dafeng",
+        "role": "Co-founder & CMO",
+        "bio": "Dennis adalah seorang pembuat film dan produser konten dengan pengalaman dalam storytelling komersial dan pemasaran merek di Australia dan Amerika Serikat. Ia adalah pendiri Spotlight HD Media dan saat ini sedang menempuh studi Master of Business (Entrepreneurship) di Monash University."
       }
     }
+  },
+  "ctaToast": {
+    "title": "Suka ga?",
+    "action": "Dapatkan Early Access!"
   }
 }

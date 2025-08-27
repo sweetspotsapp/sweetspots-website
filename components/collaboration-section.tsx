@@ -6,6 +6,7 @@ import { placesMock } from "@/mockData/placesMock";
 import Cursor from "./Cursor";
 import { Button } from "./ui/button";
 import { useAnimationControls, useInView } from "framer-motion";
+import { useTranslations } from "next-intl";
 
 const sleep = (ms: number) => new Promise((res) => setTimeout(res, ms));
 
@@ -19,6 +20,7 @@ function getCoordsInContainer(target: HTMLElement, container: HTMLElement) {
 }
 
 export default function CollaborationSection() {
+  const t = useTranslations('collab')
   const [plan1, setPlan1] = useState<PlanCardProps | null>({
     place: placesMock[0],
     placeId: placesMock[0].id,
@@ -281,12 +283,12 @@ export default function CollaborationSection() {
         <div className="container mx-auto py-20">
           <div className="grid grid-cols-2 gap-4">
             <div className="space-y-2 animate-slide-in-left items-center ld:items-start lg:mt-20 text-white">
-              <p className="text-xl font-bold">Beautiful!</p>
+              <p className="text-xl font-bold">{t('title')}</p>
               <p className="text-3xl font-bold">
-                But what&apos;s a memory without anyone to share it with?
+                {t('subtitle')}
               </p>
               <p className="text-lg">
-                Share and build your trip plan with your buddies!
+                {t('description')}
               </p>
             </div>
             <div>
@@ -317,7 +319,7 @@ export default function CollaborationSection() {
                 />
               )}
               <small className="text-xs text-orange-800">
-                For illustration purposes only.
+                {t('forIllustration')}
               </small>
             </div>
           </div>

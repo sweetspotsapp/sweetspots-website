@@ -63,6 +63,22 @@
     "description": "One platform. No switching apps. No overplanning.\nJust better trips.",
     "signUp": "Sign Up"
   },
+  "recommendedTrips": {
+    "loadingTitle": "Cooking up some amazing trip ideas for you!",
+    "basedOnSpots": "Alright, based on your dream spots...",
+    "recommendedTitle": "Here's our recommended trips",
+    "cardDescription": "Explore these amazing places!",
+    "noSpotsTitle": "You haven't picked any spots yet!",
+    "noSpotsDescription": "Swipe right on places you like and we'll whip up some trip ideas for you!"
+  },
+  "collab": {
+    "title": "Beautiful!",
+    "subtitle": "But what's a memory without anyone to share it with?",
+    "description": "Share and build your trip plan with your buddies!",
+    "share": "Share your plan",
+    "buildTogether": "Build together",
+    "forIllustration": "For illustration purposes only"
+  },
   "howItWorks": {
     "title": "How SweetSpots Works",
     "subtitle": "Planning your trip should feel fun!",
@@ -125,5 +141,9 @@
         "bio": "Dennis is a filmmaker and content producer with experience in commercial storytelling and brand marketing across Australia and the U.S. He is the founder of Spotlight HD Media and is currently pursuing a Master of Business (Entrepreneurship) at Monash University."
       }
     }
+  },
+  "ctaToast": {
+    "title": "Like what you see?",
+    "action": "Get Early Access!"
   }
 }

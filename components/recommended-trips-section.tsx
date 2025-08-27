@@ -8,10 +8,13 @@ import { createAutoItinerary } from "@/api/auto-itinerary/endpoints";
 import { IItinerary } from "@/dto/itineraries/itinerary.dto";
 import { IPlace } from "@/dto/places/place.dto";
 import TripCardSkeleton from "./skeletons/TripCardSkeleton";
+import { useTranslations } from "next-intl";
 
 const ITINERARY_COUNT = 3;
 
 export default function RecommendedTripsSection() {
+    const t = useTranslations("recommendedTrips");
+
   const { swipedPlaceIds = [] } = useSwipedPlaces();
 
   const [isLoading, setIsLoading] = React.useState(false);
@@ -49,7 +52,7 @@ export default function RecommendedTripsSection() {
         {isLoading ? (
           <>
             <p className="text-3xl font-bold mb-4">
-              Cooking up some amazing trip ideas for you!
+              {t("loadingTitle")}
             </p>
             <div className="flex gap-4 w-full">
               <div className="flex-1">
@@ -65,9 +68,9 @@ export default function RecommendedTripsSection() {
           </>
         ) : swipedPlaceIds.length > 0 ? (
           <>
-            <p className="text-lg">Alright, based on your dream spots...</p>
+            <p className="text-lg">{t("basedOnSpots")}</p>
             <p className="text-3xl font-bold mb-4">
-              Here&apos;s our recommended trips
+              {t("recommendedTitle")}
             </p>
             <div className="grid grid-cols-3 gap-4 overflow-scroll w-full">
               {itineraries.map((itinerary, idx) => (
@@ -90,11 +93,10 @@ export default function RecommendedTripsSection() {
         ) : (
           <div className="flex flex-col items-center justify-center">
             <p className="text-lg font-bold">
-              You haven&apos;t picked any spots yet!
+              {t("noSpotsTitle")}
             </p>
             <p>
-              Swipe right on places you like and we&apos;ll whip up some trip
-              ideas for you!
+              {t("noSpotsDescription")}
             </p>
           </div>
         )}

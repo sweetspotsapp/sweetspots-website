@@ -30,7 +30,7 @@ export function Footer() {
             </p>
           </div>
           <Socials
-            className="md:col-span-2"
+            className="md:col-span-2 md:flex justify-center md:justify-end"
           />
           {/* Links */}
           {/* <div className="space-y-4">

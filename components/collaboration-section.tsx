@@ -279,9 +279,9 @@ export default function CollaborationSection() {
         animate={cursor3Controls}
         allGood={cursor3AllGood}
       />
-      <div className="w-full bg-orange-500 overflow-hidden" ref={containerRef}>
+      <div className="w-full bg-orange-500 overflow-hidden px-4" ref={containerRef}>
         <div className="container mx-auto py-20">
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid md:grid-cols-2 gap-4">
             <div className="space-y-2 animate-slide-in-left items-center ld:items-start lg:mt-20 text-white">
               <p className="text-xl font-bold">{t('title')}</p>
               <p className="text-3xl font-bold">

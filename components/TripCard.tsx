@@ -31,8 +31,11 @@ export default function TripCard({
   const places = placesProp;
   const images = places
     .map((place) => place.images?.[0]?.url)
-    .filter(Boolean) as string[];
+    .filter(Boolean)
+    .slice(0, 4) as string[];
   const n = images.length;
+
+  const remainder = places.length - n;
 
   const [modalOpen, setModalOpen] = useState(false);
 
@@ -57,7 +60,7 @@ export default function TripCard({
       />
       <Card className="rounded-3xl hover:shadow-md" >
         <CardContent className="p-6 cursor-pointer" onClick={() => setModalOpen(true)}>
-          <div className="grid grid-cols-2 gap-3 [grid-auto-flow:dense]">
+          <div className="relative grid grid-cols-2 gap-3 [grid-auto-flow:dense]">
             {images.map((src, i) => {
               const isLast = i === n - 1;
               let tile = "aspect-square"; // default
@@ -84,6 +87,13 @@ export default function TripCard({
                 </div>
               );
             })}
+            {
+              remainder > 0 && (
+                <div className={`absolute bottom-4 right-4 overflow-hidden rounded-xl shadow-lg p-2 py-1 bg-orange-100 flex justify-center mt-4`}>
+                  + {remainder}
+                </div>
+              )
+            }
           </div>
 
           <p className="text-xl font-bold mt-4">{itinerary.name}</p>

@@ -56,7 +56,7 @@ export default function RecommendedTripsSection({
 
   return (
     <div className="w-full bg-white">
-      <div className="container mx-auto py-32">
+      <div className="container mx-auto py-32 px-4">
         {isLoading ? (
           <>
             <p className="text-3xl font-bold mb-4">{t("loadingTitle")}</p>
@@ -76,7 +76,7 @@ export default function RecommendedTripsSection({
           <>
             <p className="text-lg">{t("basedOnSpots")}</p>
             <p className="text-3xl font-bold mb-4">{t("recommendedTitle")}</p>
-            <div className="grid grid-cols-3 gap-4 overflow-scroll w-full">
+            <div className="grid md:grid-cols-3 gap-4 overflow-scroll w-full">
               {itineraries.map((itinerary, idx) => (
                 <div key={idx}>
                   <TripCard
@@ -104,7 +104,7 @@ export default function RecommendedTripsSection({
         ) : (
           <div className="flex flex-col items-center justify-center">
             <p className="text-lg font-bold">{t("noSpotsTitle")}</p>
-            <p>{t("noSpotsDescription")}</p>
+            <p className="text-center">{t("noSpotsDescription")}</p>
           </div>
         )}
       </div>

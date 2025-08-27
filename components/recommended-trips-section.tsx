@@ -9,7 +9,7 @@ import { IItinerary } from "@/dto/itineraries/itinerary.dto";
 import { IPlace } from "@/dto/places/place.dto";
 import TripCardSkeleton from "./skeletons/TripCardSkeleton";
 
-const ITINERARY_COUNT = 1;
+const ITINERARY_COUNT = 3;
 
 export default function RecommendedTripsSection() {
   const { swipedPlaceIds = [] } = useSwipedPlaces();

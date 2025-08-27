@@ -53,13 +53,20 @@ const PlanCard = forwardRef<PlanCardRefs, PlanCardProps>(function PlanCard(
     timeText,
     selectedField,
     dateText,
-    weather = {
-      temperature: 16,
-      weather: "sunny",
-      description: "Sunny",
-    },
+    weather: weatherProp,
   } = props;
 
+  const weather = React.useMemo(() => {
+    if (weatherProp) return weatherProp;
+    const weathers: Weather['weather'][] = ['sunny', 'cloudy', 'rainy', 'snowy', 'stormy', 'foggy'];
+    const randomWeather = weathers[Math.floor(Math.random() * weathers.length)];
+    const randomTemp = Math.floor(Math.random() * 21) + 5; // 5°C to 25°C
+    return {
+      temperature: randomTemp,
+      weather: randomWeather,
+      description: randomWeather.charAt(0).toUpperCase() + randomWeather.slice(1),
+    };
+  }, [weatherProp]);
   // const weatherDescription = weather?.description || capitalCase(weather?.weather || "Sunny");
 
   function renderWeatherIcon(weather: Weather) {
@@ -71,7 +78,7 @@ const PlanCard = forwardRef<PlanCardRefs, PlanCardProps>(function PlanCard(
       case "rainy":
         return <CloudRain className="text-blue-500" />;
       case "snowy":
-        return <Snowflake className="text-white" />;
+        return <Snowflake className="text-gray-600" />;
       case "stormy":
         return <CloudRainWind className="text-red-500" />;
       case "foggy":
@@ -94,6 +101,14 @@ const PlanCard = forwardRef<PlanCardRefs, PlanCardProps>(function PlanCard(
     buttonEl: buttonRef.current,
     dateEl: dateRef.current,
   }));
+
+  const defaultImages = [
+    'https://plus.unsplash.com/premium_photo-1664970900025-1e3099ca757a?q=80&w=774&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    'https://images.unsplash.com/photo-1521017432531-fbd92d768814?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+  ];
+  const imageUrl =
+    place.images?.[0]?.url ||
+    defaultImages[Math.floor(Math.random() * defaultImages.length)];
 
   return (
     <div className="flex gap-3">
@@ -125,8 +140,13 @@ const PlanCard = forwardRef<PlanCardRefs, PlanCardProps>(function PlanCard(
             </p>
           </div>
         </div>
-        <Card className="p-4 rounded-b-none">
-          <div className="flex flex-col gap-2">
+        <Card className="p-4 rounded-b-none flex">
+          <img
+            src={imageUrl}
+            alt={place.name}
+            className="w-24 h-24 rounded object-cover mr-4"
+          />
+          <div className="flex flex-col gap-2 w-full">
             <div className="flex justify-between">
               <p className="text-lg font-bold">{place.name}</p>
               <div className="flex gap-1 items-center">

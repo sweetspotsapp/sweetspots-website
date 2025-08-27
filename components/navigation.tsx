@@ -19,7 +19,7 @@ export function Navigation() {
     { code: 'en', name: 'English', flag: '🇦🇺' },
     { code: 'id', name: 'Bahasa Indonesia', flag: '🇮🇩' },
     { code: 'th', name: 'ไทย', flag: '🇹🇭' },
-    { code: 'cn', name: '中文', flag: '🇨🇳' }
+    // { code: 'cn', name: '中文', flag: '🇨🇳' }
   ];
 
   const getLocalizedPath = (newLocale: string) => {
@@ -35,7 +35,7 @@ export function Navigation() {
           {/* Logo */}
           <Link href={`/${locale}`} className="flex items-center space-x-2">
             <img src="/SweetSpots.svg" alt="SweetSpots Logo" className="h-8 w-8 w-auto" />
-            <span className="text-xl font-semibold font-semibold text-gray-900">SweetSpots</span>
+            <span className="text-xl font-semibold text-gray-900">SweetSpots</span>
           </Link>
 
           <Socials/>

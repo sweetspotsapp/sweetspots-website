@@ -2,6 +2,7 @@ import { Heart } from "lucide-react";
 import { useTranslations, useLocale } from "next-intl";
 import Link from "next/link";
 import { FaTiktok, FaInstagram, FaLinkedin } from "react-icons/fa";
+import Socials from "./Socials";
 
 export function Footer() {
   const t = useTranslations("footer");
@@ -28,35 +29,9 @@ export function Footer() {
               {t("description")}
             </p>
           </div>
-          <div className="md:col-span-2 flex gap-4 items-center justify-end">
-            <a
-            href="https://www.instagram.com/sweetspotsai/"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Instagram"
-            className="text-gray-500 hover:text-pink-500 transition-colors"
-            >
-              <FaInstagram size={24}/>
-            </a>
-            <a
-            href="https://www.linkedin.com/company/108092493"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="LinkedIn"
-            className="text-gray-500 hover:text-blue-700 transition-colors"
-            >
-              <FaLinkedin size={24}/>
-            </a>
-            <a
-            href="https://www.tiktok.com/@sweetspotsai"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="TikTok"
-            className="text-gray-500 hover:text-black transition-colors"
-            >
-              <FaTiktok size={24}/>
-            </a>
-          </div>
+          <Socials
+            className="md:col-span-2"
+          />
           {/* Links */}
           {/* <div className="space-y-4">
             <h3 className="font-semibold text-gray-900">{t('product')}</h3>

@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button';
 import { useTranslations, useLocale } from 'next-intl';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import Socials from './Socials';
 
 export function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -35,6 +36,8 @@ export function Navigation() {
             <img src="/SweetSpots.svg" alt="SweetSpots Logo" className="h-8 w-8 w-auto" />
             <span className="text-xl font-semibold font-semibold text-gray-900">SweetSpots</span>
           </Link>
+
+          <Socials/>
 
           <div className="hidden md:flex items-center space-x-8">
             <Link href={`/${locale}/about`} className="text-gray-600 hover:text-gray-900 transition-colors font-medium">

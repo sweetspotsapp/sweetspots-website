@@ -20,9 +20,9 @@ export function HeroSection() {
           {/* Oh to roadtrip
         <br />
         in the Alpines */}
-          Tired of trip planning? We can relate.
+          {t('tiredRelate')}
           <br />
-          <span className="font-bold">So we made it simpler.</span>
+          <span className="font-bold">{t('simpler')}</span>
         </div>
       </div>
       {/* TODO:

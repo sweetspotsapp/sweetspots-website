@@ -7,7 +7,8 @@
   },
   "hero": {
     "title": "SweetSpots",
-    "subtitle": "Cari dan rencanain semuanya dalam satu tempat",
+    "tiredRelate": "Capek ngerencanain perjalanan? Sama.",
+    "simpler": "Makanya kami bikin lebih simpel.",
     "description": "Sweetspot membantu kamu menemukan hidden gem, baca review yang autentik, dan merencanakan perjalanan—semua dalam satu aplikasi.",
     "signUp": "Daftar Sekarang!",
     "earlyAccess": "Dapetin early access GRATIS!"
@@ -32,6 +33,8 @@
   },
   "solution": {
     "tryIt": "Cobain deh!",
+    "tripStarts": "Jalan-jalan kamu dimulai di sini",
+    "swipeRight": "Swipe kanan empat tempat impianmu!",
     "currentMonth": "Gimana perasaan kamu di bulan {month} ini?",
     "title": "Dengan Sweetspot,\nkamu bisa:",
     "features": {
@@ -79,7 +82,7 @@
   },
   "cta": {
     "title": "Kamu penasaran sama SweetSpots?",
-    "description": "Kami lagi ppurples bangun platform ini khusus buat traveler kayak kamu. Kirim email kamu dan kamu bakal dapat akses pertama pas udah rilis.\nTenang, kita gabakal spam, kita bakal bantu kamu bikin perjalanan travel yang lebih baik.",
+    "description": "Kami lagi bangun platform ini khusus buat traveler kayak kamu. Kirim email kamu dan kamu bakal dapat akses pertama pas udah rilis.\nTenang, kita gabakal spam, kita bakal bantu kamu bikin perjalanan travel yang lebih baik.",
     "signUp": "Daftar Sekarang!"
   },
   "footer": {

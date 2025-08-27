@@ -7,6 +7,8 @@
   },
   "hero": {
     "title": "SweetSpots",
+    "tiredRelate": "Tired of trip planning? We can relate.",
+    "simpler": "So we're making it simpler.",
     "subtitle": "From inspo to itinerary — discover and plan in one place.",
     "description": "Sweetspot helps you discover hidden gems, read real reviews, and plan your trip—all in one app.",
     "signUp": "Sign Up Now",
@@ -34,6 +36,8 @@
     "tryIt": "Try it!",
     "currentMonth": "How are you feeling this {month}?",
     "title": "With Sweetspot,\nyou can :",
+    "tripStarts": "Your trip starts here",
+    "swipeRight": "Swipe right at least four of your dream spots in your city!",
     "features": {
       "discover": {
         "title": "Discover",

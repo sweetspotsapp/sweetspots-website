@@ -24,7 +24,10 @@ export default function CollaborationSection() {
     placeId: placesMock[0].id,
     costRange: [15, 40],
     closingTime: new Date("2025-08-27T18:00:00.000Z"),
-    collaborators: [{ name: "Zio" }, { name: "Dennis" }],
+    collaborators: [
+      { name: "Zio", avatarUrl: "./images/about-us/zio.png" },
+      { name: "Dennis", avatarUrl: "./images/about-us/dennis.png" },
+    ],
     dateText: "27 August 2025",
     timeText: "08:00",
   });
@@ -33,11 +36,13 @@ export default function CollaborationSection() {
     placeId: placesMock[1].id,
     costRange: [10, 30],
     closingTime: new Date("2025-08-27T18:00:00.000Z"),
-    collaborators: [{ name: "Zio" }, { name: "Dennis" }],
+    collaborators: [
+      { name: "Razak", avatarUrl: "./images/about-us/razak.png" },
+      { name: "Kao", avatarUrl: "./images/about-us/kao.png" },
+    ],
     dateText: "28 August 2025",
     timeText: "08:00",
   });
-
 
   const containerRef = useRef<HTMLDivElement>(null);
   const card1Ref = useRef<PlanCardRefs>(null);
@@ -208,11 +213,11 @@ export default function CollaborationSection() {
       });
       await sleep(500);
       await cursor3Controls.start({
-                x: budgetX2 - 70,
+        x: budgetX2 - 70,
         y: budgetY2 + 95,
         transition: { duration: 1.2, ease: "easeInOut" },
-      })
-      await sleep(270)
+      });
+      await sleep(270);
       await cursor3Controls.start({
         x: btnX1,
         y: btnY1,
@@ -235,31 +240,43 @@ export default function CollaborationSection() {
     }
 
     async function setAllGood() {
-      await sleep(8000)
+      await sleep(8000);
       setCursor1AllGood(true);
-      await sleep(150)
+      await sleep(150);
       setCursor2AllGood(true);
-      await sleep(150)
+      await sleep(150);
       setCursor3AllGood(true);
     }
 
     startCursor1();
     startCursor2();
     startCursor3();
-    setAllGood()
+    setAllGood();
   };
 
   useEffect(() => {
     if (isInView) {
       moveAndClick();
-    } 
-  }, [isInView])
+    }
+  }, [isInView]);
 
   return (
     <>
-      <Cursor pointerColor="#FF0000" animate={cursor1Controls} allGood={cursor1AllGood} />
-      <Cursor pointerColor="orange" animate={cursor2Controls} allGood={cursor2AllGood} />
-      <Cursor pointerColor="green" animate={cursor3Controls} allGood={cursor3AllGood} />
+      <Cursor
+        pointerColor="#FF0000"
+        animate={cursor1Controls}
+        allGood={cursor1AllGood}
+      />
+      <Cursor
+        pointerColor="orange"
+        animate={cursor2Controls}
+        allGood={cursor2AllGood}
+      />
+      <Cursor
+        pointerColor="green"
+        animate={cursor3Controls}
+        allGood={cursor3AllGood}
+      />
       <div className="w-full bg-orange-500 overflow-hidden" ref={containerRef}>
         <div className="container mx-auto py-20">
           <div className="grid grid-cols-2 gap-4">

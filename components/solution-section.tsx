@@ -26,9 +26,9 @@ export function SolutionSection() {
           <div className="grid lg:grid-cols-2 gap-16">
             {/* Left Content */}
             <div className="space-y-2 animate-slide-in-left items-center ld:items-start lg:mt-20 text-white">
-              <p className='text-xl font-bold'>Your trip starts here</p>
+              <p className='text-xl font-bold'>{t('tripStarts')}</p>
               <p className='text-3xl font-bold'>{currentMonthText}</p>
-              <p className='text-lg'>Swipe right at least four of your dream spots in your city!</p>
+              <p className='text-lg'>{t('swipeRight')}</p>
             </div>
 
             {/* Right Phone Mockup */}

@@ -300,8 +300,7 @@ export default function CollaborationSection() {
                 />
               )}
               <small className="text-xs text-orange-800">
-                This is just an illustration. In actual, you will have your own
-                personalized screen.
+                For illustration purposes only.
               </small>
             </div>
           </div>

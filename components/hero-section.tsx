@@ -6,16 +6,17 @@ import { useTranslations } from "next-intl";
 // import { IPhoneFrame } from "./ui/iphone-frame";
 // import { SIGNUP_URL } from "@/lib/constants";
 import Image from "next/image";
+import ScrollDownCta from "./ScrollDownCta";
 
 export function HeroSection() {
   const t = useTranslations("hero");
 
   return (
     <section
-      className="pt-24 pb-32 px-4 sm:px-6 lg:px-8 bg-gradient-to-br flex items-end rounded-b-2xl overflow-hidden"
+      className="relative pt-24 pb-32 px-4 sm:px-6 lg:px-8 bg-gradient-to-br flex items-end overflow-hidden bg-orange-500"
       style={{ minHeight: "calc(100vh - 80px)" }}
     >
-      <div className="container mx-auto text-white flex justify-between items-end h-full flex-1">
+      <div className="container mx-auto text-white flex justify-between items-end h-full flex-1 z-10">
         <div className="text-3xl md:text-6xl/normal line">
           {/* Oh to roadtrip
         <br />
@@ -24,6 +25,7 @@ export function HeroSection() {
           <br />
           <span className="font-bold">{t('simpler')}</span>
         </div>
+        <ScrollDownCta />
       </div>
       {/* TODO:
        - Pictures should be in Aussie
@@ -46,7 +48,7 @@ export function HeroSection() {
         loop
         muted
         playsInline
-        className="absolute inset-0 w-full h-full object-cover -z-10"
+        className="absolute inset-0 w-full h-full object-cover z-0 rounded-b-[4rem]"
       />
       {/* <div className="max-w-7xl mx-auto">
       <div className="grid lg:grid-cols-2 gap-12 items-center">

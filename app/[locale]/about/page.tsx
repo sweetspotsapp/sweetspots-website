@@ -69,7 +69,7 @@ export default function AboutPage() {
                 {/* Profile Image */}
                 <Image
                   src={founder.image}
-                  alt={t(`founders.${founder.key}.name`)}
+                  alt={t(`founders.${founder.key}.name` as any)}
                   width={200}
                   height={200}
                   objectFit="contain"
@@ -87,12 +87,12 @@ export default function AboutPage() {
                 <div className="space-y-4">
                   <div className="space-y-2">
                     <h3 className="text-2xl font-semibold text-gray-900">
-                      {t(`founders.${founder.key}.name`)}
+                      {t(`founders.${founder.key}.name` as any)}
                     </h3>
                     <div className="flex items-center justify-center space-x-2 text-orange-600">
                       <Briefcase className="h-4 w-4" />
                       <p className="font-semibold">
-                        {t(`founders.${founder.key}.role`)}
+                        {t(`founders.${founder.key}.role` as any)}
                       </p>
                     </div>
                   </div>
@@ -121,7 +121,7 @@ export default function AboutPage() {
                   </div>
 
                   <p className="text-gray-600 leading-relaxed text-left max-w-md mx-auto">
-                    {t(`founders.${founder.key}.bio`)}
+                    {t(`founders.${founder.key}.bio` as any)}
                   </p>
 
                   {/* Education/Experience Icons */}

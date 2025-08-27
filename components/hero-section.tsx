@@ -11,31 +11,42 @@ export function HeroSection() {
   const t = useTranslations("hero");
 
   return (
-    <section className="pt-24 pb-32 px-4 sm:px-6 lg:px-8 bg-gradient-to-br" style={{ minHeight: "calc(100vh - 80px)" }}>
-      <div className="container mx-auto text-white flex justify-between items-end">
-      <div className="text-6xl font-bold">
-        Oh to roadtrip
+    <section
+      className="pt-24 pb-32 px-4 sm:px-6 lg:px-8 bg-gradient-to-br flex items-end rounded-b-2xl overflow-hidden"
+      style={{ minHeight: "calc(100vh - 80px)" }}
+    >
+      <div className="container mx-auto text-white flex justify-between items-end h-full flex-1">
+        <div className="text-6xl/normal line">
+          {/* Oh to roadtrip
         <br />
-        in the Alpines
-      </div>
-      <div>
-        Tired of trip planning? We can relate. So we made it simpler.
-      </div>
+        in the Alpines */}
+          Tired of trip planning? We can relate.
+          <br />
+          <span className="font-bold">So we made it simpler.</span>
+        </div>
       </div>
       {/* TODO:
        - Pictures should be in Aussie
        - Hidden gems
        - Copywriting: Make it authentic
         - Too corpo
-      - Places too touristy
-      - Focus on experiences over landmarks
+        - Places too touristy
+        - Focus on experiences over landmarks
       */}
-      <Image
-      src="https://images.unsplash.com/photo-1670279079691-3fb4ed1e6e43?q=80&w=3270&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-      alt="Background"
-      fill
-      className="absolute inset-0 w-full h-full object-cover -z-10"
-      priority
+      {/* <Image
+        src="https://images.unsplash.com/photo-1670279079691-3fb4ed1e6e43?q=80&w=3270&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        alt="Background"
+        fill
+        className="absolute inset-0 w-full h-full object-cover -z-10"
+        priority
+      /> */}
+      <video
+        src="/web-banner.mp4"
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover -z-10"
       />
       {/* <div className="max-w-7xl mx-auto">
       <div className="grid lg:grid-cols-2 gap-12 items-center">

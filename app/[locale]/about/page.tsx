@@ -34,7 +34,7 @@ export default function AboutPage() {
       key: "dennis",
       image: "/images/about-us/dennis.png",
       linkedin: "https://www.linkedin.com/in/dennis-dafeng/",
-      website: "https://kaokasi.github.io/",
+      // website: "https://kaokasi.github.io/",
     },
   ];
 

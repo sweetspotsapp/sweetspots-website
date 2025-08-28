@@ -4,7 +4,7 @@ import axios from 'axios';
 const isDev = process.env.NODE_ENV === 'development';
 
 export const API_URL =
-  process.env.NEXT_PUBLIC_API_URL || process.env.VITE_API_URL || 'http://localhost:3000/api/v1';
+  process.env.NEXT_PUBLIC_API_URL || process.env.VITE_API_URL || 'http://localhost:8080/api/v1';
 
 export const api = axios.create({
   baseURL: API_URL,

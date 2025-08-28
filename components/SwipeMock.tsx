@@ -151,6 +151,7 @@ export default function SwipeMock() {
                       }}
                     >
                       <SwipeCard
+                        recommendedPlace={current}
                         name={current.name}
                         images={current.images}
                         rating={current.rating}
@@ -167,7 +168,7 @@ export default function SwipeMock() {
             </div>
 
             {/* Buttons */}
-            <div className="absolute bottom-24 left-1/2 -translate-x-1/2 flex justify-center space-x-6 pt-4 z-10">
+            <div className="absolute bottom-24 left-1/2 -translate-x-1/2 flex justify-center space-x-6 pt-4 z-40">
               <button
                 onClick={() => swipe("left")}
                 className="w-14 h-14 bg-white border border-orange-500 rounded-full flex items-center justify-center shadow-lg transition-all hover:scale-110"

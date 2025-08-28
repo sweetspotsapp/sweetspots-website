@@ -7,4 +7,7 @@ export class GetRecommendationsDto {
   latitude?: number;
   longitude?: number;
   withReviews?: boolean;
+  seed?: string;
+  diversity?: number;
+  exploration?: number;
 }

@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
-import { Check } from "lucide-react";
+import { Heart } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { useSwipedPlaces } from "@/store/useSwipedPlaces";
 // import { placesMock } from "@/mockData/placesMock";
@@ -56,10 +56,11 @@ export default function SwipeMock() {
       setIsLoading(true)
       try {
         const res = await getRecommendations({
-          distance: 0.5,
+          distance: 7,
           latitude: loc.lat,
           longitude: loc.lng,
           withReviews: false,
+          diversity: 0.67,
         });
         if (res.data) {
           console.log('FKONOTNIN')
@@ -70,7 +71,7 @@ export default function SwipeMock() {
       }
     }
     if (location) {
-      fetchData();
+      fetchData(location);
     }
   }, [location]);
 
@@ -114,7 +115,7 @@ export default function SwipeMock() {
           <div className="relative h-[600px] bg-white">
             {/* Status Bar */}
             <div className="flex justify-between items-center px-6 py-3 text-sm text-gray-900">
-              <span className="font-semibold">SweetSpots</span>
+              <span className="font-semibold text-xl text-orange-500">SweetSpots</span>
               <div className="flex space-x-1">
                 <div className="w-4 h-4 bg-orange-500 rounded-full animate-pulse" />
                 <div className="w-4 h-4 bg-red-500 rounded-full animate-pulse delay-150" />
@@ -178,7 +179,7 @@ export default function SwipeMock() {
                 className="w-14 h-14 bg-orange-500 rounded-full flex items-center justify-center shadow-lg transition-all hover:scale-110"
               >
                 <span className="text-white text-2xl font-bold">
-                  <Check size={28} />
+                  <Heart size={28} />
                 </span>
               </button>
             </div>

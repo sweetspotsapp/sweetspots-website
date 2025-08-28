@@ -96,6 +96,13 @@
       }
     }
   },
+  "ctaButtons": {
+    "loveThis": "Sukaaa!",
+    "letsGo": "Gas lah!",
+    "mySweetspots": "Bole nih!",
+    "thisOne": "Gue banget nih!",
+    "takeMeThere": "Ajak gue dong!"
+  },
   "cta": {
     "title": "Kamu penasaran sama SweetSpots?",
     "description": "Kami lagi bangun platform ini khusus buat traveler kayak kamu. Kirim email kamu dan kamu bakal dapat akses pertama pas udah rilis.\nTenang, kita gabakal spam, kita bakal bantu kamu bikin perjalanan travel yang lebih baik.",

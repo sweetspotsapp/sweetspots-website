@@ -63,16 +63,13 @@ export default function SwipeMock() {
           diversity: 0.67,
         });
         if (res.data) {
-          console.log('FKONOTNIN')
           setPlaces(res.data);
         }
       } finally {
         setIsLoading(false);
       }
     }
-    if (location) {
-      fetchData(location);
-    }
+    fetchData(location);
   }, [location]);
 
   const current = places[index % places.length];

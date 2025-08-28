@@ -37,7 +37,7 @@
     "currentMonth": "How are you feeling this {month}?",
     "title": "With Sweetspot,\nyou can :",
     "tripStarts": "Your trip starts here",
-    "swipeRight": "Swipe right at least four of your dream spots in your city!",
+    "swipeRight": "Swipe right on the hidden gems that matches your vibe and budget!",
     "features": {
       "discover": {
         "title": "Discover",
@@ -68,8 +68,8 @@
     "basedOnSpots": "Alright, based on your dream spots...",
     "recommendedTitle": "Here's our recommended trips",
     "cardDescription": "Explore these amazing places!",
-    "noSpotsTitle": "You haven't picked any spots yet!",
-    "noSpotsDescription": "Swipe right on places you like and we'll whip up some trip ideas for you!"
+    "noSpotsTitle": "You haven't picked any hidden gems yet!",
+    "noSpotsDescription": "Swipe right on spots you like and we'll whip up some trip ideas for you!"
   },
   "collab": {
     "title": "Beautiful!",

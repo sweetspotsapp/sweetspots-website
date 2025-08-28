@@ -16,6 +16,7 @@ export default function ItineraryTransport({
   const [distance, setDistance] = useState<number | null>(null);
   const [duration, setDuration] = useState<number | null>(null);
   const [method, setMethod] = useState<string>("DRIVE");
+  const [isError, setIsError] = useState<boolean>(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -36,6 +37,8 @@ export default function ItineraryTransport({
             setDistance(response.data.distance);
             setDuration(response.data.duration);
           }
+        } catch (e) {
+          setIsError(true);
         } finally {
           setIsLoading(false);
         }
@@ -44,25 +47,28 @@ export default function ItineraryTransport({
     fetchData();
   }, []);
 
+  if (isError) {
+    return null
+  }
   return (
     <div className="w-full flex gap-4 items-center bg-blue-200 rounded-lg p-2 px-4">
-        {
-            (isLoading || !duration || !distance) ? (
-                <p>Calculating duration...</p>
-            ) : (
-                <>
-                    {method && (
-                        <span>
-                        {method === "DRIVE" && <Car />}
-                        {method === "WALK" && <Footprints />}
-                        {method === "BICYCLE" && <Bike />}
-                        {method === "TRANSIT" && <TrainFront />}
-                        </span>
-                    )}
-                    <p className="text-sm">{formatDistance(distance)} • {formatDuration({ seconds: duration })}</p>
-                </>
-            )
-        }
+      {isLoading || !duration || !distance ? (
+        <p className="text-sm">Calculating duration...</p>
+      ) : (
+        <>
+          {method && (
+            <span>
+              {method === "DRIVE" && <Car />}
+              {method === "WALK" && <Footprints />}
+              {method === "BICYCLE" && <Bike />}
+              {method === "TRANSIT" && <TrainFront />}
+            </span>
+          )}
+          <p className="text-sm">
+            {formatDistance(distance)} • {formatDuration({ seconds: duration })}
+          </p>
+        </>
+      )}
     </div>
   );
 }

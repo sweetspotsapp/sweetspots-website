@@ -108,6 +108,21 @@
     "description": "Kami lagi bangun platform ini khusus buat traveler kayak kamu. Kirim email kamu dan kamu bakal dapat akses pertama pas udah rilis.\nTenang, kita gabakal spam, kita bakal bantu kamu bikin perjalanan travel yang lebih baik.",
     "signUp": "Daftar Sekarang!"
   },
+  "benefits": {
+    "title": "Trus, apa untungnya?",
+    "saveTime": {
+      "title": "Gak ribet, hemat waktu",
+      "description": "Swipe aja tempat yang sesuai vibe kamu — mau kafe hidden gem, pantai santai, atau spot nongkrong malem. Semua langsung diurutin, cepet banget."
+    },
+    "planTogether": {
+      "title": "Rencanain bareng temen",
+      "description": "Satu aplikasi, satu rencana. Bisa voting tempat, kasih ide, dan tim kamu tetap kompak."
+    },
+    "liveUpdates": {
+      "title": "Rencana berubah? Santai aja.",
+      "description": "Update langsung soal cuaca, jam buka, atau perubahan dadakan — jadi trip kamu tetap seru."
+    }
+  },
   "footer": {
     "description": "Dari inspirasi ke itinerary — temukan dan rencanakan perjalanan sempurna kamu dalam satu tempat. Dibuat untuk travelers yang ingin perjalanan lebih baik, bukan lebih stres.",
     "product": "Produk",

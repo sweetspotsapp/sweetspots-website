@@ -9,6 +9,7 @@ import RecommendedTripsSection from '@/components/recommended-trips-section';
 import CollaborationSection from '@/components/collaboration-section';
 import Inquiry from '@/components/inquiry';
 import CTAToastOnScroll from '@/components/CTAToastOnScroll';
+import BenefitsSection from '@/components/benefits-section';
 
 export default function Home() {
   return (
@@ -22,6 +23,7 @@ export default function Home() {
       <RecommendedTripsSection />
 
       <CollaborationSection />
+      <BenefitsSection/>
       <CTASection />
       <Footer />
       {/* <ProblemSection /> */}

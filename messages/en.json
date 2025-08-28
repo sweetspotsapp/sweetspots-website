@@ -109,6 +109,21 @@
     "description": "Be part of the first 100 explorers — unlock all features early by joining the waitlist today",
     "signUp": "Sign Me Up!"
   },
+  "benefits": {
+    "title": "What's in it for me?",
+    "saveTime": {
+      "title": "Save hours of planning",
+      "description": "Swipe through spots that actually match your vibe — hidden cafés, chill beaches, or late-night hangs. Sorted in minutes."
+    },
+    "planTogether": {
+      "title": "Plan trips together",
+      "description": "One app, one plan. Vote on spots, drop ideas, and keep the whole squad on the same page."
+    },
+    "liveUpdates": {
+      "title": "Plans always changing? We got you.",
+      "description": "Live updates for weather, opening hours, and last-minute changes — so your trip vibes never die."
+    }
+  },
   "footer": {
     "description": "From inspo to itinerary — discover and plan your perfect trip in one place. Made for travelers who want better trips, not more stress.",
     "product": "Product",

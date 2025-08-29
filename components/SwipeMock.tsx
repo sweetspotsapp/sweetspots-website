@@ -69,7 +69,11 @@ export default function SwipeMock() {
         setIsLoading(false);
       }
     }
-    fetchData(location);
+    if (location) {
+      fetchData(location);
+    } else {
+      // fetchData
+    }
   }, [location]);
 
   const current = places[index % places.length];
@@ -133,11 +137,11 @@ export default function SwipeMock() {
                       className="absolute inset-0 m-4"
                       dragConstraints={{ left: 0, right: 0 }}
                       dragElastic={0.5}
-                      onDragEnd={handleDragEnd}
+                      // onDragEnd={handleDragEnd}
                       initial={{ opacity: 0, scale: 0.95 }}
                       animate={{ opacity: 1, scale: 1 }}
                       exit="exit"
-                      custom={direction}
+                      // custom={direction}
                       variants={{
                         exit: (dir: "left" | "right") => ({
                           x: dir === "left" ? -400 : 400,

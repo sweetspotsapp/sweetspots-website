@@ -8,8 +8,8 @@ import { Footer } from '@/components/footer';
 import RecommendedTripsSection from '@/components/recommended-trips-section';
 import CollaborationSection from '@/components/collaboration-section';
 import Inquiry from '@/components/inquiry';
-import CTAToastOnScroll from '@/components/CTAToastOnScroll';
 import BenefitsSection from '@/components/benefits-section';
+import CTAToastOnScroll from '@/components/cta/CTAToastOnScroll';
 
 export default function Home() {
   return (

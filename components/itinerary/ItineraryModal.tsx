@@ -1,9 +1,9 @@
 import React from "react";
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "./ui/dialog";
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "../ui/dialog";
 import { IItinerary } from "@/dto/itineraries/itinerary.dto";
-import PlanCard from "./PlanCard";
 import { priceLevelToCost } from "@/lib/utils";
 import ItineraryTransport from "./ItineraryTransport";
+import PlanCard from "./PlanCard";
 
 export default function ItineraryModal({
   open,

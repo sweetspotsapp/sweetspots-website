@@ -2,12 +2,12 @@
 
 import { IPlace } from "@/dto/places/place.dto";
 import React, { useState } from "react";
-import { Card, CardContent, CardFooter } from "./ui/card";
+import { Card, CardContent, CardFooter } from "../ui/card";
 import { Clock, Pin, Users } from "lucide-react";
 import ItineraryModal from "./ItineraryModal";
 import { IItinerary } from "@/dto/itineraries/itinerary.dto";
 import { useTranslations } from "next-intl";
-import { Button } from "./ui/button";
+import { Button } from "../ui/button";
 
 interface TripCardProps {
   places: IPlace[];

@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
-import PlanCard, { PlanCardProps, PlanCardRefs } from "./PlanCard";
+import PlanCard, { PlanCardProps, PlanCardRefs } from "./itinerary/PlanCard";
 import { placesMock } from "@/mockData/placesMock";
 import Cursor from "./Cursor";
 import { Button } from "./ui/button";

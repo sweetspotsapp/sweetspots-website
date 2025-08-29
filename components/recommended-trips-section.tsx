@@ -3,7 +3,7 @@
 import { placesMock } from "@/mockData/placesMock";
 import { useSwipedPlaces } from "@/store/useSwipedPlaces";
 import React, { useEffect } from "react";
-import TripCard from "./TripCard";
+import TripCard from "./itinerary/TripCard";
 import { createAutoItinerary } from "@/api/auto-itinerary/endpoints";
 import { IItinerary } from "@/dto/itineraries/itinerary.dto";
 import { IPlace } from "@/dto/places/place.dto";

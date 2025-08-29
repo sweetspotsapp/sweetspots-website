@@ -1,20 +1,21 @@
 import { IPlace } from "@/dto/places/place.dto";
-import { Card } from "./ui/card";
-import Cursor from "./Cursor";
 import React, {
   forwardRef,
   useImperativeHandle,
   useRef,
   useState,
 } from "react";
-import { Button } from "./ui/button";
 import { cn } from "@/lib/utils";
 import { Cloud, CloudFog, CloudRain, CloudRainWind, Snowflake, Sun, Tag } from "lucide-react";
+import { Card } from "../ui/card";
+import { Button } from "../ui/button";
+import { ConditionType } from "@/dto/weather/weather.dto";
+import WeatherIcon from "../weather/WeatherIcon";
 
 export interface Weather {
   temperature: number;
   description?: string;
-  weather: 'sunny' | 'cloudy' | 'rainy' | 'snowy' | 'stormy' | 'foggy';
+  weather: ConditionType;
 }
 
 export interface PlanCardProps {
@@ -58,7 +59,7 @@ const PlanCard = forwardRef<PlanCardRefs, PlanCardProps>(function PlanCard(
 
   const weather = React.useMemo(() => {
     if (weatherProp) return weatherProp;
-    const weathers: Weather['weather'][] = ['sunny', 'cloudy', 'rainy', 'snowy', 'stormy', 'foggy'];
+    const weathers: Weather['weather'][] = Object.values(ConditionType);
     const randomWeather = weathers[Math.floor(Math.random() * weathers.length)];
     const randomTemp = Math.floor(Math.random() * 21) + 5; // 5°C to 25°C
     return {
@@ -68,25 +69,6 @@ const PlanCard = forwardRef<PlanCardRefs, PlanCardProps>(function PlanCard(
     };
   }, [weatherProp]);
   // const weatherDescription = weather?.description || capitalCase(weather?.weather || "Sunny");
-
-  function renderWeatherIcon(weather: Weather) {
-    switch (weather.weather) {
-      case "sunny":
-        return <Sun className="text-yellow-500" />;
-      case "cloudy":
-        return <Cloud className="text-gray-500" />;
-      case "rainy":
-        return <CloudRain className="text-blue-500" />;
-      case "snowy":
-        return <Snowflake className="text-gray-600" />;
-      case "stormy":
-        return <CloudRainWind className="text-red-500" />;
-      case "foggy":
-        return <CloudFog className="text-gray-300" />;
-      default:
-        return <Sun className="text-yellow-500" />;
-    }
-  }
 
   const [imIn, setImIn] = useState(false);
 
@@ -150,7 +132,9 @@ const PlanCard = forwardRef<PlanCardRefs, PlanCardProps>(function PlanCard(
             <div className="flex justify-between">
               <p className="text-lg font-bold">{place.name}</p>
               <div className="flex gap-1 items-center">
-              {renderWeatherIcon(weather)}
+                <WeatherIcon
+                  condition={weather.weather}
+                />
               <p className="my-0 text-sm">{weather.temperature}°</p>
               </div>
             </div>

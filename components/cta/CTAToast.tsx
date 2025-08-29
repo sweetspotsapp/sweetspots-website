@@ -1,9 +1,9 @@
 import React, { ButtonHTMLAttributes } from 'react'
 import { motion } from 'framer-motion'
-import { Button } from './ui/button';
 import { useDrag } from '@use-gesture/react';
 import { XIcon } from 'lucide-react';
 import { useTranslations } from 'next-intl';
+import { Button } from '../ui/button';
 
 interface XButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {}
 

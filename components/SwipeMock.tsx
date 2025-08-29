@@ -7,21 +7,19 @@ import { Heart } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { useSwipedPlaces } from "@/store/useSwipedPlaces";
 // import { placesMock } from "@/mockData/placesMock";
-import { IPlace } from "@/dto/places/place.dto";
 import { getRecommendations } from "@/api/recommendations/endpoints";
 import { IRecommendedPlace } from "@/dto/recommendations/recommendation.dto";
 import SwipeCard from "./SwipePlaceCard";
 import SwipeCardSkeleton from "./skeletons/SwipeCardSkeleton";
 
 // const mockPlaces = placesMock;
+const DEFAULT_LOCATION = { lat: -37.8136, lng: 144.9631 }; // Melbourne CBD
 
 export default function SwipeMock() {
   const t = useTranslations("solution");
   const [index, setIndex] = useState(0);
   const [direction, setDirection] = useState<"left" | "right" | null>(null);
-  const [location, setLocation] = useState<
-    { lat: number; lng: number } | undefined
-  >(undefined);
+  const [location, setLocation] = useState<{ lat: number; lng: number }>(DEFAULT_LOCATION);
   const [isLoading, setIsLoading] = useState(true);
   const [cardVisible, setCardVisible] = useState(true);
   const [places, setPlaces] = useState<IRecommendedPlace[]>([]);
@@ -47,13 +45,10 @@ export default function SwipeMock() {
   }, []);
 
   useEffect(() => {
-    async function fetchData(
-      loc: { lat: number; lng: number } = {
-        lat: -37.8174877,
-        lng: 144.9582011,
-      }
-    ) {
-      setIsLoading(true)
+    let cancelled = false;
+
+    async function fetchData(loc: { lat: number; lng: number }) {
+      setIsLoading(true);
       try {
         const res = await getRecommendations({
           distance: 7,
@@ -62,18 +57,18 @@ export default function SwipeMock() {
           withReviews: false,
           diversity: 0.67,
         });
-        if (res.data) {
-          setPlaces(res.data);
-        }
+        if (!cancelled && res.data) setPlaces(res.data);
+      } catch (e) {
+        if (!cancelled) setError("Failed to load recommendations");
       } finally {
-        setIsLoading(false);
+        if (!cancelled) setIsLoading(false);
       }
     }
-    if (location) {
-      fetchData(location);
-    } else {
-      // fetchData
-    }
+
+    fetchData(location);
+    return () => {
+      cancelled = true;
+    };
   }, [location]);
 
   const current = places[index % places.length];

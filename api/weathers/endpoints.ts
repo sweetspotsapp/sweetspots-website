@@ -10,27 +10,27 @@ import { IWeatherDaily } from "@/dto/weathers/daily-weather.dto";
 export const getHourlyWeather = async (
   query: GetHourlyWeatherDto
 ): Promise<ApiResponse<IWeatherHourly[]>> => {
-  const res = await api.get('/weathers/hourly', { params: query });
+  const res = await api.get('/weather/hourly', { params: query });
   return res.data;
 };
 
 export const getHourlyWeatherByGeohashes = async (
   query: GetHourlyWeatherByGeohashesDto
 ): Promise<ApiResponse<IWeatherHourly[]>> => {
-  const res = await api.get('/weathers/hourly-geohash', { params: query });
+  const res = await api.get('/weather/hourly-geohash', { params: query });
   return res.data;
 };
 
 export const getDailyWeather = async (
   query: GetDailyWeatherDto
 ): Promise<ApiResponse<IWeatherDaily[]>> => {
-  const res = await api.get('/weathers/daily', { params: query });
+  const res = await api.get('/weather/daily', { params: query });
   return res.data;
 };
 
 export const getDailyWeatherByGeohashes = async (
   query: GetDailyWeatherByGeohashesDto
 ): Promise<ApiResponse<IWeatherDaily[]>> => {
-  const res = await api.get('/weathers/daily-geohash', { params: query });
+  const res = await api.get('/weather/daily-geohash', { params: query });
   return res.data;
 };

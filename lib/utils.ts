@@ -1,5 +1,6 @@
 import { clsx, type ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';
+import ngeo from "ngeohash";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -31,4 +32,9 @@ export function priceLevelToCost(priceLevel: string): number[] {
     default:
       return [15];
   }
+}
+
+const GEOHASH_PRECISION = 6;
+export function encodeGeohash(lat: number, lon: number, precision: number = GEOHASH_PRECISION): string {
+  return ngeo.encode(lat, lon, precision);
 }

@@ -11,6 +11,10 @@ import { getRecommendations } from "@/api/recommendations/endpoints";
 import { IRecommendedPlace } from "@/dto/recommendations/recommendation.dto";
 import SwipeCard from "./SwipePlaceCard";
 import SwipeCardSkeleton from "./skeletons/SwipeCardSkeleton";
+import { useHourlyWeathers } from "@/hooks/useHourlyWeathers";
+import { encodeGeohash } from "@/lib/utils";
+import moment from "moment";
+import { getHourlyWeatherByGeohashes } from "@/api/weathers/endpoints";
 
 // const mockPlaces = placesMock;
 const DEFAULT_LOCATION = { lat: -37.8136, lng: 144.9631 }; // Melbourne CBD
@@ -74,9 +78,30 @@ export default function SwipeMock() {
   const current = places[index % places.length];
 
   const { addSwipedPlaceId } = useSwipedPlaces();
+  const { setHourlyWeather, hourlyWeathers } = useHourlyWeathers();
 
   const handleSwipeRight = (id: string) => {
     addSwipedPlaceId(id);
+    const place = places.find((p) => p.id === id);
+    if (place) {
+      const geohash = encodeGeohash(place.latitude, place.longitude);
+      if (!hourlyWeathers[geohash]) {
+        const now = moment().startOf('day').toDate();
+        const threeHours = moment().add(3, 'hours').toDate();
+
+        getHourlyWeatherByGeohashes({
+          geohashes: [geohash],
+          lat: place.latitude,
+          lon: place.longitude,
+          fromUtc: now.toISOString(),
+          toUtc: threeHours.toISOString(),
+        }).then((res) => {
+          if (res.data) {
+            setHourlyWeather(geohash, res.data)
+          }
+        })
+      }
+    }
   };
 
   const swipe = (dir: "left" | "right") => {

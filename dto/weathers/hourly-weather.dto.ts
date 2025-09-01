@@ -1,3 +1,5 @@
+import { ConditionType } from "./weather.dto";
+
 export interface IWeatherHourly {
   geohash: string;
   hourStartUtc: Date;
@@ -10,7 +12,7 @@ export interface IWeatherHourly {
   cloudPct: string | null;
   humidityPct: string | null;
   pressureHpa: string | null;
-  iconCode: string | null;
+  iconCode: ConditionType | null;
   condition: string | null;
   provider: string;    
   fetchedAt: Date;

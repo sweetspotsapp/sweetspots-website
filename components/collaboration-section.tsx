@@ -303,6 +303,7 @@ export default function CollaborationSection() {
                   selectedField={plan1?.selectedField}
                   dateText={plan1?.dateText}
                   ref={card1Ref}
+                  disableWeather
                 />
               )}
               {plan2 && (
@@ -316,6 +317,7 @@ export default function CollaborationSection() {
                   selectedField={plan2?.selectedField}
                   dateText={plan2?.dateText}
                   ref={card2Ref}
+                  disableWeather
                 />
               )}
               <small className="text-xs text-orange-800">

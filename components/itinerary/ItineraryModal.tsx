@@ -42,10 +42,11 @@ export default function ItineraryModal({
                     closingTime={new Date()}
                     placeId={""}
                     collaborators={[]}
+                    hiddenButton
                   />
-                  {nextPlace && (
+                  {/* {nextPlace && (
                     <ItineraryTransport placeFrom={place} placeTo={nextPlace} />
-                  )}
+                  )} */}
                 </>
               );
             } else {

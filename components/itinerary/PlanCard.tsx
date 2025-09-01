@@ -1,16 +1,33 @@
 import { IPlace } from "@/dto/places/place.dto";
 import React, {
   forwardRef,
+  useCallback,
+  useEffect,
   useImperativeHandle,
   useRef,
   useState,
 } from "react";
-import { cn } from "@/lib/utils";
-import { Cloud, CloudFog, CloudRain, CloudRainWind, Snowflake, Sun, Tag } from "lucide-react";
+import { cn, encodeGeohash } from "@/lib/utils";
+import {
+  Cloud,
+  CloudFog,
+  CloudRain,
+  CloudRainWind,
+  Snowflake,
+  Sun,
+  Tag,
+} from "lucide-react";
 import { Card } from "../ui/card";
 import { Button } from "../ui/button";
 import { ConditionType } from "@/dto/weathers/weather.dto";
 import WeatherIcon from "../weather/WeatherIcon";
+import {
+  HourlyWeatherState,
+  useHourlyWeathers,
+} from "@/hooks/useHourlyWeathers";
+import { getHourlyWeatherByGeohashes } from "@/api/weathers/endpoints";
+import moment from "moment";
+import { IWeatherHourly } from "@/dto/weathers/hourly-weather.dto";
 
 export interface Weather {
   temperature: number;
@@ -32,6 +49,8 @@ export interface PlanCardProps {
     name: string;
   }[];
   weather?: Weather;
+  disableWeather?: boolean;
+  hiddenButton?: boolean;
 }
 
 export interface PlanCardRefs {
@@ -55,20 +74,71 @@ const PlanCard = forwardRef<PlanCardRefs, PlanCardProps>(function PlanCard(
     selectedField,
     dateText,
     weather: weatherProp,
+    disableWeather = false,
+    hiddenButton = false
   } = props;
 
-  const weather = React.useMemo(() => {
-    if (weatherProp) return weatherProp;
-    const weathers: Weather['weather'][] = Object.values(ConditionType);
-    const randomWeather = weathers[Math.floor(Math.random() * weathers.length)];
-    const randomTemp = Math.floor(Math.random() * 21) + 5; // 5°C to 25°C
-    return {
-      temperature: randomTemp,
-      weather: randomWeather,
-      description: randomWeather.charAt(0).toUpperCase() + randomWeather.slice(1),
-    };
-  }, [weatherProp]);
   // const weatherDescription = weather?.description || capitalCase(weather?.weather || "Sunny");
+  const weatherSelector = (geohash: string) => (s: HourlyWeatherState) =>
+    s.hourlyWeathers[geohash];
+
+  const geohash = React.useMemo(
+    () => encodeGeohash(Number(place.latitude), Number(place.longitude)),
+    [place.latitude, place.longitude]
+  );
+  const weatherData = useHourlyWeathers(
+    useCallback(weatherSelector(geohash), [geohash])
+  );
+
+  const [newWeathers, setNewWeathers] = useState<IWeatherHourly[]>(
+    weatherData || []
+  );
+  const newWeather = newWeathers[0];
+
+  const setHourlyWeather = useHourlyWeathers((s) => s.setHourlyWeather);
+
+  useEffect(() => {
+    if (disableWeather) return;
+    if (weatherData && weatherData.length > 0) return;
+
+    console.log('GETTING WEATHER FOR', place.name)
+
+    const now = moment(`${dateText} ${timeText}`, "YYYY-MM-DD HH:mm").toDate();
+    const to = moment(now).add(1, "hours").toDate();
+
+    let cancelled = false;
+    getHourlyWeatherByGeohashes({
+      geohashes: [geohash],
+      lat: Number(place.latitude),
+      lon: Number(place.longitude),
+      fromUtc: now.toISOString(),
+      toUtc: to.toISOString(),
+    })
+      .then((res) => {
+        if (cancelled) return;
+        if (res.data?.length) {
+          setHourlyWeather(geohash, res.data as IWeatherHourly[]);
+          console.log('SETTING WEATHER FOR', place.name, res.data)
+          setNewWeathers(res.data as IWeatherHourly[]);
+        }
+      })
+      .catch(() => {
+        /* optional: toast/log */
+      });
+
+    return () => {
+      cancelled = true;
+    };
+  }, [
+    disableWeather,
+    weatherData,
+    geohash,
+    dateText,
+    timeText,
+    place.latitude,
+    place.longitude,
+    setHourlyWeather,
+  ]);
 
   const [imIn, setImIn] = useState(false);
 
@@ -85,8 +155,8 @@ const PlanCard = forwardRef<PlanCardRefs, PlanCardProps>(function PlanCard(
   }));
 
   const defaultImages = [
-    'https://plus.unsplash.com/premium_photo-1664970900025-1e3099ca757a?q=80&w=774&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    'https://images.unsplash.com/photo-1521017432531-fbd92d768814?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+    "https://plus.unsplash.com/premium_photo-1664970900025-1e3099ca757a?q=80&w=774&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "https://images.unsplash.com/photo-1521017432531-fbd92d768814?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   ];
   const imageUrl =
     place.images?.[0]?.url ||
@@ -131,12 +201,14 @@ const PlanCard = forwardRef<PlanCardRefs, PlanCardProps>(function PlanCard(
           <div className="flex flex-col gap-2 w-full">
             <div className="flex justify-between">
               <p className="text-lg font-bold">{place.name}</p>
-              <div className="flex gap-1 items-center">
-                <WeatherIcon
-                  condition={weather.weather}
-                />
-              <p className="my-0 text-sm">{weather.temperature}°</p>
-              </div>
+              {
+                newWeather && (
+                  <div className="flex gap-1 items-center">
+                    <WeatherIcon condition={newWeather.iconCode || ConditionType.CLEAR} />
+                    <p className="my-0 text-sm">{newWeather.tempC}°</p>
+                  </div>
+                )
+              }
             </div>
             {/* <p className="text-sm text-gray-500">Place ID: {placeId}</p> */}
             {/* BUDGET */}
@@ -149,7 +221,7 @@ const PlanCard = forwardRef<PlanCardRefs, PlanCardProps>(function PlanCard(
             >
               <Tag size={12} />
               <p ref={budgetRef} className="text-sm">
-                ${costRange.join('-')}/per person
+                ${costRange.join("-")}/per person
               </p>
             </div>
             {/* <p className="text-sm">
@@ -179,14 +251,18 @@ const PlanCard = forwardRef<PlanCardRefs, PlanCardProps>(function PlanCard(
             </div>
           </div>
         </Card>
-        <Button
-          ref={buttonRef}
-          variant={!imIn ? "default" : "outline"}
-          className="w-full rounded-t-none rounded-b-xl pointer-events-none"
-          onClick={() => setImIn(!imIn)}
-        >
-          {!imIn ? "I'm In!" : "I'm Out!"}
-        </Button>
+        {
+          !hiddenButton && (
+            <Button
+              ref={buttonRef}
+              variant={!imIn ? "default" : "outline"}
+              className="w-full rounded-t-none rounded-b-xl pointer-events-none"
+              onClick={() => setImIn(!imIn)}
+            >
+              {!imIn ? "I'm In!" : "I'm Out!"}
+            </Button>
+          )
+        }
       </div>
     </div>
   );

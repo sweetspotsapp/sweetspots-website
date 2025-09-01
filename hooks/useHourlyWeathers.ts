@@ -1,7 +1,7 @@
 import { IWeatherHourly } from '@/dto/weathers/hourly-weather.dto';
 import { create } from 'zustand';
 
-type HourlyWeatherState = {
+export type HourlyWeatherState = {
     hourlyWeathers: { [geohash: string]: IWeatherHourly[] };
     setHourlyWeather: (geohash: string, weathers: IWeatherHourly[]) => void;
     removeHourlyWeather: (geohash: string) => void;

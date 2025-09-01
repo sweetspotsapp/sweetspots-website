@@ -9,7 +9,7 @@ import { cn } from "@/lib/utils";
 import { Cloud, CloudFog, CloudRain, CloudRainWind, Snowflake, Sun, Tag } from "lucide-react";
 import { Card } from "../ui/card";
 import { Button } from "../ui/button";
-import { ConditionType } from "@/dto/weather/weather.dto";
+import { ConditionType } from "@/dto/weathers/weather.dto";
 import WeatherIcon from "../weather/WeatherIcon";
 
 export interface Weather {

@@ -1,5 +1,5 @@
 import React from "react";
-import { ConditionType } from "@/dto/weather/weather.dto";
+import { ConditionType } from "@/dto/weathers/weather.dto";
 import {
   Sun,
   Moon,

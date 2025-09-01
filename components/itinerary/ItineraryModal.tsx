@@ -16,7 +16,7 @@ export default function ItineraryModal({
 }) {
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="h-[80dvh] overflow-y-scroll rounded-lg">
+      <DialogContent className="max-h-[80dvh] overflow-y-scroll rounded-lg">
         <DialogHeader>
           <DialogTitle>{itinerary.name}</DialogTitle>
         </DialogHeader>

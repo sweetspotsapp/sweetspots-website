@@ -3142,6 +3142,11 @@ next-themes@^0.3.0:
     "@next/swc-win32-ia32-msvc" "14.2.30"
     "@next/swc-win32-x64-msvc" "14.2.30"
 
+ngeohash@^0.6.3:
+  version "0.6.3"
+  resolved "https://registry.npmjs.org/ngeohash/-/ngeohash-0.6.3.tgz"
+  integrity sha512-kltF0cOxgx1AbmVzKxYZaoB0aj7mOxZeHaerEtQV0YaqnkXNq26WWqMmJ6lTqShYxVRWZ/mwvvTrNeOwdslWiw==
+
 node-releases@^2.0.18:
   version "2.0.18"
   resolved "https://registry.npmjs.org/node-releases/-/node-releases-2.0.18.tgz"

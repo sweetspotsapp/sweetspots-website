@@ -51,6 +51,8 @@ export default function TripCard({
 
   const ctaLabel = ctaLabels[ctaLabelIdx];
 
+  const [isHovered, setIsHovered] = useState(false);
+
   return (
     <>
       <ItineraryModal
@@ -58,9 +60,15 @@ export default function TripCard({
         onOpenChange={setModalOpen}
         itinerary={itinerary}
       />
-      <Card className="rounded-3xl hover:shadow-md" >
+      <Card className="rounded-3xl hover:shadow-md" onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
         <CardContent className="p-6 cursor-pointer" onClick={() => setModalOpen(true)}>
           <div className="relative grid grid-cols-2 gap-3 [grid-auto-flow:dense]">
+                <div
+                  className="absolute inset-0 bg-orange-600/50 rounded-xl pointer-events-none z-10 flex items-center justify-center transition-opacity duration-150 opacity-100"
+                  style={{ opacity: isHovered ? 1 : 0 }}
+                >
+                  <span className="text-white">View Itinerary</span>
+                </div>
             {images.map((src, i) => {
               const isLast = i === n - 1;
               let tile = "aspect-square"; // default

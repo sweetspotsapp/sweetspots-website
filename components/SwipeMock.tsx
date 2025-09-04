@@ -19,7 +19,12 @@ import { getHourlyWeatherByGeohashes } from "@/api/weathers/endpoints";
 // const mockPlaces = placesMock;
 const DEFAULT_LOCATION = { lat: -37.8136, lng: 144.9631 }; // Melbourne CBD
 
-export default function SwipeMock() {
+type SwipeMockProps = {
+  vibes?: string[];
+  maxPriceRange?: string;
+};
+
+export default function SwipeMock({ vibes, maxPriceRange }: SwipeMockProps) {
   const t = useTranslations("solution");
   const [index, setIndex] = useState(0);
   const [direction, setDirection] = useState<"left" | "right" | null>(null);
@@ -60,6 +65,8 @@ export default function SwipeMock() {
           longitude: loc.lng,
           withReviews: false,
           diversity: 0.67,
+          vibes: vibes,
+          priceRange: maxPriceRange ? ['$', maxPriceRange] : undefined,
         });
         if (!cancelled && res.data) setPlaces(res.data);
       } catch (e) {
@@ -73,7 +80,7 @@ export default function SwipeMock() {
     return () => {
       cancelled = true;
     };
-  }, [location]);
+  }, [location, vibes, maxPriceRange]);
 
   const current = places[index % places.length];
 
@@ -145,7 +152,7 @@ export default function SwipeMock() {
 
             {/* Card */}
             <div className="px-4 py-4 h-3/4 relative">
-              {current ? (
+              {isLoading ? (<SwipeCardSkeleton />) : current ? (
                 <AnimatePresence
                   custom={direction}
                   onExitComplete={handleExitComplete}
@@ -184,8 +191,17 @@ export default function SwipeMock() {
                   )}
                 </AnimatePresence>
               ) : (
-                <SwipeCardSkeleton/>
-              )}
+                <div>
+                  <div className="h-64 flex flex-col items-center justify-center text-center px-8">
+                    <p>
+                      Can&apos;t find hidden gems for you right now. :(
+                    </p>
+                    <p className="mt-2 text-sm text-gray-500">
+                    Try again later or adjust your filters!
+                    </p>
+                  </div>
+                </div>
+              ) }
             </div>
 
             {/* Buttons */}

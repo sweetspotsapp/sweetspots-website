@@ -8,3 +8,12 @@ export const calculateTimeAndDistance = async (
   const res = await api.post('/places/calculate-time-distance', data);
   return res.data;
 };
+
+export const getRandomVibes = async (
+  data?: {
+    limit: number;
+  }
+): Promise<ApiResponse<string[]>> => {
+  const res = await api.get('/places/random-vibes', { params: data });
+  return res.data;
+};

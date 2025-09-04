@@ -4,6 +4,8 @@ import { Button } from '@/components/ui/button';
 import { SIGNUP_URL } from '@/lib/constants';
 import { useLocale, useTranslations } from 'next-intl';
 import SwipeMock from './SwipeMock';
+import FilterCard from './FilterCard';
+import { useState } from 'react';
 
 export function SolutionSection() {
   const t = useTranslations('solution');
@@ -19,6 +21,19 @@ export function SolutionSection() {
 
   const currentMonthText = t('currentMonth', { month: new Date().toLocaleString(lang, { month: 'long' }) });
 
+  const [maxBudget, setMaxBudget] = useState<number | undefined>(undefined);
+  const [vibes, setVibes] = useState<string[]>([]);
+
+  const maxBudgetToPriceRange = (budget: number | undefined) => {
+    if (!budget || budget <= 1) return '$';
+    if (budget === 2) return '$$';
+    if (budget === 3) return '$$$';
+    if (budget === 4) return '$$$$';
+    return '$';
+  };
+
+  const priceRange = maxBudgetToPriceRange(maxBudget);
+
   return (
     <section className='overflow-hidden'>
       <section className="pt-20 -mb-24 px-4 sm:px-6 lg:px-8 bg-orange-500">
@@ -28,14 +43,25 @@ export function SolutionSection() {
             <div className="space-y-2 animate-slide-in-left items-center ld:items-start lg:mt-20 text-white">
               <p className='text-xl font-bold'>{t('tripStarts')}</p>
               <p className='text-3xl font-bold'>{currentMonthText}</p>
-              <p className='text-lg'>{t('swipeRight')}</p>
+              <p className='text-lg pb-4'>{t('swipeRight')}</p>
+              <div className='max-w-[400px]'>
+                <FilterCard
+                  maxBudget={maxBudget}
+                  vibes={vibes}
+                  onChangeMaxBudget={setMaxBudget}
+                  onChangeVibes={setVibes}
+                />
+              </div>
             </div>
 
             {/* Right Phone Mockup */}
             <div className="relative animate-slide-in-right">
               <div className="relative mx-auto max-w-sm">
                 {/* Phone Frame */}
-                <SwipeMock />
+                <SwipeMock
+                  vibes={vibes}
+                  maxPriceRange={priceRange}
+                />
               </div>
             </div>
           </div>

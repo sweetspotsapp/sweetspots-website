@@ -157,7 +157,7 @@ export default function SwipeMock() {
                       className="absolute inset-0 m-4"
                       dragConstraints={{ left: 0, right: 0 }}
                       dragElastic={0.5}
-                      // onDragEnd={handleDragEnd}
+                      onDragEnd={handleDragEnd}
                       initial={{ opacity: 0, scale: 0.95 }}
                       animate={{ opacity: 1, scale: 1 }}
                       exit="exit"

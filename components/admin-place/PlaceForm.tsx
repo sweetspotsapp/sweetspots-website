@@ -97,6 +97,7 @@ export type PlaceFormProps = {
   submitLabel?: string;
   onCancel?: () => void;
   className?: string;
+  isSubmitting?: boolean;
 };
 
 export default function PlaceForm({
@@ -106,6 +107,7 @@ export default function PlaceForm({
   submitLabel = "Save Place",
   onCancel,
   className,
+  isSubmitting = false,
 }: PlaceFormProps) {
   const form = useForm<PlaceFormValues>({
     resolver: zodResolver(placeFormSchema),
@@ -125,7 +127,6 @@ export default function PlaceForm({
   const {
     control,
     handleSubmit,
-    formState: { isSubmitting },
     setValue,
     watch,
   } = form;

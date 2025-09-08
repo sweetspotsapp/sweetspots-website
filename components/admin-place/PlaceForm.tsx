@@ -188,7 +188,7 @@ export default function PlaceForm({
   }
 
   return (
-    <Card className={className}>
+    <div className={className}>
       <CardHeader>
         <CardTitle className="flex items-center gap-2">
           <MapPin className="h-5 w-5" /> Place
@@ -374,8 +374,8 @@ export default function PlaceForm({
                       latitude: lat ?? -37.8136,
                       zoom: 14,
                     }}
-                    longitude={lng ?? 144.9631}
-                    latitude={lat ?? -37.8136}
+                    // longitude={lng ?? 144.9631}
+                    // latitude={lat ?? -37.8136}
                     mapboxAccessToken={process.env.NEXT_PUBLIC_MAPBOX_TOKEN}
                     mapStyle="mapbox://styles/mapbox/streets-v12"
                     onClick={handleMapClick}
@@ -411,7 +411,7 @@ export default function PlaceForm({
           </form>
         </Form>
       </CardContent>
-    </Card>
+    </div>
   );
 }
 

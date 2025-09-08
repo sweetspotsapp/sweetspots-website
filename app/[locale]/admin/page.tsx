@@ -1,5 +1,6 @@
 import { Button } from '@/components/ui/button'
 import { DataTable } from '@/components/ui/DataTable'
+import { Link } from '@/i18n/navigation'
 import React from 'react'
 
 export default function AdminPage() {
@@ -10,7 +11,9 @@ export default function AdminPage() {
     ]
   return (
     <div className='container mx-auto p-4'>
-        <Button>Add New Place</Button>
+        <Link href="/admin/add-place">
+          <Button>Add New Place</Button>
+        </Link>
         <DataTable items={mockTable} />
     </div>
   )

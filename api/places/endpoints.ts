@@ -1,6 +1,6 @@
 import { CalculateDistanceDto } from "@/dto/places/calculate-distance.dto";
 import { api } from "../client";
-import { ApiResponse } from "../pagination.dto";
+import { ApiPluralResponse, ApiResponse } from "../pagination.dto";
 import { PlaceFormValues } from "@/components/admin-place/PlaceForm";
 import { IPlace } from "@/dto/places/place.dto";
 import { GetPlacesQueryDto } from "@/dto/places/get-places-query.dto";
@@ -45,7 +45,7 @@ export const deletePlace = async (
 
 export const getPlaces = async (
   params?: GetPlacesQueryDto
-): Promise<ApiResponse<IPlace[]>> => {
+): Promise<ApiPluralResponse<IPlace>> => {
   const res = await api.get('/places', { params });
   return res.data;
 };

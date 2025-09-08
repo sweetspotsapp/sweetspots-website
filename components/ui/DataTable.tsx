@@ -30,12 +30,15 @@ type DataTableProps<T extends Record<string, any>> = {
   caption?: string
   /** Actions for each row */
   actions?: Action<T>[]
+  /** Keys to exclude from rendering as table columns */
+  excludeFields?: (keyof T)[]
 }
 
 export function DataTable<T extends Record<string, any>>({
   items,
   caption,
   actions = [],
+  excludeFields = [],
 }: DataTableProps<T>) {
   if (!items || items.length === 0) {
     return (
@@ -46,7 +49,9 @@ export function DataTable<T extends Record<string, any>>({
   }
 
   // Dynamically extract table headers from the first item
-  const headers = Object.keys(items[0]) as (keyof T)[]
+  const headers = (Object.keys(items[0]) as (keyof T)[]).filter(
+    (header) => !excludeFields.includes(header)
+  )
 
   return (
     <div className="rounded-md border">
@@ -60,7 +65,9 @@ export function DataTable<T extends Record<string, any>>({
                 {String(header).replace(/_/g, " ")}
               </TableHead>
             ))}
-            {actions.length > 0 && <TableHead className="text-right">Actions</TableHead>}
+            {actions.length > 0 && (
+              <TableHead className="text-right">Actions</TableHead>
+            )}
           </TableRow>
         </TableHeader>
 

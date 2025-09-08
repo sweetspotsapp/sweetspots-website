@@ -16,7 +16,7 @@ export default function AddPlacePage() {
   }
   return (
     <div className="container mx-auto p-4">
-      <Link href="/admin">
+      <Link href="/admin/places">
         <Button>Back to Admin</Button>
       </Link>
       <PlaceForm isSubmitting={isSubmitting} onSubmit={handleSubmit} />

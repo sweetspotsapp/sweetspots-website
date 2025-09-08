@@ -32,7 +32,7 @@ export const updatePlace = async (
   placeId: string,
   data: Partial<PlaceFormValues>
 ): Promise<ApiResponse<IPlace>> => {
-  const res = await api.put(`/places/${placeId}`, data);
+  const res = await api.patch(`/places/${placeId}`, data);
   return res.data;
 };
 

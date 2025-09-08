@@ -1,4 +1,3 @@
-import { notFound } from "next/navigation";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
@@ -8,6 +7,7 @@ import { getPlace } from "@/api/places/endpoints";
 import PlaceMap from "@/components/admin-place/PlaceMap";
 import CopyButton from "@/components/CopyButton";
 import { Link } from "@/i18n/navigation";
+import { notFound } from "next/navigation";
 
 export default async function PlaceDetailsPage({
   params,
@@ -85,7 +85,7 @@ export default async function PlaceDetailsPage({
         <div className="flex gap-2">
           {/* Example edit path if you have an admin editor */}
           <Button asChild variant="outline">
-            <Link href={`/admin/places/${id}`}>
+            <Link href={`/admin/places/${id}/edit`}>
               <Pencil className="mr-2 h-4 w-4" /> Edit
             </Link>
           </Button>

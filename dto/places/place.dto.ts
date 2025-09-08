@@ -10,6 +10,7 @@ export interface IPlace {
   duration?: string | null;
   priceRange: string;
   vibes: string[];
+  types: string[];
   latitude: string;
   longitude: string;
   category: string;

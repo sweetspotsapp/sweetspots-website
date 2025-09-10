@@ -1,11 +1,13 @@
+export interface PaginationCore {
+  page: number;
+  limit: number;
+  total: number;
+  totalPages: number;
+}
+
 export interface PaginationResult<T> {
     data: T[];
-    pagination: {
-        page: number;
-        limit: number;
-        total: number;
-        totalPages: number;
-    };
+    pagination: PaginationCore;
 }
 
 export interface ApiPluralResponse<T> {

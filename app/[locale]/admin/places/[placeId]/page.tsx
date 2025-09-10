@@ -8,6 +8,7 @@ import PlaceMap from "@/components/admin-place/PlaceMap";
 import CopyButton from "@/components/CopyButton";
 import { Link } from "@/i18n/navigation";
 import { notFound } from "next/navigation";
+import DeletePlaceConfirmDialog from "@/components/admin-place/DeletePlaceConfirmDialog";
 
 export default async function PlaceDetailsPage({
   params,
@@ -86,9 +87,10 @@ export default async function PlaceDetailsPage({
           {/* Example edit path if you have an admin editor */}
           <Button asChild variant="outline">
             <Link href={`/admin/places/${id}/edit`}>
-              <Pencil className="mr-2 h-4 w-4" /> Edit
+              <Pencil className="h-4 w-4" /> Edit
             </Link>
           </Button>
+          <DeletePlaceConfirmDialog placeId={id} />
           {googleWebsite && (
             <Button asChild>
               <a href={googleWebsite} target="_blank" rel="noreferrer">

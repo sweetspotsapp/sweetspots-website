@@ -7,3 +7,8 @@ export const getUploadSas = async (data: CreateUploadDto): Promise<ApiResponse<U
   const res = await api.post('/upload/sas', data);
   return res.data;
 }
+
+export const getReadSas = async (blobPath: string): Promise<ApiResponse<{ url: string }>> => {
+  const res = await api.post('/upload/read-sas', { blobPath });
+  return res.data;
+}

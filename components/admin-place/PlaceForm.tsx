@@ -1,11 +1,12 @@
 "use client";
 
-import React, { useCallback, useEffect, useMemo, useState } from "react";
+import React, { useCallback, useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Map, { MapMouseEvent, Marker, NavigationControl } from "react-map-gl/mapbox";
 import "mapbox-gl/dist/mapbox-gl.css";
+
 // shadcn/ui
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -30,17 +31,16 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 
 // Icons
-import { MapPin, Plus, X } from "lucide-react";
+import { MapPin, Plus, X, Trash2 } from "lucide-react";
+import UploadDropzone, { UploadedResult } from "@/components/UploadDropzone";
+import { UploadResponseDto } from "@/dto/upload/upload-response.dto";
+import { getReadSas } from "@/api/upload/endpoints";
 
-// ——————————————————————————————————————————
-// ZOD SCHEMA (aligns with your Drizzle table where relevant)
-// ——————————————————————————————————————————
+// ---------------- ZOD SCHEMA ----------------
 export const placeFormSchema = z.object({
   name: z.string().min(1, "Name is required"),
   description: z.string().min(1, "Description is required"),
-  priceRange: z.enum(["$", "$$", "$$$", "$$$$"], {
-    error: "Price range is required",
-  }),
+  priceRange: z.enum(["$", "$$", "$$$", "$$$$"], { error: "Price range is required" }),
   latitude: z
     .number({ error: "Latitude must be a number" })
     .min(-90, "Min -90")
@@ -51,19 +51,14 @@ export const placeFormSchema = z.object({
     .max(180, "Max 180"),
   address: z.string().min(1, "Address is required"),
   vibes: z.array(z.string().min(1), { error: "Vibes are required" }),
+  images: z.array(z.string().url()), // 👈 list of blob URLs
 });
 
 export type PlaceFormValues = z.infer<typeof placeFormSchema>;
 
-// Small helper to coerce input string → number in RHF Controller
-const asNumber = (v: string) =>
-  v === "" || v === undefined ? undefined : Number(v);
+const asNumber = (v: string) => (v === "" || v === undefined ? undefined : Number(v));
 
-// Reverse geocode via Nominatim (OpenStreetMap)
-async function reverseGeocode(
-  lat: number,
-  lng: number
-): Promise<string | null> {
+async function reverseGeocode(lat: number, lng: number): Promise<string | null> {
   try {
     const res = await fetch(
       `https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lng}&format=json&zoom=18&addressdetails=1`,
@@ -85,7 +80,7 @@ async function reverseGeocode(
         .filter(Boolean)
         .join(", ")
     );
-  } catch (e) {
+  } catch {
     return null;
   }
 }
@@ -119,35 +114,25 @@ export default function PlaceForm({
       latitude: defaultValues?.latitude ?? -37.8136,
       longitude: defaultValues?.longitude ?? 144.9631,
       address: defaultValues?.address ?? "",
-      vibes: defaultValues?.vibes ?? [], // keep it present
+      vibes: defaultValues?.vibes ?? [],
+      images: defaultValues?.images ?? [], // 👈 start empty
       ...defaultValues,
-    } satisfies Partial<PlaceFormValues>,
+    },
   });
 
-  const {
-    control,
-    handleSubmit,
-    setValue,
-    watch,
-  } = form;
+  const { control, handleSubmit, setValue, watch } = form;
 
   const lat = watch("latitude");
   const lng = watch("longitude");
+  const vibes = watch("vibes");
+  const images = watch("images");
 
   const [fetchingAddress, setFetchingAddress] = useState(false);
 
   const handlePickLocation = useCallback(
     async (newLat: number, newLng: number) => {
-      setValue("latitude", newLat, {
-        shouldDirty: true,
-        shouldTouch: true,
-        shouldValidate: true,
-      });
-      setValue("longitude", newLng, {
-        shouldDirty: true,
-        shouldTouch: true,
-        shouldValidate: true,
-      });
+      setValue("latitude", newLat, { shouldDirty: true, shouldTouch: true, shouldValidate: true });
+      setValue("longitude", newLng, { shouldDirty: true, shouldTouch: true, shouldValidate: true });
     },
     [setValue]
   );
@@ -160,13 +145,11 @@ export default function PlaceForm({
     setFetchingAddress(false);
   }, [lat, lng, setValue]);
 
-  // Vibes tagging helpers
+  // Vibes
   const [vibeInput, setVibeInput] = useState("");
-  const vibes = watch("vibes");
   const addVibe = useCallback(() => {
     const v = vibeInput.trim();
-    if (!v) return;
-    if (vibes.includes(v)) return;
+    if (!v || vibes.includes(v)) return;
     setValue("vibes", [...vibes, v], { shouldDirty: true });
     setVibeInput("");
   }, [vibeInput, vibes, setValue]);
@@ -180,13 +163,29 @@ export default function PlaceForm({
     [vibes, setValue]
   );
 
-  // Map click handler component
   function handleMapClick(event: MapMouseEvent) {
-    // const [lng, lat] = event.lngLat;
-    const lng = event.lngLat.lng;
-    const lat = event.lngLat.lat;
-    handlePickLocation(lat, lng);
+    handlePickLocation(event.lngLat.lat, event.lngLat.lng);
   }
+
+  // --------- IMAGE MANAGEMENT ----------
+  const handleFileUploaded = async (result: UploadedResult) => {
+    if (result.ok && result.response) {
+      const blobPath = result.response?.blobPath;
+      if (!blobPath) return;
+      const read = await getReadSas(blobPath);
+      const readUrl = read.data?.url;
+      if (!readUrl) return;
+      setValue("images", [...images, readUrl], { shouldDirty: true });
+    }
+  };
+
+  const removeImage = (url: string) => {
+    setValue(
+      "images",
+      images.filter((u) => u !== url),
+      { shouldDirty: true }
+    );
+  };
 
   return (
     <div className={className}>
@@ -219,10 +218,7 @@ export default function PlaceForm({
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>Price Range</FormLabel>
-                    <Select
-                      onValueChange={field.onChange}
-                      defaultValue={field.value}
-                    >
+                    <Select onValueChange={field.onChange} defaultValue={field.value}>
                       <FormControl>
                         <SelectTrigger>
                           <SelectValue placeholder="Select price" />
@@ -250,12 +246,7 @@ export default function PlaceForm({
                       <FormControl>
                         <Input placeholder="Street, City, State" {...field} />
                       </FormControl>
-                      <Button
-                        type="button"
-                        variant="secondary"
-                        onClick={autoFillAddress}
-                        disabled={fetchingAddress}
-                      >
+                      <Button type="button" variant="secondary" onClick={autoFillAddress} disabled={fetchingAddress}>
                         {fetchingAddress ? "Finding..." : "Use Map Location"}
                       </Button>
                     </div>
@@ -271,11 +262,7 @@ export default function PlaceForm({
                   <FormItem className="md:col-span-2">
                     <FormLabel>Description</FormLabel>
                     <FormControl>
-                      <Textarea
-                        rows={4}
-                        placeholder="What makes this place special?"
-                        {...field}
-                      />
+                      <Textarea rows={4} placeholder="What makes this place special?" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -295,9 +282,7 @@ export default function PlaceForm({
                         type="number"
                         step="any"
                         value={field.value ?? ""}
-                        onChange={(e) =>
-                          field.onChange(asNumber(e.target.value))
-                        }
+                        onChange={(e) => field.onChange(asNumber(e.target.value))}
                       />
                     </FormControl>
                     <FormMessage />
@@ -316,9 +301,7 @@ export default function PlaceForm({
                         type="number"
                         step="any"
                         value={field.value ?? ""}
-                        onChange={(e) =>
-                          field.onChange(asNumber(e.target.value))
-                        }
+                        onChange={(e) => field.onChange(asNumber(e.target.value))}
                       />
                     </FormControl>
                     <FormMessage />
@@ -346,17 +329,9 @@ export default function PlaceForm({
                 </div>
                 <div className="flex flex-wrap gap-2">
                   {vibes.map((v) => (
-                    <Badge
-                      key={v}
-                      variant="secondary"
-                      className="flex gap-1 items-center"
-                    >
+                    <Badge key={v} variant="secondary" className="flex gap-1 items-center">
                       {v}
-                      <button
-                        type="button"
-                        onClick={() => removeVibe(v)}
-                        aria-label={`Remove ${v}`}
-                      >
+                      <button type="button" onClick={() => removeVibe(v)} aria-label={`Remove ${v}`}>
                         <X className="ml-1 h-3 w-3" />
                       </button>
                     </Badge>
@@ -365,6 +340,7 @@ export default function PlaceForm({
               </div>
             </div>
 
+            {/* MAP */}
             <div className="space-y-3">
               <FormLabel>Pick Location on Map</FormLabel>
               <div className="rounded-md overflow-hidden border">
@@ -375,26 +351,50 @@ export default function PlaceForm({
                       latitude: lat ?? -37.8136,
                       zoom: 14,
                     }}
-                    // longitude={lng ?? 144.9631}
-                    // latitude={lat ?? -37.8136}
                     mapboxAccessToken={process.env.NEXT_PUBLIC_MAPBOX_TOKEN}
                     mapStyle="mapbox://styles/mapbox/streets-v12"
                     onClick={handleMapClick}
                     style={{ width: "100%", height: "100%" }}
                   >
                     <NavigationControl />
-                    <Marker
-                      longitude={lng ?? 144.9631}
-                      latitude={lat ?? -37.8136}
-                    />
+                    <Marker longitude={lng ?? 144.9631} latitude={lat ?? -37.8136} />
                   </Map>
                 </div>
               </div>
-              <p className="text-sm text-muted-foreground">
-                Click anywhere on the map to set latitude & longitude. Then use
-                &quot;Use Map Location&quot; to auto-fill the address from
-                OpenStreetMap.
-              </p>
+            </div>
+
+            <Separator />
+
+            {/* IMAGES */}
+            <div className="space-y-3">
+              <FormLabel>Images</FormLabel>
+              <UploadDropzone
+                multiple
+                folder="places"
+                accept={{ "image/*": [".png", ".jpg", ".jpeg", ".webp"] }}
+                maxSize={30 * 1024 * 1024}
+                onFileUploaded={handleFileUploaded}
+              />
+
+              {images.length > 0 && (
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+                  {images.map((url) => (
+                    <div key={url} className="group relative overflow-hidden rounded-lg border">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img src={url} alt="" className="h-36 w-full object-cover" />
+                      <button
+                        type="button"
+                        onClick={() => removeImage(url)}
+                        className="absolute right-2 top-2 hidden rounded-md bg-white/90 p-1 text-rose-600 shadow-sm group-hover:block"
+                        aria-label="Remove image"
+                        title="Remove"
+                      >
+                        <Trash2 className="h-4 w-4" />
+                      </button>
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
 
             <Separator />
@@ -415,27 +415,3 @@ export default function PlaceForm({
     </div>
   );
 }
-
-// ——————————————————————————————————————————
-// QUICK USAGE EXAMPLE (adjust imports/paths as needed)
-// ——————————————————————————————————————————
-// import PlaceForm, { PlaceFormValues } from "@/components/PlaceForm";
-//
-// export default function NewPlacePage() {
-//   const handleSubmit = async (values: PlaceFormValues) => {
-//     // call your API here
-//     console.log(values);
-//   };
-//   return (
-//     <div className="max-w-3xl mx-auto p-6">
-//       <PlaceForm onSubmit={handleSubmit} />
-//     </div>
-//   );
-// }
-//
-// ——————————————————————————————————————————
-// INSTALL NOTES
-// ——————————————————————————————————————————
-// npm i react-hook-form zod @hookform/resolvers leaflet react-leaflet
-// Ensure shadcn/ui components (Form, Input, Textarea, Select, Button, Badge, Card, Separator) are installed.
-// Add `import "leaflet/dist/leaflet.css";` globally (e.g., in app/layout.tsx) if you prefer.

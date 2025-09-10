@@ -1,41 +1,61 @@
 "use client";
 
+import * as React from "react";
+import { useSearchParams } from "next/navigation";
 import { getPlaces } from "@/api/places/endpoints";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { DataTable } from "@/components/ui/DataTable";
 import { IPlace } from "@/dto/places/place.dto";
-import { Link } from "@/i18n/navigation";
+import { Link, useRouter } from "@/i18n/navigation";
 import moment from "moment";
-import React, { useEffect } from "react";
+import { ApiPluralResponse } from "@/api/pagination.dto";
+import { Paginator } from "@/components/ui/Paginator";
+import { usePaginationParams } from "@/hooks/usePaginationParams";
 
 export default function PlacesPage() {
-  const [places, setPlaces] = React.useState<IPlace[]>([]);
+  const router = useRouter();
+  const searchParams = useSearchParams();
 
-  useEffect(() => {
-    getPlaces().then((res) => {
-      if (res.data) {
-        setPlaces(res.data?.data || []);
+  // Read page/limit from the URL; fall back to sensible defaults
+  const { page, limit } = usePaginationParams();
+
+  const [isLoading, setIsLoading] = React.useState(false);
+  const [resp, setResp] = React.useState<ApiPluralResponse<IPlace> | null>(null);
+
+  React.useEffect(() => {
+    let cancelled = false;
+    (async () => {
+      setIsLoading(true);
+      try {
+        const r = await getPlaces({ page, limit }); // make sure your endpoint accepts { page, limit }
+        if (!cancelled) setResp(r);
+      } catch (error) {
+        if (!cancelled) setResp(null);
+      } finally {
+        setIsLoading(false);
       }
-    });
-  }, []);
+    })();
+    return () => {
+      cancelled = true;
+    };
+  }, [page, limit]);
+
+  const places = resp?.data?.data ?? [];
 
   function handleEdit(place: IPlace) {
-
-    // Handle edit action
-  }
-
-  function handleDelete(place: IPlace) {
-    // Handle delete action
+    router.push(`/admin/places/${place.id}/edit`);
   }
 
   return (
-    <div className="container mx-auto p-4">
-      <Link href="/admin/places/add">
+    <div className="container mx-auto p-4 space-y-4">
+      <Link href="/admin/places/add" className="inline-block">
         <Button>Add New Place</Button>
       </Link>
+
       <DataTable
         items={places}
+        isLoading={!resp}
         excludeFields={[
           "reviews",
           "googlePlaceId",
@@ -48,18 +68,8 @@ export default function PlacesPage() {
           "types",
         ]}
         actions={[
-          {
-            label: "Edit",
-            onClick: (item) => {
-              // Handle edit action
-            },
-          },
-          {
-            label: "Delete",
-            onClick: (item) => {
-              // Handle delete action
-            },
-          },
+          { label: "Edit", onClick: handleEdit },
+          // { label: "Delete", onClick: handleDelete },
         ]}
         cellRenderers={{
           name: (value, item) => (
@@ -78,6 +88,8 @@ export default function PlacesPage() {
           updatedAt: (value) => moment(value).format("LLL"),
         }}
       />
+
+      {resp && <Paginator source={resp} />}
     </div>
   );
 }

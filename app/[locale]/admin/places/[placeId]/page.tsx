@@ -46,6 +46,7 @@ export default async function PlaceDetailsPage({
       : null;
 
   const displayReviews = reviewCount ?? googleReviewCount ?? null;
+  const images = place.images ?? [];
 
   return (
     <div className="container mx-auto py-8 space-y-6">
@@ -180,6 +181,31 @@ export default async function PlaceDetailsPage({
           </p>
         </CardContent>
       </Card>
+      {images.length > 0 && (
+        <Card>
+          {" "}
+          <CardHeader>
+            <CardTitle>Images</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+              {images.map((img) => (
+                <div
+                  key={img.url}
+                  className="group relative overflow-hidden rounded-lg border"
+                >
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={img.url}
+                    alt=""
+                    className="h-36 w-full object-cover"
+                  />
+                </div>
+              ))}
+            </div>
+          </CardContent>
+        </Card>
+      )}
     </div>
   );
 }

@@ -15,9 +15,7 @@ import { usePaginationParams } from "@/hooks/usePaginationParams";
 
 export default function PlacesPage() {
   const router = useRouter();
-  const searchParams = useSearchParams();
 
-  // Read page/limit from the URL; fall back to sensible defaults
   const { page, limit } = usePaginationParams();
 
   const [isLoading, setIsLoading] = React.useState(false);
@@ -55,7 +53,7 @@ export default function PlacesPage() {
 
       <DataTable
         items={places}
-        isLoading={!resp}
+        isLoading={!resp || isLoading}
         excludeFields={[
           "reviews",
           "googlePlaceId",

@@ -9,6 +9,7 @@ import CopyButton from "@/components/CopyButton";
 import { Link } from "@/i18n/navigation";
 import { notFound } from "next/navigation";
 import DeletePlaceConfirmDialog from "@/components/admin-place/DeletePlaceConfirmDialog";
+import { uniqBy } from "lodash";
 
 export default async function PlaceDetailsPage({
   params,
@@ -46,7 +47,7 @@ export default async function PlaceDetailsPage({
       : null;
 
   const displayReviews = reviewCount ?? googleReviewCount ?? null;
-  const images = place.images ?? [];
+  const images = place.images ? uniqBy(place.images, 'url') : [];
 
   return (
     <div className="container mx-auto py-8 space-y-6">
@@ -183,15 +184,14 @@ export default async function PlaceDetailsPage({
       </Card>
       {images.length > 0 && (
         <Card>
-          {" "}
           <CardHeader>
             <CardTitle>Images</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-              {images.map((img) => (
+              {images.map((img, imgIdx) => (
                 <div
-                  key={img.url}
+                  key={imgIdx}
                   className="group relative overflow-hidden rounded-lg border"
                 >
                   {/* eslint-disable-next-line @next/next/no-img-element */}

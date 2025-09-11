@@ -5,6 +5,7 @@ import PlaceForm, { PlaceFormValues } from "@/components/admin-place/PlaceForm";
 import { Button } from "@/components/ui/button";
 import { IPlace } from "@/dto/places/place.dto";
 import { Link } from "@/i18n/navigation";
+import { uniq } from "lodash";
 import { notFound, useParams } from "next/navigation";
 import React, { useEffect } from "react";
 
@@ -41,6 +42,7 @@ export default function EditPlacePage() {
         longitude: Number(place?.longitude || ""),
         // category: place?.category || "",
         address: place?.address || "",
+        images: place?.images ? uniq(place?.images?.map((img) => img.url)) : [],
       }
     : null;
 

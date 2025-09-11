@@ -1227,6 +1227,11 @@
   dependencies:
     "@types/geojson" "*"
 
+"@types/lodash@^4.17.20":
+  version "4.17.20"
+  resolved "https://registry.npmjs.org/@types/lodash/-/lodash-4.17.20.tgz"
+  integrity sha512-H3MHACvFUEiujabxhaI/ImO6gUrd8oOurg7LQtS7mbwIXA/cUqWrvBsaeJ23aZEPk1TAYkurjfMbSELfoCXlGA==
+
 "@types/mapbox__point-geometry@^0.1.4":
   version "0.1.4"
   resolved "https://registry.npmjs.org/@types/mapbox__point-geometry/-/mapbox__point-geometry-0.1.4.tgz"
@@ -4503,6 +4508,11 @@ union-value@^1.0.1:
     get-value "^2.0.6"
     is-extendable "^0.1.1"
     set-value "^2.0.1"
+
+uniq@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.npmjs.org/uniq/-/uniq-1.0.1.tgz"
+  integrity sha512-Gw+zz50YNKPDKXs+9d+aKAjVwpjNwqzvNpLigIruT4HA9lMZNdMqs9x07kKHB/L9WRzqp4+DlTU5s4wG2esdoA==
 
 update-browserslist-db@^1.1.0:
   version "1.1.1"

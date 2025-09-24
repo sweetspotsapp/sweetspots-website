@@ -7,6 +7,7 @@ import { useTranslations } from "next-intl";
 // import { SIGNUP_URL } from "@/lib/constants";
 import Image from "next/image";
 import ScrollDownCta from "./ScrollDownCta";
+import { Button } from "./ui/button";
 
 export function HeroSection() {
   const t = useTranslations("hero");
@@ -21,11 +22,22 @@ export function HeroSection() {
           {/* Oh to roadtrip
         <br />
         in the Alpines */}
-          <span className="font-bold">
-          {t('heading')}
-          </span>
+          <span className="font-bold">{t("heading")}</span>
           <br />
-          <span className="text-2xl md:text-3xl">{t('subheading')}</span>
+          <span className="text-2xl md:text-3xl">{t("subheading")}</span>
+          <br />
+          <Button
+            className=""
+            size="lg"
+            onClick={() => {
+              const ctaSection = document.getElementById("cta-section");
+              if (ctaSection) {
+                ctaSection.scrollIntoView({ behavior: "smooth" });
+              }
+            }}
+          >
+            Sounds good! Sign me Up!
+          </Button>
         </div>
         <ScrollDownCta />
       </div>

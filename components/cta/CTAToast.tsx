@@ -44,10 +44,10 @@ export default function CTAToast({
     className="fixed flex items-center justify-center bottom-0 w-full z-50"
     {...bind() as any}
   >
-    <div className="bg-white p-2 flex flex-col md:flex-row items-center gap-3 text-neutral-800 shadow-lg rounded-xl">
+    <div className="bg-white p-4 flex flex-col md:flex-row items-center gap-3 text-neutral-800 shadow-lg rounded-xl">
       <div className="flex items-center md:flex-row-reverse">
       <p className="ml-3 md:ml-0 font-bold">{t('title')}</p>
-      <XButton onClick={onClose}/>
+      {/* <XButton onClick={onClose}/> */}
       </div>
       <Button className="w-full md:w-fit" onClick={onClickAction}>{t('action')}</Button>
     </div>

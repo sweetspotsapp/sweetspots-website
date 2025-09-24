@@ -17,13 +17,15 @@ export function HeroSection() {
       style={{ minHeight: "calc(100vh - 80px)" }}
     >
       <div className="container mx-auto text-white flex justify-between items-end h-full flex-1 z-10">
-        <div className="text-3xl md:text-6xl/normal line text-shadow">
+        <div className="text-3xl md:text-6xl line text-shadow">
           {/* Oh to roadtrip
         <br />
         in the Alpines */}
-          {t('tiredRelate')}
+          <span className="font-bold">
+          {t('heading')}
+          </span>
           <br />
-          <span className="font-bold">{t('simpler')}</span>
+          <span className="text-2xl md:text-3xl">{t('subheading')}</span>
         </div>
         <ScrollDownCta />
       </div>

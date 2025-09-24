@@ -29,7 +29,7 @@ import { createEarlyUser } from "@/api/early-users/endpoints";
 
 const schema = z.object({
   name: z.string().min(1, "Name is required"),
-  email: z.email("Please enter a valid email"),
+  email: z.string().email("Please enter a valid email"),
   // appVersion: z.enum(["alpha", "beta", "public"]),
 });
 type Values = z.infer<typeof schema>;

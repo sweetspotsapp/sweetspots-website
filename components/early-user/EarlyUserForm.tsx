@@ -94,7 +94,7 @@ export default function EarlyAccessForm({
                 name="name"
                 render={({ field }) => (
                   <FormItem className="flex flex-col items-start flex-1">
-                    <FormLabel>What&apos;s your name?</FormLabel>
+                    <FormLabel>Name</FormLabel>
                     <FormControl>
                       <Input
                         placeholder="Chillian McMillian"
@@ -112,7 +112,7 @@ export default function EarlyAccessForm({
                 name="email"
                 render={({ field }) => (
                   <FormItem className="flex flex-col items-start flex-1">
-                    <FormLabel>Where can we reach you?</FormLabel>
+                    <FormLabel>Email</FormLabel>
                     <FormControl>
                       <Input
                         type="email"

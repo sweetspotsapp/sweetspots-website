@@ -17,20 +17,15 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-// import {
-//   Select,
-//   SelectContent,
-//   SelectItem,
-//   SelectTrigger,
-//   SelectValue,
-// } from "@/components/ui/select";
+
+import { X } from "lucide-react"; // For close icon
+
 import { AppVersion } from "@/dto/early-users/app-version.enum";
 import { createEarlyUser } from "@/api/early-users/endpoints";
 
 const schema = z.object({
   name: z.string().min(1, "Name is required"),
   email: z.string().email("Please enter a valid email"),
-  // appVersion: z.enum(["alpha", "beta", "public"]),
 });
 type Values = z.infer<typeof schema>;
 
@@ -40,14 +35,16 @@ type EarlyAccessFormProps = {
   submittingText?: string;
   successMessage?: string;
   className?: string;
+  autoCloseDelay?: number; // optional, in ms
 };
 
 export default function EarlyAccessForm({
   onSubmit,
   submitLabel = "Join Early Access",
   submittingText = "Submitting...",
-  successMessage = "Thank you! We’ll be in touch soon.",
+  successMessage = "Thank you! We'll be in touch soon.",
   className,
+  autoCloseDelay = 4000, // default 4 seconds
 }: EarlyAccessFormProps) {
   const form = useForm<Values>({
     resolver: zodResolver(schema),
@@ -59,6 +56,18 @@ export default function EarlyAccessForm({
   const isBusy = phase === "loading";
   const isSuccess = phase === "success";
 
+  // Timeout for auto-closing success message
+  React.useEffect(() => {
+    let timer: NodeJS.Timeout;
+    if (isSuccess) {
+      timer = setTimeout(() => {
+        setPhase("idle");
+        form.reset(); // clear form after success
+      }, autoCloseDelay);
+    }
+    return () => clearTimeout(timer);
+  }, [isSuccess, autoCloseDelay, form]);
+
   async function handleSubmit(values: Values) {
     try {
       setPhase("loading");
@@ -67,11 +76,10 @@ export default function EarlyAccessForm({
         email: values.email,
         appVersion: AppVersion.Alpha,
       });
-      // await onSubmit?.(values);
+      await onSubmit?.(values);
       setPhase("success");
     } catch (e) {
-      // If submit fails, return to idle
-      setPhase("idle");
+      setPhase("idle"); // back to idle if something fails
     }
   }
 
@@ -88,7 +96,11 @@ export default function EarlyAccessForm({
                   <FormItem className="flex flex-col items-start flex-1">
                     <FormLabel>What&apos;s your name?</FormLabel>
                     <FormControl>
-                      <Input placeholder="Chillian McMillian" {...field} disabled={isBusy || isSuccess} />
+                      <Input
+                        placeholder="Chillian McMillian"
+                        {...field}
+                        disabled={isBusy || isSuccess}
+                      />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -102,7 +114,12 @@ export default function EarlyAccessForm({
                   <FormItem className="flex flex-col items-start flex-1">
                     <FormLabel>Where can we reach you?</FormLabel>
                     <FormControl>
-                      <Input type="email" placeholder="hiddengem@hunter.com" {...field} disabled={isBusy || isSuccess} />
+                      <Input
+                        type="email"
+                        placeholder="hiddengem@hunter.com"
+                        {...field}
+                        disabled={isBusy || isSuccess}
+                      />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -110,41 +127,14 @@ export default function EarlyAccessForm({
               />
             </div>
 
-            {/* <FormField
-              control={form.control}
-              name="appVersion"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>App version</FormLabel>
-                  <Select
-                    onValueChange={field.onChange}
-                    defaultValue={field.value}
-                    disabled={isBusy || isSuccess}
-                  >
-                    <FormControl>
-                      <SelectTrigger>
-                        <SelectValue placeholder="Pick a version" />
-                      </SelectTrigger>
-                    </FormControl>
-                    <SelectContent>
-                      <SelectItem value="alpha">Alpha</SelectItem>
-                      <SelectItem value="beta">Beta</SelectItem>
-                      <SelectItem value="public">Public</SelectItem>
-                    </SelectContent>
-                  </Select>
-                  <FormMessage />
-                </FormItem>
-              )}
-            /> */}
-
-            {/* Submit button with shared layout wrapper */}
+            {/* Submit button */}
             <div className="pt-8">
               <motion.div layoutId="cta-visual" className="inline-flex">
                 <Button
                   type="submit"
                   disabled={!form.formState.isValid || isBusy || isSuccess}
                   className="min-w-40"
-                  size='lg'
+                  size="lg"
                 >
                   {submitLabel}
                 </Button>
@@ -154,7 +144,7 @@ export default function EarlyAccessForm({
         </Form>
       </div>
 
-      {/* Floating overlay: spinner centered during loading, morphs to thank-you on success */}
+      {/* Overlay with spinner and success window */}
       <AnimatePresence>
         {(isBusy || isSuccess) && (
           <motion.div
@@ -164,14 +154,14 @@ export default function EarlyAccessForm({
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
           >
-            {/* Shared layout element that moves from button location to center */}
+            {/* Shared layout element */}
             <motion.div
               layoutId="cta-visual"
               transition={{ type: "spring", stiffness: 260, damping: 22 }}
               className="flex items-center justify-center"
             >
               {isBusy ? (
-                // Spinner "text" state
+                // Loading spinner
                 <div className="flex h-10 min-w-40 items-center justify-center rounded-md border bg-background px-4">
                   <span className="mr-2 text-sm">{submittingText}</span>
                   <span
@@ -180,14 +170,24 @@ export default function EarlyAccessForm({
                   />
                 </div>
               ) : (
-                // Success rectangle
+                // Success message with X button
                 <motion.div
                   initial={{ width: 320, height: 48 }}
-                  animate={{ width: 420, height: 120 }}
+                  animate={{ width: 420, height: 140 }}
                   transition={{ type: "spring", stiffness: 240, damping: 24 }}
-                  className="flex items-center justify-center rounded-lg border bg-background px-6 text-center"
+                  className="relative flex items-center justify-center rounded-lg border bg-background px-6 text-center"
                 >
-                  <div className="space-y-1">
+                  {/* Close button */}
+                  <button
+                    type="button"
+                    onClick={() => setPhase("idle")}
+                    className="absolute right-3 top-3 rounded-full p-1 text-muted-foreground hover:text-foreground"
+                    aria-label="Close"
+                  >
+                    <X className="h-4 w-4" />
+                  </button>
+
+                  <div className="space-y-2">
                     <div className="text-base font-medium">Thank you 🎉</div>
                     <div className="text-sm text-muted-foreground">{successMessage}</div>
                   </div>

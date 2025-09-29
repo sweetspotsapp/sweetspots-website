@@ -46,7 +46,7 @@ export function SolutionSectionOld() {
                 
                 <Button 
                   size="lg" 
-                  variant="orange"
+                  // variant="orange"
                   className="text-lg px-8 py-4 rounded-full hover:scale-105 transition-transform duration-200"
                   onClick={() => window.open(SIGNUP_URL, '_blank')}
                 >

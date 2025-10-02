@@ -10,6 +10,7 @@ import CollaborationSection from '@/components/collaboration-section';
 import Inquiry from '@/components/inquiry';
 import BenefitsSection from '@/components/benefits-section';
 import CTAToastOnScroll from '@/components/cta/CTAToastOnScroll';
+import EarlyBirdSection from '@/components/early-bird-section';
 
 export default function Home() {
   return (
@@ -19,6 +20,7 @@ export default function Home() {
       percent: 20,
       }}/>
       <HeroSection />
+      {/* <EarlyBirdSection /> */}
       <SolutionSection />
       <RecommendedTripsSection />
 

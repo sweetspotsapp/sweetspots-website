@@ -175,3 +175,37 @@
   -webkit-column-break-inside: avoid;
   column-break-inside: avoid;
 }
+
+/* Seamless marquee */
+.marquee {
+  --gap: 2rem;            /* space between items */
+  --duration: 18s;        /* overall speed */
+  display: flex;
+  overflow: hidden;
+  gap: var(--gap);
+  user-select: none;
+}
+
+.marquee__content {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: var(--gap);
+  min-width: 100%;
+  animation: marquee-scroll var(--duration) linear infinite;
+  will-change: transform;
+}
+.marquee__content:nth-child(2) {
+  animation-name: marquee-scroll-2;
+}
+
+/* first copy slides left out */
+@keyframes marquee-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(calc(-100% - var(--gap))); }
+}
+/* second copy slides in right behind it */
+@keyframes marquee-scroll-2 {
+  from { transform: translateX(calc(100% + var(--gap))); }
+  to   { transform: translateX(0); }
+}

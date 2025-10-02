@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import ConfirmDialog from "../ConfirmDialog";
+import ConfirmDialog from "../ui/ConfirmDialog";
 import { Button } from "../ui/button";
 import { deletePlace } from "@/api/places/endpoints";
 import { useRouter } from "@/i18n/navigation";

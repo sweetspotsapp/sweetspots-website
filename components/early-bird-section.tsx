@@ -1,13 +1,32 @@
-'use client';
+"use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { Button } from "./ui/button";
+import { useLocale } from "next-intl";
 
 const PHRASES = ["EARLY BIRD DISCOUNT", "LIMITED TIME OFFER", "JOIN NOW"];
 
 export default function EarlyBirdSection() {
   // make a row repeating all phrases
   const row = Array.from({ length: 6 }, () => PHRASES).flat();
+  const locale = useLocale();
+
+  const [loading, setLoading] = useState(false);
+
+  const handleClick = async () => {
+    setLoading(true);
+    const res = await fetch("/api/checkout", {
+      method: "POST",
+      body: JSON.stringify({ locale }),
+    });
+    const data = await res.json();
+    if (data.url) {
+      window.location.href = data.url;
+    } else {
+      setLoading(false);
+      alert("Something went wrong");
+    }
+  };
 
   return (
     <div>
@@ -16,11 +35,15 @@ export default function EarlyBirdSection() {
         <div className="marquee">
           <div className="track">
             {row.map((t, i) => (
-              <span key={`a-${i}`} className="item">{t}</span>
+              <span key={`a-${i}`} className="item">
+                {t}
+              </span>
             ))}
             {/* duplicate immediately after */}
             {row.map((t, i) => (
-              <span key={`b-${i}`} className="item">{t}</span>
+              <span key={`b-${i}`} className="item">
+                {t}
+              </span>
             ))}
           </div>
         </div>
@@ -60,7 +83,13 @@ export default function EarlyBirdSection() {
             </p>
 
             <div className="flex space-x-4">
-              <Button size="lg" variant="default" className="font-bold">
+              <Button
+                size="lg"
+                variant="default"
+                className="font-bold"
+                onClick={handleClick}
+                disabled={loading}
+              >
                 Pre-Order Now!
               </Button>
               <Button size="lg" variant="outline">
@@ -70,7 +99,9 @@ export default function EarlyBirdSection() {
 
             <p className="mt-4 text-lg font-semibold">
               <span className="line-through text-gray-400 mr-2">AUD$59.9</span>
-              <span className="text-black">AUD$29.9/year early bird pricing</span>
+              <span className="text-black">
+                AUD$29.9/year early bird pricing
+              </span>
             </p>
 
             <ul className="mt-2 space-y-1 text-gray-700 text-sm text-left">

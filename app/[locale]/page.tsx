@@ -20,7 +20,7 @@ export default function Home() {
       percent: 20,
       }}/>
       <HeroSection />
-      {/* <EarlyBirdSection /> */}
+      <EarlyBirdSection />
       <SolutionSection />
       <RecommendedTripsSection />
 

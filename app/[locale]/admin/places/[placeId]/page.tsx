@@ -3,7 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { Button } from "@/components/ui/button";
 import { MapPin, Globe, Phone, ExternalLink, Pencil } from "lucide-react";
-import { getPlace } from "@/api/places/endpoints";
+import { getPlace, updatePlace } from "@/api/places/endpoints";
 import PlaceMap from "@/components/admin-place/PlaceMap";
 import CopyButton from "@/components/CopyButton";
 import { Link } from "@/i18n/navigation";
@@ -11,6 +11,7 @@ import { notFound } from "next/navigation";
 import DeletePlaceConfirmDialog from "@/components/admin-place/DeletePlaceConfirmDialog";
 import { uniqBy } from "lodash";
 import { useState } from "react";
+import HidePlace from "@/components/admin-place/HidePlace";
 
 export default async function PlaceDetailsPage({
   params,
@@ -49,11 +50,6 @@ export default async function PlaceDetailsPage({
 
   const displayReviews = reviewCount ?? googleReviewCount ?? null;
   const images = place.images ? uniqBy(place.images, 'url') : [];
-
-  const [hidden, setHidden] = useState(place.hidden);
-  function handleHideToggle() {
-    setHidden((prev) => !prev);
-  }
 
   return (
     <div className="container mx-auto py-8 space-y-6">
@@ -98,6 +94,7 @@ export default async function PlaceDetailsPage({
               <Pencil className="h-4 w-4" /> Edit
             </Link>
           </Button>
+          <HidePlace place={place} />
           <DeletePlaceConfirmDialog placeId={id} />
           {googleWebsite && (
             <Button asChild>

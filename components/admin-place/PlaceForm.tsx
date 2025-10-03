@@ -4,7 +4,11 @@ import React, { useCallback, useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import Map, { MapMouseEvent, Marker, NavigationControl } from "react-map-gl/mapbox";
+import Map, {
+  MapMouseEvent,
+  Marker,
+  NavigationControl,
+} from "react-map-gl/mapbox";
 import "mapbox-gl/dist/mapbox-gl.css";
 
 // shadcn/ui
@@ -40,7 +44,9 @@ import { getReadSas } from "@/api/upload/endpoints";
 export const placeFormSchema = z.object({
   name: z.string().min(1, "Name is required"),
   description: z.string().min(1, "Description is required"),
-  priceRange: z.enum(["$", "$$", "$$$", "$$$$"], { error: "Price range is required" }),
+  priceRange: z.enum(["$", "$$", "$$$", "$$$$"], {
+    error: "Price range is required",
+  }),
   latitude: z
     .number({ error: "Latitude must be a number" })
     .min(-90, "Min -90")
@@ -51,14 +57,21 @@ export const placeFormSchema = z.object({
     .max(180, "Max 180"),
   address: z.string().min(1, "Address is required"),
   vibes: z.array(z.string().min(1), { error: "Vibes are required" }),
-  images: z.array(z.string().url()), // 👈 list of blob URLs
+  hidden: z.boolean().optional(),
+  minPrice: z.number().min(0).optional(),
+  maxPrice: z.number().min(0).optional(),
+  images: z.array(z.string().url()),
 });
 
 export type PlaceFormValues = z.infer<typeof placeFormSchema>;
 
-const asNumber = (v: string) => (v === "" || v === undefined ? undefined : Number(v));
+const asNumber = (v: string) =>
+  v === "" || v === undefined ? undefined : Number(v);
 
-async function reverseGeocode(lat: number, lng: number): Promise<string | null> {
+async function reverseGeocode(
+  lat: number,
+  lng: number
+): Promise<string | null> {
   try {
     const res = await fetch(
       `https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lng}&format=json&zoom=18&addressdetails=1`,
@@ -131,8 +144,16 @@ export default function PlaceForm({
 
   const handlePickLocation = useCallback(
     async (newLat: number, newLng: number) => {
-      setValue("latitude", newLat, { shouldDirty: true, shouldTouch: true, shouldValidate: true });
-      setValue("longitude", newLng, { shouldDirty: true, shouldTouch: true, shouldValidate: true });
+      setValue("latitude", newLat, {
+        shouldDirty: true,
+        shouldTouch: true,
+        shouldValidate: true,
+      });
+      setValue("longitude", newLng, {
+        shouldDirty: true,
+        shouldTouch: true,
+        shouldValidate: true,
+      });
     },
     [setValue]
   );
@@ -202,10 +223,38 @@ export default function PlaceForm({
                 control={control}
                 name="name"
                 render={({ field }) => (
-                  <FormItem>
+                  <FormItem className="md:col-span-2">
                     <FormLabel>Name</FormLabel>
                     <FormControl>
                       <Input placeholder="e.g., Hidden Alley Cafe" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+
+              <FormField
+                control={control}
+                name="minPrice"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Min Price</FormLabel>
+                    <FormControl>
+                      <Input placeholder="e.g., 10" type="number" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+
+              <FormField
+                control={control}
+                name="maxPrice"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Max Price</FormLabel>
+                    <FormControl>
+                      <Input placeholder="e.g., 50" type="number" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -218,7 +267,10 @@ export default function PlaceForm({
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>Price Range</FormLabel>
-                    <Select onValueChange={field.onChange} defaultValue={field.value}>
+                    <Select
+                      onValueChange={field.onChange}
+                      defaultValue={field.value}
+                    >
                       <FormControl>
                         <SelectTrigger>
                           <SelectValue placeholder="Select price" />
@@ -246,7 +298,12 @@ export default function PlaceForm({
                       <FormControl>
                         <Input placeholder="Street, City, State" {...field} />
                       </FormControl>
-                      <Button type="button" variant="secondary" onClick={autoFillAddress} disabled={fetchingAddress}>
+                      <Button
+                        type="button"
+                        variant="secondary"
+                        onClick={autoFillAddress}
+                        disabled={fetchingAddress}
+                      >
                         {fetchingAddress ? "Finding..." : "Use Map Location"}
                       </Button>
                     </div>
@@ -262,7 +319,11 @@ export default function PlaceForm({
                   <FormItem className="md:col-span-2">
                     <FormLabel>Description</FormLabel>
                     <FormControl>
-                      <Textarea rows={4} placeholder="What makes this place special?" {...field} />
+                      <Textarea
+                        rows={4}
+                        placeholder="What makes this place special?"
+                        {...field}
+                      />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -282,7 +343,9 @@ export default function PlaceForm({
                         type="number"
                         step="any"
                         value={field.value ?? ""}
-                        onChange={(e) => field.onChange(asNumber(e.target.value))}
+                        onChange={(e) =>
+                          field.onChange(asNumber(e.target.value))
+                        }
                       />
                     </FormControl>
                     <FormMessage />
@@ -301,7 +364,9 @@ export default function PlaceForm({
                         type="number"
                         step="any"
                         value={field.value ?? ""}
-                        onChange={(e) => field.onChange(asNumber(e.target.value))}
+                        onChange={(e) =>
+                          field.onChange(asNumber(e.target.value))
+                        }
                       />
                     </FormControl>
                     <FormMessage />
@@ -329,9 +394,17 @@ export default function PlaceForm({
                 </div>
                 <div className="flex flex-wrap gap-2">
                   {vibes.map((v) => (
-                    <Badge key={v} variant="secondary" className="flex gap-1 items-center">
+                    <Badge
+                      key={v}
+                      variant="secondary"
+                      className="flex gap-1 items-center"
+                    >
                       {v}
-                      <button type="button" onClick={() => removeVibe(v)} aria-label={`Remove ${v}`}>
+                      <button
+                        type="button"
+                        onClick={() => removeVibe(v)}
+                        aria-label={`Remove ${v}`}
+                      >
                         <X className="ml-1 h-3 w-3" />
                       </button>
                     </Badge>
@@ -357,7 +430,10 @@ export default function PlaceForm({
                     style={{ width: "100%", height: "100%" }}
                   >
                     <NavigationControl />
-                    <Marker longitude={lng ?? 144.9631} latitude={lat ?? -37.8136} />
+                    <Marker
+                      longitude={lng ?? 144.9631}
+                      latitude={lat ?? -37.8136}
+                    />
                   </Map>
                 </div>
               </div>
@@ -379,9 +455,16 @@ export default function PlaceForm({
               {images.length > 0 && (
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
                   {images.map((url) => (
-                    <div key={url} className="group relative overflow-hidden rounded-lg border">
+                    <div
+                      key={url}
+                      className="group relative overflow-hidden rounded-lg border"
+                    >
                       {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img src={url} alt="" className="h-36 w-full object-cover" />
+                      <img
+                        src={url}
+                        alt=""
+                        className="h-36 w-full object-cover"
+                      />
                       <button
                         type="button"
                         onClick={() => removeImage(url)}

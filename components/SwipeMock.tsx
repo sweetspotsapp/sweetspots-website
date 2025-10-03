@@ -68,7 +68,7 @@ export default function SwipeMock({ vibes, maxPriceRange }: SwipeMockProps) {
           vibes: vibes,
           priceRange: maxPriceRange ? ['$', maxPriceRange] : undefined,
         });
-        if (!cancelled && res.data) setPlaces(res.data);
+        if (!cancelled && res.data) setPlaces(res.data.data);
       } catch (e) {
         if (!cancelled) setError("Failed to load recommendations");
       } finally {

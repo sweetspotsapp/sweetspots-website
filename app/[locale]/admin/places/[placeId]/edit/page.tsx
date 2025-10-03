@@ -4,10 +4,9 @@ import { getPlace, updatePlace } from "@/api/places/endpoints";
 import PlaceForm, { PlaceFormValues } from "@/components/admin-place/PlaceForm";
 import { Button } from "@/components/ui/button";
 import { IPlace } from "@/dto/places/place.dto";
-import { Link } from "@/i18n/navigation";
+import { Link, useRouter } from "@/i18n/navigation";
 import { uniq } from "lodash";
 import { notFound, useParams } from "next/navigation";
-import { useRouter } from "next/router";
 import React, { useEffect } from "react";
 
 export default function EditPlacePage() {

@@ -2,31 +2,14 @@
 
 import React, { useState } from "react";
 import { Button } from "./ui/button";
-import { useLocale } from "next-intl";
+import { Link } from "@/i18n/navigation";
+import PreSubscribeButton from "./PreSubscribeButton";
 
 const PHRASES = ["EARLY BIRD DISCOUNT", "LIMITED TIME OFFER", "JOIN NOW"];
 
 export default function EarlyBirdSection() {
   // make a row repeating all phrases
   const row = Array.from({ length: 6 }, () => PHRASES).flat();
-  const locale = useLocale();
-
-  const [loading, setLoading] = useState(false);
-
-  const handleClick = async () => {
-    setLoading(true);
-    const res = await fetch("/api/checkout", {
-      method: "POST",
-      body: JSON.stringify({ locale }),
-    });
-    const data = await res.json();
-    if (data.url) {
-      window.location.href = data.url;
-    } else {
-      setLoading(false);
-      alert("Something went wrong");
-    }
-  };
 
   return (
     <div>
@@ -83,18 +66,12 @@ export default function EarlyBirdSection() {
             </p>
 
             <div className="flex space-x-4">
-              <Button
-                size="lg"
-                variant="default"
-                className="font-bold"
-                onClick={handleClick}
-                disabled={loading}
-              >
-                Pre-Order Now!
-              </Button>
-              <Button size="lg" variant="outline">
-                Learn more
-              </Button>
+              <PreSubscribeButton/>
+              <Link href="/learn-more">
+                <Button size="lg" variant="outline">
+                  Learn More
+                </Button>
+              </Link>
             </div>
 
             <p className="mt-4 text-lg font-semibold">

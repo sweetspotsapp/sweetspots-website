@@ -18,6 +18,8 @@ export async function POST(req: Request) {
       ],
       success_url: `${origin}/${locale}/early-bird-success?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${origin}/${locale}/early-bird-cancel`,
+      customer_creation: "always",
+      billing_address_collection: "auto",
     });
 
     return NextResponse.json({ url: session.url });

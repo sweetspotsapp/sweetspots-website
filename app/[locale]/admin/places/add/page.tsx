@@ -4,14 +4,17 @@ import { createPlace } from "@/api/places/endpoints";
 import PlaceForm, { PlaceFormValues } from "@/components/admin-place/PlaceForm";
 import { Button } from "@/components/ui/button";
 import { Link } from "@/i18n/navigation";
+import { useRouter } from "next/router";
 import React from "react";
 
 export default function AddPlacePage() {
+  const router = useRouter()
   const [isSubmitting, setIsSubmitting] = React.useState(false);
   function handleSubmit(place: PlaceFormValues) {
     setIsSubmitting(true);
     createPlace(place).finally(() => {
       setIsSubmitting(false);
+      router.push('/admin/places');
     });
   }
   return (

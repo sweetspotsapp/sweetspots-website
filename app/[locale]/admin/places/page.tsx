@@ -45,6 +45,10 @@ export default function PlacesPage() {
     router.push(`/admin/places/${place.id}/edit`);
   }
 
+  function handleViewDetails(place: IPlace) {
+    router.push(`/admin/places/${place.id}`);
+  }
+
   return (
     <div className="container mx-auto p-4 space-y-4">
       <Link href="/admin/places/add" className="inline-block">
@@ -67,6 +71,7 @@ export default function PlacesPage() {
         ]}
         actions={[
           { label: "Edit", onClick: handleEdit },
+          { label: "Details", onClick: handleViewDetails },
           // { label: "Delete", onClick: handleDelete },
         ]}
         cellRenderers={{

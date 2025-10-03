@@ -10,6 +10,7 @@ import { Link } from "@/i18n/navigation";
 import { notFound } from "next/navigation";
 import DeletePlaceConfirmDialog from "@/components/admin-place/DeletePlaceConfirmDialog";
 import { uniqBy } from "lodash";
+import { useState } from "react";
 
 export default async function PlaceDetailsPage({
   params,
@@ -48,6 +49,11 @@ export default async function PlaceDetailsPage({
 
   const displayReviews = reviewCount ?? googleReviewCount ?? null;
   const images = place.images ? uniqBy(place.images, 'url') : [];
+
+  const [hidden, setHidden] = useState(place.hidden);
+  function handleHideToggle() {
+    setHidden((prev) => !prev);
+  }
 
   return (
     <div className="container mx-auto py-8 space-y-6">

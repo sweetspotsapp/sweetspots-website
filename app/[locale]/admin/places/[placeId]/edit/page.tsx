@@ -7,6 +7,7 @@ import { IPlace } from "@/dto/places/place.dto";
 import { Link } from "@/i18n/navigation";
 import { uniq } from "lodash";
 import { notFound, useParams } from "next/navigation";
+import { useRouter } from "next/router";
 import React, { useEffect } from "react";
 
 export default function EditPlacePage() {
@@ -24,10 +25,13 @@ export default function EditPlacePage() {
     });
   }, [placeId]);
 
+  const router = useRouter();
+
   function handleSubmit(place: PlaceFormValues) {
     setIsSubmitting(true);
     updatePlace(placeId as string, place).finally(() => {
       setIsSubmitting(false);
+      router.push('/admin/places/' + placeId);
     });
   }
 

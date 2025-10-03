@@ -17,6 +17,9 @@ export interface IPlace {
   address: string;
   createdBy?: string | null;
 
+  minPrice?: number;
+  maxPrice?: number;
+
   googlePlaceId?: string | null;
   googleRating?: string | null;
   googleReviewCount?: number | null;
@@ -25,6 +28,9 @@ export interface IPlace {
   googleOpeningHours?: string[] | null;
   googlePriceLevel?: string | null;
   googleTypes: string[];
+
+  hidden: boolean;
+  verified: boolean;
 
   lastSyncedAt?: string | null;
   syncSource: string;

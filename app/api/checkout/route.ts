@@ -12,7 +12,7 @@ export async function POST(req: Request) {
       mode: "payment",
       line_items: [
         {
-          price: process.env.STRIPE_PRICE_ID!, // create a Price in Stripe Dashboard
+          price: process.env.STRIPE_PRICE_ID!,
           quantity: 1,
         },
       ],

@@ -22,7 +22,9 @@ import {
 import { Navigation } from "@/components/navigation";
 import { Footer } from "@/components/footer";
 import { Button } from "@/components/ui/button";
-import PreSubscribeButton from "@/components/PreSubscribeButton";
+import PreSubscribeButton from "@/components/buttons/PreSubscribeButton";
+import Image from "next/image";
+import TryTheAlphaButton from "@/components/buttons/TryTheAlphaButton";
 
 // NOTE: Replace placeholder images with your own assets when ready.
 // Tailwind is available by default. Keep copy short, punchy, and Gen‑Z friendly.
@@ -36,9 +38,16 @@ export default function SweetSpotsLanding() {
           id="product"
           className="mx-auto max-w-7xl px-4 grid md:grid-cols-2 gap-10 py-12 md:py-16 items-center"
         >
-          <div className="rounded-3xl overflow-hidden aspect-[4/3] bg-gradient-to-b from-orange-100 to-orange-200 shadow-inner">
+          <div className="rounded-3xl overflow-hidden aspect-[4/3] bg-gradient-to-b from-orange-100 to-orange-200 shadow-inner relative">
             {/* Replace with real image of app mock / phone-in-hand */}
-            <div className="h-full w-full grid place-items-center text-center p-8">
+            <Image
+              src="/images/learn-more/hero.png"
+              alt="App preview"
+              layout="fill"
+              objectFit="cover"
+              className="rounded-3xl"
+            />
+            {/* <div className="h-full w-full grid place-items-center text-center p-8">
               <div className="bg-white/70 backdrop-blur rounded-2xl p-6 shadow-xl">
                 <div className="text-sm font-medium text-stone-500">
                   Preview
@@ -61,7 +70,7 @@ export default function SweetSpotsLanding() {
                   <Badge icon={<Share2 className="h-4 w-4" />} label="Vote" />
                 </div>
               </div>
-            </div>
+            </div> */}
           </div>
 
           <div className="pt-16">
@@ -77,11 +86,11 @@ export default function SweetSpotsLanding() {
             {/* Pricing / CTA */}
             <div id="cta" className="mt-6 flex flex-wrap items-center gap-4">
               <PreSubscribeButton />
-              <Button size='lg' variant={"outline"}>Try the Alpha</Button>
+              <TryTheAlphaButton/>
             </div>
             <div className="mt-3 flex items-center gap-4 text-sm text-stone-600">
               <div className="flex items-center gap-2">
-                <CheckCircle2 className="h-4 w-4" /> Risk‑free, no spam
+                <CheckCircle2 className="h-4 w-4" /> Risk-free, no spam
               </div>
               <div className="flex items-center gap-2">
                 <CalendarSearch className="h-4 w-4" /> Launching Nov 2025
@@ -115,10 +124,7 @@ export default function SweetSpotsLanding() {
         </section>
 
         {/* HOW IT WORKS */}
-        <section
-          id="how"
-          className="bg-orange-500 py-14"
-        >
+        <section id="how" className="bg-orange-500 py-14">
           <div className="mx-auto max-w-7xl px-4">
             <h2 className="text-3xl font-bold text-white">How it works</h2>
             <div className="mt-6 grid md:grid-cols-3 gap-6">
@@ -126,23 +132,26 @@ export default function SweetSpotsLanding() {
                 n={1}
                 title="Tell us your vibe"
                 desc="Dates, budget, group size, energy level."
+                imageUrl="/images/learn-more/step1.png"
               />
               <StepCard
                 n={2}
                 title="Get a 60‑second plan"
                 desc="Spots + route + cost. Swap with one tap."
+                imageUrl="/images/learn-more/step2.png"
               />
               <StepCard
                 n={3}
                 title="Go out & make memories"
                 desc="Share with friends, book, and have fun."
+                imageUrl="/images/learn-more/step3.png"
               />
             </div>
           </div>
         </section>
 
         {/* ESSENTIAL APPS / UTILITIES */}
-        <section className="mx-auto max-w-7xl px-4 py-16 grid md:grid-cols-2 gap-10 items-center">
+        {/* <section className="mx-auto max-w-7xl px-4 py-16 grid md:grid-cols-2 gap-10 items-center">
           <div className="rounded-3xl overflow-hidden aspect-[4/3] bg-gradient-to-tr from-orange-100 to-orange-200 shadow-inner grid place-items-center">
             <div className="grid grid-cols-4 gap-3">
               <Tile icon={<MapPin className="h-6 w-6" />} label="Maps" />
@@ -166,8 +175,8 @@ export default function SweetSpotsLanding() {
               Everything you need for a perfect day out.
             </h3>
             <p className="mt-4 text-stone-600">
-              Keep the essentials: maps, hours, budgets, and backup
-              options. No doomscrolling—just go.
+              Keep the essentials: maps, hours, budgets, and backup options. No
+              doomscrolling—just go.
             </p>
             <ul className="mt-6 space-y-3 text-stone-700">
               <li className="flex items-center gap-3">
@@ -175,8 +184,38 @@ export default function SweetSpotsLanding() {
                 friends in real time
               </li>
               <li className="flex items-center gap-3">
-                <CheckCircle2 className="h-5 w-5" /> Offline PDF export for
-                zero‑signal zones
+                <CheckCircle2 className="h-5 w-5" /> Replace indecision with a
+                clear route
+              </li>
+            </ul>
+          </div>
+        </section> */}
+        <section className="mx-auto max-w-7xl px-4 py-16 grid md:grid-cols-2 gap-10 items-center">
+          <div className="order-2 md:order-1">
+            <h3 className="text-3xl font-bold">Plan in 60 seconds.</h3>
+            <p className="mt-4 text-stone-600">
+              Tell us who&apos;s going, your budget, and the vibe. We generate a
+              route with opening hours, travel time, and a live cost tally—swap
+              anything with one tap.
+            </p>
+            <div className="mt-6 grid sm:grid-cols-3 gap-3">
+              <MiniStat label="Avg. time to first plan" value="<60s" />
+              <MiniStat label="Collab adds" value="2-5 friends" />
+              <MiniStat label="Hidden gems / city" value="250+" />
+            </div>
+          </div>
+          <div>
+            <h3 className="text-3xl font-bold leading-tight">
+              Everything you need for a perfect day out.
+            </h3>
+            <p className="mt-4 text-stone-600">
+              Keep the essentials: maps, hours, budgets, and backup options. No
+              doomscrolling—just go.
+            </p>
+            <ul className="mt-6 space-y-3 text-stone-700">
+              <li className="flex items-center gap-3">
+                <CheckCircle2 className="h-5 w-5" /> Your plan syncs with
+                friends in real time
               </li>
               <li className="flex items-center gap-3">
                 <CheckCircle2 className="h-5 w-5" /> Replace indecision with a
@@ -210,8 +249,7 @@ export default function SweetSpotsLanding() {
         </section> */}
 
         {/* FAST / LIGHT SECTION */}
-        <section className="mx-auto max-w-7xl px-4 py-16 grid md:grid-cols-2 gap-10 items-center">
-          {/* On mobile, show image first, then text. On desktop, keep text left, image right. */}
+        {/* <section className="mx-auto max-w-7xl px-4 py-16 grid md:grid-cols-2 gap-10 items-center">
           <div className="order-2 md:order-1">
             <h3 className="text-3xl font-bold">Plan in 60 seconds.</h3>
             <p className="mt-4 text-stone-600">
@@ -221,12 +259,12 @@ export default function SweetSpotsLanding() {
             </p>
             <div className="mt-6 grid sm:grid-cols-3 gap-3">
               <MiniStat label="Avg. time to first plan" value="<60s" />
-              <MiniStat label="Collab adds" value="2–5 friends" />
+              <MiniStat label="Collab adds" value="2-5 friends" />
               <MiniStat label="Hidden gems / city" value="250+" />
             </div>
           </div>
           <div className="rounded-3xl overflow-hidden aspect-[4/3] bg-[url('https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?q=80&w=1200&auto=format&fit=crop')] bg-cover bg-center order-1 md:order-2" />
-        </section>
+        </section> */}
 
         {/* MEMBERSHIP */}
         <section
@@ -244,30 +282,30 @@ export default function SweetSpotsLanding() {
 
             <div className="mt-8 grid md:grid-cols-2 gap-6">
               <IncludedCard
-            title="What you get"
-            items={[
-              "Hidden-gem picks that match your vibe",
-              "Day-by-day plan with times & travel",
-              "Live budget & split costs",
-              "Export to Google Maps & PDF",
-            ]}
+                title="What you get"
+                items={[
+                  "Hidden-gem picks that match your vibe",
+                  "Day-by-day plan with times & travel",
+                  "Live budget & split costs",
+                  "Export to Google Maps & PDF",
+                ]}
               />
               <IncludedCard
-            title="Perfect for"
-            items={[
-              "Uni groups & flatmates",
-              "Date days & visiting friends",
-              "Solo explorers on a budget",
-              "Weekend micro-trips",
-            ]}
+                title="Perfect for"
+                items={[
+                  "Uni groups & flatmates",
+                  "Date days & visiting friends",
+                  "Solo explorers on a budget",
+                  "Weekend micro-trips",
+                ]}
               />
             </div>
 
             <div className="mt-8 flex flex-wrap items-center gap-4">
               <PreSubscribeButton />
-              <Button size='lg' variant={"outline"}>
+              {/* <Button size='lg' variant={"outline"}>
                 <Download className="h-4 w-4 mr-2"/> Sample itinerary (PDF)
-              </Button>
+              </Button> */}
             </div>
           </div>
         </section>
@@ -333,17 +371,26 @@ function StepCard({
   n,
   title,
   desc,
+  imageUrl,
 }: {
   n: number;
   title: string;
   desc: string;
+  imageUrl?: string;
 }) {
   return (
     <div className="rounded-3xl overflow-hidden bg-white border border-orange-200">
-      <div className="aspect-[4/3] bg-gradient-to-tr from-orange-50 to-orange-100 grid place-items-center">
-        <div className="h-16 w-16 rounded-full bg-orange-500 text-white grid place-items-center text-xl font-bold shadow">
+      <div className="relative aspect-[4/3] bg-gradient-to-tr from-orange-50 to-orange-100 grid place-items-center">
+        <Image
+          src={imageUrl as any}
+          alt={title}
+          layout="fill"
+          objectFit="cover"
+          className="rounded-lg"
+        />
+        {/* <div className="h-16 w-16 rounded-full bg-orange-500 text-white grid place-items-center text-xl font-bold shadow">
           {n}
-        </div>
+        </div> */}
       </div>
       <div className="p-5">
         <div className="font-semibold">{title}</div>

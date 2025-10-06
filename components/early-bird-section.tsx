@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import { Button } from "./ui/button";
 import { Link } from "@/i18n/navigation";
-import PreSubscribeButton from "./PreSubscribeButton";
+import PreSubscribeButton from "./buttons/PreSubscribeButton";
 
 const PHRASES = ["EARLY BIRD DISCOUNT", "LIMITED TIME OFFER", "JOIN NOW"];
 

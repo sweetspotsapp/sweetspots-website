@@ -1,7 +1,9 @@
-'use client';
+"use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { Button } from "./ui/button";
+import { Link } from "@/i18n/navigation";
+import PreSubscribeButton from "./buttons/PreSubscribeButton";
 
 const PHRASES = ["EARLY BIRD DISCOUNT", "LIMITED TIME OFFER", "JOIN NOW"];
 
@@ -10,17 +12,21 @@ export default function EarlyBirdSection() {
   const row = Array.from({ length: 6 }, () => PHRASES).flat();
 
   return (
-    <div>
+    <div id='early-bird-section'>
       {/* Running text (multiple phrases) */}
       <div className="bg-orange-500 text-white font-bold">
         <div className="marquee">
           <div className="track">
             {row.map((t, i) => (
-              <span key={`a-${i}`} className="item">{t}</span>
+              <span key={`a-${i}`} className="item">
+                {t}
+              </span>
             ))}
             {/* duplicate immediately after */}
             {row.map((t, i) => (
-              <span key={`b-${i}`} className="item">{t}</span>
+              <span key={`b-${i}`} className="item">
+                {t}
+              </span>
             ))}
           </div>
         </div>
@@ -60,17 +66,19 @@ export default function EarlyBirdSection() {
             </p>
 
             <div className="flex space-x-4">
-              <Button size="lg" variant="default" className="font-bold">
-                Pre-Order Now!
-              </Button>
-              <Button size="lg" variant="outline">
-                Learn more
-              </Button>
+              <PreSubscribeButton/>
+              <Link href="/learn-more">
+                <Button size="lg" variant="outline">
+                  Learn More
+                </Button>
+              </Link>
             </div>
 
             <p className="mt-4 text-lg font-semibold">
               <span className="line-through text-gray-400 mr-2">AUD$59.9</span>
-              <span className="text-black">AUD$29.9/year early bird pricing</span>
+              <span className="text-black">
+                AUD$29.9/year early bird pricing
+              </span>
             </p>
 
             <ul className="mt-2 space-y-1 text-gray-700 text-sm text-left">

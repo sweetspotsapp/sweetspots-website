@@ -27,13 +27,13 @@ export function HeroSection() {
             className=""
             size="lg"
             onClick={() => {
-              const ctaSection = document.getElementById("cta-section");
+              const ctaSection = document.getElementById("early-bird-section");
               if (ctaSection) {
                 ctaSection.scrollIntoView({ behavior: "smooth" });
               }
             }}
           >
-            Sounds good! Sign me Up!
+            Try Now!
           </Button>
         </div>
         <ScrollDownCta />

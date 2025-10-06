@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button';
 import { SIGNUP_URL } from '@/lib/constants';
 import { useTranslations } from 'next-intl';
 import EarlyAccessForm from './early-user/EarlyUserForm';
+import PreSubscribeButton from './buttons/PreSubscribeButton';
 
 export function CTASection() {
   const t = useTranslations('cta');
@@ -19,7 +20,8 @@ export function CTASection() {
           {t('description')}
         </p>
         
-        <EarlyAccessForm />
+        <PreSubscribeButton/>
+        {/* <EarlyAccessForm /> */}
         {/* <div className="pt-8">
           <Button 
             size="lg" 

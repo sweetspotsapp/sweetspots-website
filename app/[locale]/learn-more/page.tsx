@@ -1,27 +1,13 @@
-import { useState } from "react";
 import {
-  MapPin,
-  Sparkles,
-  PhoneCall,
   Users2,
-  Clock,
   Wallet,
-  Train,
-  Share2,
   Route,
-  Star,
   CheckCircle2,
-  MessageCircle,
   Compass,
-  CloudSun,
-  NavigationIcon,
-  Download,
-  CreditCard,
   CalendarSearch,
 } from "lucide-react";
 import { Navigation } from "@/components/navigation";
 import { Footer } from "@/components/footer";
-import { Button } from "@/components/ui/button";
 import PreSubscribeButton from "@/components/buttons/PreSubscribeButton";
 import Image from "next/image";
 import TryTheAlphaButton from "@/components/buttons/TryTheAlphaButton";
@@ -86,7 +72,7 @@ export default function SweetSpotsLanding() {
             {/* Pricing / CTA */}
             <div id="cta" className="mt-6 flex flex-wrap items-center gap-4">
               <PreSubscribeButton />
-              <TryTheAlphaButton/>
+              {/* <TryTheAlphaButton/> */}
             </div>
             <div className="mt-3 flex items-center gap-4 text-sm text-stone-600">
               <div className="flex items-center gap-2">

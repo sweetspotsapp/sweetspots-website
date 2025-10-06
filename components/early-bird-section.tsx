@@ -12,7 +12,7 @@ export default function EarlyBirdSection() {
   const row = Array.from({ length: 6 }, () => PHRASES).flat();
 
   return (
-    <div>
+    <div id='early-bird-section'>
       {/* Running text (multiple phrases) */}
       <div className="bg-orange-500 text-white font-bold">
         <div className="marquee">

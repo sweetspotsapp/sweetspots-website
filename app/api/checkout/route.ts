@@ -6,7 +6,11 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
 export async function POST(req: Request) {
   const { locale } = await req.json();
   try {
-    const origin = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
+    const origin =
+      process.env.NEXT_PUBLIC_SITE_URL || // your manual override (recommended)
+      (process.env.VERCEL_URL
+        ? `https://${process.env.VERCEL_URL}`
+        : "http://localhost:3000");
 
     const session = await stripe.checkout.sessions.create({
       mode: "payment",

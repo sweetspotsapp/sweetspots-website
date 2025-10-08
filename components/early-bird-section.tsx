@@ -74,9 +74,9 @@ export default function EarlyBirdSection() {
               </Link>
             </div>
 
-            <p className="mt-4 text-lg font-semibold">
+            <p className="mt-4 text-lg font-semibold text-center">
               <span className="line-through text-gray-400 mr-2">AUD$59.9</span>
-              <span className="text-black">
+              <span className="text-black text-center">
                 AUD$29.9/year early bird pricing
               </span>
             </p>

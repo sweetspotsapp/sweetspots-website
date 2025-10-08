@@ -12,7 +12,7 @@ export default function EarlyBirdSection() {
   const row = Array.from({ length: 6 }, () => PHRASES).flat();
 
   return (
-    <div id='early-bird-section'>
+    <div id="early-bird-section">
       {/* Running text (multiple phrases) */}
       <div className="bg-orange-500 text-white font-bold">
         <div className="marquee">
@@ -66,7 +66,7 @@ export default function EarlyBirdSection() {
             </p>
 
             <div className="flex space-x-4">
-              <PreSubscribeButton/>
+              <PreSubscribeButton />
               <Link href="/learn-more">
                 <Button size="lg" variant="outline">
                   Learn More
@@ -77,7 +77,20 @@ export default function EarlyBirdSection() {
             <p className="mt-4 text-lg font-semibold text-center">
               <span className="line-through text-gray-400 mr-2">AUD$59.9</span>
               <span className="text-black text-center">
-                AUD$29.9/year early bird pricing
+                AUD$29.9/year early bird
+              </span>
+            </p>
+
+            <div className="flex items-center w-1/3 my-2">
+              <hr className="flex-grow border-t border-gray-300" />
+              <span className="mx-4 text-gray-500 font-medium">or</span>
+              <hr className="flex-grow border-t border-gray-300" />
+            </div>
+
+            <p className="mb-4 text-lg font-semibold text-center">
+              <span className="line-through text-gray-400 mr-2">AUD$9.9</span>
+              <span className="text-black text-center">
+                AUD$5.9/month early bird
               </span>
             </p>
 

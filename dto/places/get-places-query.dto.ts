@@ -9,4 +9,6 @@ export class GetPlacesQueryDto {
   latitude?: number;
   longitude?: number;
   sortBy?: 'rating' | 'distance' | 'newest' = 'newest';
+  query?: string;
+  showHidden?: boolean = false;
 }

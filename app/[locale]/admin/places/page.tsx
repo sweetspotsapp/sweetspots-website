@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import { useSearchParams } from "next/navigation";
-import { getPlaces } from "@/api/places/endpoints";
+import { getPlaces, updatePlace } from "@/api/places/endpoints";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { DataTable } from "@/components/ui/DataTable";
@@ -12,6 +12,7 @@ import moment from "moment";
 import { ApiPluralResponse } from "@/api/pagination.dto";
 import { Paginator } from "@/components/ui/Paginator";
 import { usePaginationParams } from "@/hooks/usePaginationParams";
+import { Input } from "@/components/ui/input";
 
 export default function PlacesPage() {
   const router = useRouter();
@@ -19,14 +20,31 @@ export default function PlacesPage() {
   const { page, limit } = usePaginationParams();
 
   const [isLoading, setIsLoading] = React.useState(false);
-  const [resp, setResp] = React.useState<ApiPluralResponse<IPlace> | null>(null);
+  const [resp, setResp] = React.useState<ApiPluralResponse<IPlace> | null>(
+    null
+  );
+
+  const [query, setQuery] = React.useState("");
+
+  function changePage(newPage: number) {
+    const params = new URLSearchParams();
+    if (newPage !== 1) params.set("page", newPage.toString());
+    if (limit !== 10) params.set("limit", limit.toString());
+    const queryString = params.toString();
+    const url = `/admin/places${queryString ? `?${queryString}` : ""}`;
+    router.push(url);
+  }
+
+  React.useEffect(() => {
+    changePage(1);
+  }, [query]);
 
   React.useEffect(() => {
     let cancelled = false;
     (async () => {
       setIsLoading(true);
       try {
-        const r = await getPlaces({ page, limit }); // make sure your endpoint accepts { page, limit }
+        const r = await getPlaces({ page, limit, query, showHidden: true }); // make sure your endpoint accepts { page, limit }
         if (!cancelled) setResp(r);
       } catch (error) {
         if (!cancelled) setResp(null);
@@ -37,7 +55,7 @@ export default function PlacesPage() {
     return () => {
       cancelled = true;
     };
-  }, [page, limit]);
+  }, [page, limit, query]);
 
   const places = resp?.data?.data ?? [];
 
@@ -49,11 +67,25 @@ export default function PlacesPage() {
     router.push(`/admin/places/${place.id}`);
   }
 
+  function toggleHidePlace(place: IPlace) {
+    updatePlace(place.id, { hidden: !place.hidden }).then((res) => {
+      window.location.reload();
+    });
+  }
+
   return (
     <div className="container mx-auto p-4 space-y-4">
-      <Link href="/admin/places/add" className="inline-block">
-        <Button>Add New Place</Button>
-      </Link>
+      <div className="flex justify-between items-center">
+        <Link href="/admin/places/add" className="inline-block">
+          <Button>Add New Place</Button>
+        </Link>
+        <Input
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+          placeholder="Search places..."
+          className="max-w-xs"
+        />
+      </div>
 
       <DataTable
         items={places}
@@ -75,6 +107,9 @@ export default function PlacesPage() {
           // { label: "Delete", onClick: handleDelete },
         ]}
         cellRenderers={{
+          hidden: (value, item) => <div>
+            <Button onClick={() => toggleHidePlace(item)} variant="outline" size="sm">{value ? "Unhide" : "Hide"}</Button>
+          </div>,
           name: (value, item) => (
             <Link href={`/admin/places/${item.id}`} className="font-medium">
               {value}

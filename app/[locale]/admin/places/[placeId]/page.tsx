@@ -12,6 +12,7 @@ import DeletePlaceConfirmDialog from "@/components/admin-place/DeletePlaceConfir
 import { uniqBy } from "lodash";
 import { useState } from "react";
 import HidePlace from "@/components/admin-place/HidePlace";
+import ShowDemoPlace from "@/components/admin-place/ShowDemoPlace";
 
 export default async function PlaceDetailsPage({
   params,
@@ -95,6 +96,7 @@ export default async function PlaceDetailsPage({
             </Link>
           </Button>
           <HidePlace place={place} />
+          <ShowDemoPlace place={place} />
           <DeletePlaceConfirmDialog placeId={id} />
           {googleWebsite && (
             <Button asChild>

@@ -39,25 +39,25 @@ export default function PlacesPage() {
     changePage(1);
   }, [query]);
 
+  function fetchPlaces() {
+    setIsLoading(true);
+    getPlaces({ page, limit, query, showHidden: true })
+      .then((r) => setResp(r))
+      .catch(() => setResp(null))
+      .finally(() => setIsLoading(false));
+  }
+
   React.useEffect(() => {
     let cancelled = false;
-    (async () => {
-      setIsLoading(true);
-      try {
-        const r = await getPlaces({ page, limit, query, showHidden: true }); // make sure your endpoint accepts { page, limit }
-        if (!cancelled) setResp(r);
-      } catch (error) {
-        if (!cancelled) setResp(null);
-      } finally {
-        setIsLoading(false);
-      }
-    })();
+    fetchPlaces();
     return () => {
       cancelled = true;
     };
   }, [page, limit, query]);
 
   const places = resp?.data?.data ?? [];
+
+  console.log(places)
 
   function handleEdit(place: IPlace) {
     router.push(`/admin/places/${place.id}/edit`);
@@ -69,7 +69,13 @@ export default function PlacesPage() {
 
   function toggleHidePlace(place: IPlace) {
     updatePlace(place.id, { hidden: !place.hidden }).then((res) => {
-      window.location.reload();
+      fetchPlaces();
+    });
+  }
+
+  function toggleShowForDemo(place: IPlace) {
+    updatePlace(place.id, { showForDemo: !place.showForDemo }).then((res) => {
+      fetchPlaces();
     });
   }
 
@@ -99,7 +105,18 @@ export default function PlacesPage() {
           "googleTypes",
           "calculatedDistance",
           "createdBy",
+          "placeImages" as any,
+          "images" as any,
           "types",
+          "rating",
+          "googleRating",
+          "priceRange",
+          "minPrice",
+          "maxPrice",
+          "updatedAt",
+          "createdAt",
+          "googleReviewCount",
+          "reviewCount"
         ]}
         actions={[
           { label: "Edit", onClick: handleEdit },
@@ -107,8 +124,13 @@ export default function PlacesPage() {
           // { label: "Delete", onClick: handleDelete },
         ]}
         cellRenderers={{
+          showForDemo: (value, item) => (
+            <div>
+              <Button onClick={() => toggleShowForDemo(item)} variant={value ? "default" : "outline"} size="sm">{value ? "Hide from Demo" : "Show in Demo"}</Button>
+            </div>
+          ),
           hidden: (value, item) => <div>
-            <Button onClick={() => toggleHidePlace(item)} variant="outline" size="sm">{value ? "Unhide" : "Hide"}</Button>
+            <Button onClick={() => toggleHidePlace(item)} variant={!value ? "default" : "outline"} size="sm">{value ? "Unhide" : "Hide"}</Button>
           </div>,
           name: (value, item) => (
             <Link href={`/admin/places/${item.id}`} className="font-medium">

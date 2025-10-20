@@ -17,6 +17,8 @@ export interface IPlace {
   address: string;
   createdBy?: string | null;
 
+  showForDemo: boolean;
+
   minPrice?: number;
   maxPrice?: number;
 

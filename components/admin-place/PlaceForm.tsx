@@ -40,7 +40,6 @@ import UploadDropzone, { UploadedResult } from "@/components/UploadDropzone";
 import { UploadResponseDto } from "@/dto/upload/upload-response.dto";
 import { getReadSas } from "@/api/upload/endpoints";
 
-// ---------------- ZOD SCHEMA ----------------
 export const placeFormSchema = z.object({
   name: z.string().min(1, "Name is required"),
   description: z.string().min(1, "Description is required"),
@@ -63,7 +62,9 @@ export const placeFormSchema = z.object({
   images: z.array(z.string().url()),
 });
 
-export type PlaceFormValues = z.infer<typeof placeFormSchema>;
+export type PlaceFormValues = z.infer<typeof placeFormSchema> & {
+  showForDemo?: boolean;
+};
 
 const asNumber = (v: string) =>
   v === "" || v === undefined ? undefined : Number(v);

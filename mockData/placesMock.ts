@@ -84,7 +84,8 @@ export const placesMock: IPlace[] = [
         calculatedDistance: 2.3,
         types: [],
         hidden: false,
-        verified: false
+        verified: false,
+        showForDemo: false
     },
     {
         id: 'place_2',
@@ -141,6 +142,7 @@ export const placesMock: IPlace[] = [
         calculatedDistance: 1.1,
         types: [],
         hidden: false,
-        verified: false
+        verified: false,
+        showForDemo: false
     },
 ];

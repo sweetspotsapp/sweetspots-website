@@ -61,6 +61,10 @@ export const placeFormSchema = z.object({
   minPrice: z.number().min(0).optional(),
   maxPrice: z.number().min(0).optional(),
   images: z.array(z.string().url()),
+  whyVisit: z.string().optional().nullable(),
+  whatToPrepare: z.string().optional().nullable(),
+  googlePhoneNumber: z.string().optional().nullable(),
+  googleWebsite: z.string().url().optional().nullable(),
 });
 
 export type PlaceFormValues = z.infer<typeof placeFormSchema> & {
@@ -119,7 +123,6 @@ export default function PlaceForm({
   className,
   isSubmitting = false,
 }: PlaceFormProps) {
-  console.log("Default Values:", defaultValues);
   const form = useForm<PlaceFormValues>({
     resolver: zodResolver(placeFormSchema),
     mode: "onChange",
@@ -220,6 +223,43 @@ export default function PlaceForm({
                     <FormLabel>Name</FormLabel>
                     <FormControl>
                       <Input placeholder="e.g., Hidden Alley Cafe" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+
+              <FormField
+                control={control}
+                name="googlePhoneNumber"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Phone Number</FormLabel>
+                    <FormControl>
+                      <Input
+                        placeholder="e.g., +1 555-123-4567"
+                        {...field}
+                        value={field.value || ""}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+
+              <FormField
+                control={control}
+                name="googleWebsite"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Website</FormLabel>
+                    <FormControl>
+                      <Input
+                        placeholder="https://example.com"
+                        type="url"
+                        {...field}
+                        value={field.value || ""}
+                      />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -340,6 +380,44 @@ export default function PlaceForm({
                         rows={4}
                         placeholder="What makes this place special?"
                         {...field}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+
+              <FormField
+                control={control}
+                name="whyVisit"
+                render={({ field: { value, ...rest } }) => (
+                  <FormItem className="md:col-span-2">
+                    <FormLabel>Why Visit?</FormLabel>
+                    <FormControl>
+                      <Textarea
+                        rows={4}
+                        placeholder="Hayya hayya"
+                        value={value || ""}
+                        {...rest}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+
+              <FormField
+                control={control}
+                name="whatToPrepare"
+                render={({ field: { value, ...rest } }) => (
+                  <FormItem className="md:col-span-2">
+                    <FormLabel>What to Prepare?</FormLabel>
+                    <FormControl>
+                      <Textarea
+                        rows={4}
+                        placeholder="Hoyyo hoyyo"
+                        value={value || ""}
+                        {...rest}
                       />
                     </FormControl>
                     <FormMessage />

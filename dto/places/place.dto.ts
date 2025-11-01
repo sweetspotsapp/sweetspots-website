@@ -22,6 +22,9 @@ export interface IPlace {
   minPrice?: number;
   maxPrice?: number;
 
+  whyVisit?: string | null;
+  whatToPrepare?: string | null;
+
   googlePlaceId?: string | null;
   googleRating?: string | null;
   googleReviewCount?: number | null;

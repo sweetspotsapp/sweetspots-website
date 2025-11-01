@@ -34,6 +34,8 @@ export default async function PlaceDetailsPage({
     vibes = [],
     address,
     description,
+    whatToPrepare,
+    whyVisit,
     latitude,
     longitude,
     googleWebsite,
@@ -184,6 +186,27 @@ export default async function PlaceDetailsPage({
         <CardContent>
           <p className="text-sm leading-6 text-muted-foreground whitespace-pre-wrap">
             {description}
+          </p>
+        </CardContent>
+      </Card>
+            <Card>
+        <CardHeader>
+          <CardTitle>Why Visit?</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <p className="text-sm leading-6 text-muted-foreground whitespace-pre-wrap">
+            {whyVisit}
+          </p>
+        </CardContent>
+      </Card>
+
+                  <Card>
+        <CardHeader>
+          <CardTitle>What to Prepare?</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <p className="text-sm leading-6 text-muted-foreground whitespace-pre-wrap">
+            {whatToPrepare}
           </p>
         </CardContent>
       </Card>

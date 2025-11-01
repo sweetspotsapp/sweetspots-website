@@ -3,8 +3,7 @@
 import { createPlace } from "@/api/places/endpoints";
 import PlaceForm, { PlaceFormValues } from "@/components/admin-place/PlaceForm";
 import { Button } from "@/components/ui/button";
-import { Link } from "@/i18n/navigation";
-import { useRouter } from "next/router";
+import { Link, useRouter } from "@/i18n/navigation";
 import React from "react";
 
 export default function AddPlacePage() {

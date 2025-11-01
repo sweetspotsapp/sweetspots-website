@@ -35,6 +35,7 @@ export default function PlacesPage() {
   }
 
   React.useEffect(() => {
+    if (query.trim() === "") return;
     changePage(1);
   }, [query]);
 
@@ -55,8 +56,6 @@ export default function PlacesPage() {
   }, [page, limit, query]);
 
   const places = resp?.data?.data ?? [];
-
-  console.log(places)
 
   function handleEdit(place: IPlace) {
     router.push(`/admin/places/${place.id}/edit`);
@@ -115,6 +114,7 @@ export default function PlacesPage() {
           "updatedAt",
           "createdAt",
           "googleReviewCount",
+          "googleOpeningHours",
           "reviewCount"
         ]}
         actions={[

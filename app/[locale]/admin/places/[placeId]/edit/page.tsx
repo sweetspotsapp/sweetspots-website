@@ -46,6 +46,9 @@ export default function EditPlacePage() {
         // category: place?.category || "",
         address: place?.address || "",
         images: place?.images ? uniq(place?.images?.map((img) => img.url)) : [],
+        minPrice: place?.minPrice,
+        maxPrice: place?.maxPrice,
+        category: place?.category || "",
       }
     : null;
 

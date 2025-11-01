@@ -55,6 +55,7 @@ export const placeFormSchema = z.object({
     .min(-180, "Min -180")
     .max(180, "Max 180"),
   address: z.string().min(1, "Address is required"),
+  category: z.string().min(1, "Category is required"),
   vibes: z.array(z.string().min(1), { error: "Vibes are required" }),
   hidden: z.boolean().optional(),
   minPrice: z.number().min(0).optional(),
@@ -118,28 +119,19 @@ export default function PlaceForm({
   className,
   isSubmitting = false,
 }: PlaceFormProps) {
+  console.log("Default Values:", defaultValues);
   const form = useForm<PlaceFormValues>({
     resolver: zodResolver(placeFormSchema),
     mode: "onChange",
-    defaultValues: {
-      name: "",
-      description: "",
-      priceRange: "$",
-      latitude: defaultValues?.latitude ?? -37.8136,
-      longitude: defaultValues?.longitude ?? 144.9631,
-      address: defaultValues?.address ?? "",
-      vibes: defaultValues?.vibes ?? [],
-      images: defaultValues?.images ?? [], // 👈 start empty
-      ...defaultValues,
-    },
+    defaultValues,
   });
 
   const { control, handleSubmit, setValue, watch } = form;
 
   const lat = watch("latitude");
   const lng = watch("longitude");
-  const vibes = watch("vibes");
-  const images = watch("images");
+  const vibes = watch("vibes") || [];
+  const images = watch("images") || [];
 
   const [fetchingAddress, setFetchingAddress] = useState(false);
 
@@ -241,7 +233,12 @@ export default function PlaceForm({
                   <FormItem>
                     <FormLabel>Min Price</FormLabel>
                     <FormControl>
-                      <Input placeholder="e.g., 10" type="number" {...field} />
+                      <Input
+                        placeholder="e.g., 10"
+                        type="number"
+                        {...field}
+                        onChange={(e) => field.onChange(e.target.valueAsNumber)}
+                      />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -255,7 +252,12 @@ export default function PlaceForm({
                   <FormItem>
                     <FormLabel>Max Price</FormLabel>
                     <FormControl>
-                      <Input placeholder="e.g., 50" type="number" {...field} />
+                      <Input
+                        placeholder="e.g., 50"
+                        type="number"
+                        {...field}
+                        onChange={(e) => field.onChange(e.target.valueAsNumber)}
+                      />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -284,6 +286,20 @@ export default function PlaceForm({
                         <SelectItem value="$$$$">$$$$</SelectItem>
                       </SelectContent>
                     </Select>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+
+              <FormField
+                control={control}
+                name="category"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Category</FormLabel>
+                    <FormControl>
+                      <Input placeholder="e.g., Cafe" {...field} />
+                    </FormControl>
                     <FormMessage />
                   </FormItem>
                 )}

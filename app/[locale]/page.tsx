@@ -16,11 +16,7 @@ export default function Home() {
   return (
     <main className="min-h-screen">
       <Navigation />
-      <CTAToastOnScroll trigger={{
-      percent: 20,
-      }}/>
       <HeroSection />
-      <EarlyBirdSection />
       <SolutionSection />
       <RecommendedTripsSection />
 

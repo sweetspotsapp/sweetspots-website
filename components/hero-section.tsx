@@ -27,10 +27,7 @@ export function HeroSection() {
             className=""
             size="lg"
             onClick={() => {
-              const ctaSection = document.getElementById("early-bird-section");
-              if (ctaSection) {
-                ctaSection.scrollIntoView({ behavior: "smooth" });
-              }
+              window.open("https://www.findyoursweetspots.com", "_blank");
             }}
           >
             Try Now!

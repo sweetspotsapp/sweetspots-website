@@ -20,7 +20,16 @@ export function CTASection() {
           {t('description')}
         </p>
         
-        <PreSubscribeButton/>
+        {/* <PreSubscribeButton/> */}
+        <Button
+            className=""
+            size="lg"
+            onClick={() => {
+              window.open("https://www.findyoursweetspots.com", "_blank");
+            }}
+          >
+            Try Now!
+          </Button>
         {/* <EarlyAccessForm /> */}
         {/* <div className="pt-8">
           <Button 
